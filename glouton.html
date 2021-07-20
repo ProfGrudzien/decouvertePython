@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+    <body>
+        <div class="main">
+            <h1>Algorithmes gloutons</h1>
+            <p>
+                Les algorithmes gloutons sont des algorithmes destinés à résoudre des problèmes d'optimisation. Ils consistent à choisir, étape par étape, le meilleur choix disponible, dans l'espoir d'obtenir à la fin la solution optimale. Souvent, la solution ainsi trouvée n'est malheureusement pas la meilleur des solutions. Mais les algorithmes gloutons permettent de trouver une « bonne » solution rapidement, alors que la recherche de la meilleur solution parmi de très nombreuses solutions seraient beaucoup trop long.
+            </p>
+            <h2>Problème du rendu de monnaie.</h2>
+            <p>
+                Le problème consiste à lister les pièces et les billets nécessaires pour rendre un certain montant tout en minimisant le nombre de pièces et de billets rendu. Le problème dépend du système de monnaie utilisé. Voici sa résolution pour les euros, en supposant que toutes les pièces et les billets sont disponibles en quantité suffisante.
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    systemeEU = [(1, "pièce de 1 cent"), <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(2, "pièce de 2 cents"), <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(5, "pièce de 5 cents"), <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(10, "pièce de 10 cents"), <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(20, "pièce de 20 cents"), <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(50, "pièce de 50 cents"), <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(100, "pièce de 1 euro"), <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(200, "pièce de 2 euros"), <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(500, "billet de 5 euros"), <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1000, "billet de 10 euros"), <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(2000, "billet de 20 euros"), <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(5000, "billet de 50 euros"), <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(10000, "billet de 100 euros"), <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(20000, "billet de 200 euros"), <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(50000, "billet de 500 euros")] <br/>
+                    <br/>
+                    def rendre_monnaie(montant, systeme) :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;systeme.sort(reverse=True)<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;rendu = []<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;for valeur in systeme :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while montant >= valeur[0] :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;montant = montant - valeur[0]<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rendu.append(valeur)<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;return rendu<br/>
+                    <br/>
+                    def affichage(rendu) :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;print("A rendre :")<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;for valeur in rendu :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("&nbsp;&nbsp;" + valeur[1])
+                </p>
+            </div>
+            <ol>
+                <li>Essayer les fonctions <mark class="code">rendre_monnaie</mark> et <mark class="code">affichage</mark> pour rendre <mark class="code">7 €</mark>, <mark class="code">142 €</mark> et <mark class="code">1 852,21 €</mark></li>
+                <li>A chaque fois, la solution est-elle la solution optimale ?</li>
+                <li>A chaque fois, existe-t-il une solution aussi bonne ?</li>
+                <li>
+                    L'ancien système britannique était basé sur des subdivisions de la livre.
+                    <table>
+                        <tr>
+                            <th>nom</th>
+                            <th>valeur en pence</th>
+                        </tr>
+                        <tr>
+                            <td>penny</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>quart de shilling</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td>demi-shilling</td>
+                            <td>6</td>
+                        </tr>
+                        <tr>
+                            <td>shilling</td>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <td>florin</td>
+                            <td>24</td>
+                        </tr>
+                        <tr>
+                            <td>demi-couronne</td>
+                            <td>30</td>
+                        </tr>
+                        <tr>
+                            <td>couronne</td>
+                            <td>60</td>
+                        </tr>
+                        <tr>
+                            <td>livre</td>
+                            <td>240</td>
+                        </tr>
+                    </table>
+                    Créer la liste <mark class="code">systemeUK</mark> permettant d'utiliser ce système de monnaie.
+                </li>
+                <li>Utiliser les fonctions <mark class="code">rendre_monnaie</mark> et <mark class="code">affichage</mark> pour rendre <mark class="code">100 pence</mark> puis <mark class="code">48 pence</mark>.</li>
+                <li>A chaque fois, la solution est-elle la solution optimale ?</li>
+                <li>A chaque fois, existe-t-il une solution aussi bonne ?</li>
+            </ol>
+            <h2>Problème du sac à dos.</h2>
+            <p>
+                Un aventurier est devant un choix difficile. Il viens d'atteindre la salle du trésor, mais son sac à dos n'est pas assez résistant pour emporter avec lui toutes ces richesses. Il doit donc sélectionner les objets qu'il emmènera en fonction de leurs masses. Il souhaite emporter les objets qui lui rapporteront le plus de richesses.
+            </p>
+            <p>
+                Lister toutes les possibilités peut être très long si la salle du trésor contient un grand nombre d'objets. Un algorithme glouton paraît pertinent, mais il faut choisir une stratégie pour sélectionner la solution optimale à chaque étape.
+            </p>
+            <p>
+                Pour cet exercice, on considère une salle du trésor contenant les objets suivants :
+                <table>
+                    <tr>
+                        <th>nom</th>
+                        <th>valeur (en pièce d'or)</th>
+                        <th>masse (en gramme)</th>
+                    </tr>
+                    <tr>
+                        <td>L'anneau unique - tirage limité - n°2535</td>
+                        <td>200</td>
+                        <td>200</td>
+                    </tr>
+                    <tr>
+                        <td>Cape d'invisibilité</td>
+                        <td>700</td>
+                        <td>500</td>
+                    </tr>
+                    <tr>
+                        <td>Saint Graal</td>
+                        <td>1200</td>
+                        <td>1000</td>
+                    </tr>
+                    <tr>
+                        <td>Sainte grenade</td>
+                        <td>800</td>
+                        <td>1500</td>
+                    </tr>
+                    <tr>
+                        <td>Braguette magique</td>
+                        <td>300</td>
+                        <td>400</td>
+                    </tr>
+                    <tr>
+                        <td>Epée de Damocles</td>
+                        <td>1100</td>
+                        <td>2000</td>
+                    </tr>
+                    <tr>
+                        <td>Couronne de commandement</td>
+                        <td>1000</td>
+                        <td>800</td>
+                    </tr>
+                    <tr>
+                        <td>Marteau de tord</td>
+                        <td>1200</td>
+                        <td>2500</td>
+                    </tr>
+                </table>
+            </p>
+            <ol>
+                <li>Après avoir choisi un type adapté (tuple, liste ou dictionnaire), modéliser le contenu de la salle de trésor dans une variable nommé <mark class='code'>tresors</mark></li>
+                <li>Trier les trésors dans l'ordre décroissant de leur valeur.</li>
+                <li>Ecrire une fonction <mark class='code'>choisir_tresors(masse_limite, tresors)</mark> qui retourne la liste des objets à prendre</li>
+                <li>Ecrire une fonction <mark class='code'>afficher(sac_a_dos)</mark> qui retourne les objets contenu dans le sac à dos ainsi que la somme des valeurs de ces objets.</li>
+                <li>Tester ces fonctions pour aider un aventurier dont le sac à dos peut contenir 5000 grammes.</li>
+                <li>On change de stratégie, et on envisage de choisir les objets les plus légers en premier. Appliquer les modifications nécessaires.</li>
+                <li>Enfin, on envisage une troisième stratégie : emporter les objets avec le meilleur ratio <span class="frac"><span class="haut">valeur</span><span class="bas">masse</span></span>. Appliquer les modifications necessaires.</li>
+                <li>Comparer les trois stratégies pour des sac à dos permettant d'emporter 5000 puis 6000 puis 7000 grammes. Une stratégie semble-t-elle meilleur qu'une autre ?</li>
+            </ol>
+            <h2>Problème de réservation.</h2>
+            <p>
+                Le professeur de NSI dispose d'une villa en location sur la costa Dorada. Il souhaite la louer au maximum et modélise les demandes de réservation par des tuples <mark class="code">(no, d, f)</mark> où <mark class="code">no</mark> est le numéro de la demande, <mark class="code">d</mark> est le jour du début de la réservation et <mark class="code">f</mark> est la fin de la réservation (nombres entiers compris entre 1 et 366). Proposer une stratégie puis un algorithme glouton pour aider votre professeur à maximiser ces revenus.
+            </p>
+        </div>
+        <script type="text/javascript" src="script.js"></script>
+    </body>
+</html>

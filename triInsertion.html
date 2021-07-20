@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="style.css"/>
+        <link rel="stylesheet" href="tris.css"/>
+    </head>
+    <body>
+        <div class="main">
+            <h1>Tri par insertion</h1>
+            <h2>Exercice 1 : trier les cartes selon l'algorithme du tri par insertion</h2>
+            <ul>
+                <li>Identifier la première carte de la <span class="non-triee">partie non triée</span>.</li>
+                <li>L'insérer au bon endroit dans la <span class="triee">partie triée</span>.</li>
+                <li>Répéter tant qu'il y a des cartes dans la <span class="non-triee">partie non triée</span>.</li>
+            </ul>
+            <div class="tapis">
+                <div id="sep-0" class="sep"></div>
+                <div id="0" class="carte triee"></div>
+                <div id="sep-1" class="sep"></div>
+                <div id="1" class="carte non-triee"></div>
+                <div id="sep-2" class="sep"></div>
+                <div id="2" class="carte non-triee"></div>
+                <div id="sep-3" class="sep"></div>
+                <div id="3" class="carte non-triee"></div>
+                <div id="sep-4" class="sep"></div>
+                <div id="4" class="carte non-triee"></div>
+                <div id="sep-5" class="sep"></div>
+                <div id="5" class="carte non-triee"></div>
+                <div id="sep-6" class="sep"></div>
+                <div id="6" class="carte non-triee"></div>
+                <div id="sep-7" class="sep"></div>
+                <div id="7" class="carte non-triee"></div>
+                <div id="sep-8" class="sep"></div>
+                <div id="8" class="carte non-triee"></div>
+                <div id="sep-9" class="sep"></div>
+                <div id="9" class="carte non-triee"></div>
+                <div id="sep-10" class="sep"></div>
+            </div>
+            <p class="consigne">Cliquer pour sélectionner une carte.</p>
+            <p class="erreur"></p>
+            <h2>Exercice 2 : comprendre l'algorithme</h2>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    def tri(liste) :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;for i in range(1, len(liste)) :<br/>
+                    <font class=commentaire>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# mémoriser la première valeur de la partie non triée :</font><br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;valeur = liste[i]<br/>
+                    <font class=commentaire>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# décaler tous les éléments de la partie triée jusqu'à trouver l'emplacement pour la valeur mémorisée :</font><br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;j = i<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while j &gt; 0 and liste[j-1] &gt; valeur :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;liste[j] = liste[j-1]<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;j = j-1<br/>
+                    <font class=commentaire>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# insertion de la valeur mémorisée :</font><br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;liste[j] = valeur<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;return(liste)<br/>
+                </p>
+            </div>
+            <ol>
+                <li>Pour une liste de n valeurs, combien d'insertions sont réalisés ? <input id="nbEchanges" type="text"/> <span></span></li>
+                <li>Lors de l'insertion de la k-ième valeur, combien de comparaisons entre des valeurs sont réalisées (au maximum) ? <input id="nbComparaisonsMin" type="text"/> <span></span></li>
+                <li>Pour une liste de n valeurs, combien de comparaisons entre des valeurs sont réalisées (au maximum) ? <input id="nbComparaisons" type="text"/> <span></span></li>
+            </ol>
+            <div class="centrer">
+                <input type="button" value="Vérifier" id="btnVerifier"/>
+            </div>
+        </div>
+        <script type="text/javascript" src="script.js"></script>
+        <script type="text/javascript" src="triInsertion.js"></script>
+    </body>
+</html>

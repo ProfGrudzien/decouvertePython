@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+    <body>
+        <div class="main">
+            <h1>Interface graphique avec tkinter</h1>
+            <p>
+                La plupart des programmes que nous utilisons aujourd'hui sont <mark>interactifs</mark>.
+                Ils permettent à l'utilisateur d’interagir avec le programme à travers une <mark>interface utilisateur</mark>.
+                Jusqu'à présent, nous avons utilisé la console Python comme interface utilisateur en utilisant les fonctions <mark class="code">input</mark> et <mark class="code">print</mark>.
+                Lorsque l'interface utilisateur est composée d'une fenêtre incluant des éléments graphiques comme des boutons pour interagir avec le programme, on parle d'<mark>interface graphique</mark>
+            </p>
+            <p>
+                Il existe plusieurs modules pour créer une interface graphique en Python. Dans ce document, nous allons aborder le module <mark class="code">tkinter</mark> car il est relativement simple d'utilisation et compatible sur les principaux systèmes d'exploitation. Par exemple, l'interface graphique de l'éditeur python utilisé au lycée (IDLE) est écrit grâce à <mark class="code">tkinter</mark>.
+            </p>
+            <h2>Importer des modules.</h2>
+            <p>
+                Pour utiliser des fonctionnalités qui ne sont pas disponible dans la base de Python, il faut importer des modules.
+                La création de modules permet aussi de séparer du code en plusieurs fichiers.
+                Par exemple, on séparera le code de l'interface graphique du code permettant d'effectuer les opérations élémentaires de notre programme. Cela permettra d'utiliser les fonctionnalités en ligne de commande ou de créer facilement une interface graphique avec un autre outils.
+                Voici 4 façons d'importer le module <mark class="code">random</mark> en Python :
+            </p>
+            <h3><mark class="code">import random</mark></h3>
+            <p>
+                Il s'agît de la syntaxe la plus courte. Les fonctionnalités ajoutées seront disponible en ajoutant <mark class="code">random.</mark> devant. Exemple :
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    import random<br/>
+                    <br/>
+                    a = <mark>random.</mark>randint(1, 6)<br/>
+                    print(a)
+                </p>
+            </div>
+            <h3><mark class="code">from random import *</mark></h3>
+            <p>
+                Les fonctionnalités ajoutées seront disponible directement en utilisant leur nom.
+                Exemple :
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    from random import *<br/>
+                    <br/>
+                    a = randint(1, 6)<br/>
+                    print(a)
+                </p>
+            </div>
+            <p>
+                Attention, si plusieurs modules contiennent des fonctions portant le même nom, seule celle du dernier module importé sera utilisée !
+            </p>
+            <h3><mark class="code">from random import randint</mark></h3>
+            <p>
+                Permet d'importer uniquement quelques fonctions du module concerné.
+                Cela permet d'identifier, lors de la relecture du programme, le module d'origine des fonctions ajoutées.
+                Les fonctionnalités ajoutées seront disponible directement en utilisant leur nom.
+                Exemple :
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    import random import randint<br/>
+                    <br/>
+                    a = randint(1, 6)<br/>
+                    print(a)
+                </p>
+            </div>
+            <h3><mark class="code">import random as rd</mark></h3>
+            <p>
+                L'utilisation est comparable à <mark class="code">import random</mark> mais il faut désormais utiliser l'alias <mark class="code">rd</mark> pour utiliser les fonctionnalités ajoutées.
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    import random as rd<br/>
+                    <br/>
+                    a = <mark>rd.</mark>randint(1, 6)<br/>
+                    print(a)
+                </p>
+            </div>
+            <h2>Créer une fenêtre avec <mark class="code">tkinter</mark></h2>
+            <p>
+                Le code ci-dessous permet de créer une fenêtre vide de 800 pixels de large et 400 pixels de haut avec <mark class="code">tkinter</mark>
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    import tkinter as tk<br/>
+                    <br/>
+                    fenetre = tk.Tk()<br/>
+                    fenetre.title("Hello new world !")<br/>
+                    fenetre.geometry("800x400")<br/>
+                    fenetre.mainloop()
+                </p>
+            </div>
+            <p>
+                L'instruction <mark class="code">fenetre.mainloop()</mark> affiche la fenêtre et bloque l'exécution du programme principal tant la fenêtre est ouverte. Le code qui suit cette instruction ne sera exécuté qu'après la fermeture de la fenêtre.
+            </p>
+            <h2>Les Widgets</h2>
+            <p>
+                Les éléments que l'on ajoute à la fenêtre (champs de texte, boutons, ...) sont appelés des widgets.
+                Ces éléments doivent être insérés avant la ligne <mark class="code">fenetre.mainloop()</mark>.
+                Voilà un exemple simple d'une fenêtre comportant un texte et un bouton :
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    import tkinter as tk <br/>
+                    <br/>
+                    fenetre = tk.Tk()<br/>
+                    fenetre.title("Hello new world !")<br/>
+                    fenetre.geometry("800x400")<br/>
+                    <br/>
+                    <mark>label = tk.Label(fenetre, text="Bonjour à tous !")</mark><br/>
+                    <mark>label.pack()</mark><br/>
+                    <br/>
+                    <mark>btn = tk.Button(fenetre, text="Bonjour !")</mark><br/>
+                    <mark>btn.pack()</mark><br/>
+                    <br/>
+                    fenetre.mainloop()
+                </p>
+            </div>
+            <h2>Le placement des Widgets</h2>
+            <p>
+                Nous allons voir deux méthodes pour placer les widgets dans une fenêtre. Dans un même conteneur (fenêtre, cadre, ...) les deux méthodes ne sont pas compatibles, il faut donc choisir l'une ou l'autre.
+            </p>
+            <h3>Placement avec <mark class="code">pack</mark></h3>
+            <p>
+                Par défaut, <mark class="code">pack</mark> place les éléments les uns en dessous des autres, en les plaçant le plus haut possible. On peut ajouter un paramètre pour indiquer où l'on veut placer l'élément par rapport au précédent. Ainsi, pour placer les éléments côte à côte, on peut utiliser :
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    import tkinter as tk <br/>
+                    <br/>
+                    fenetre = tk.Tk()<br/>
+                    fenetre.title("Hello new world !")<br/>
+                    fenetre.geometry("800x400")<br/>
+                    <br/>
+                    label = tk.Label(fenetre, text="Bonjour à tous !")<br/>
+                    label.pack(<mark>side = tk.LEFT</mark>)<br/>
+                    <br/>
+                    btn = tk.Button(fenetre, text="Bonjour !")<br/>
+                    btn.pack(<mark>side = tk.LEFT</mark>)<br/>
+                    <br/>
+                    fenetre.mainloop()
+                </p>
+            </div>
+            <p>
+                Remarque : Pour placer les deux éléments côte à côte mais globalement centré en haut de la fenêtre, il faudrait les placer dans un conteneur <mark class="code">Frame</mark>.
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    import tkinter as tk <br/>
+                    <br/>
+                    fenetre = tk.Tk()<br/>
+                    fenetre.title("Hello new world !")<br/>
+                    fenetre.geometry("800x400")<br/>
+                    <br/>
+                    <mark>frame = tk.Frame(fenetre)</mark><br/>
+                    <mark>frame.pack()</mark><br/>
+                    <br/>
+                    label = tk.Label(<mark>frame</mark>, text="Bonjour à tous !")<br/>
+                    label.pack(side = tk.LEFT)<br/>
+                    <br/>
+                    btn = tk.Button(<mark>frame</mark>, text="Bonjour !")<br/>
+                    btn.pack(side = tk.LEFT)<br/>
+                    <br/>
+                    fenetre.mainloop()
+                </p>
+            </div>
+            </p>
+            <h3>Placement avec <mark class="code">grid</mark></h3>
+            <p>
+                La méthode <mark class="code">grid</mark> permet de placer ces éléments dans un tableau.
+                On peut aussi fusionner des cases à l'aide de <mark class="code">rowspan</mark> et <mark class="code">columnspan</mark>. Exemple :
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    import tkinter as tk <br/>
+                    <br/>
+                    fenetre = tk.Tk()<br/>
+                    fenetre.title("Hello new world !")<br/>
+                    fenetre.geometry("800x400")<br/>
+                    <br/>
+                    btnA = tk.Button(fenetre, text="A")<br/>
+                    btnA.grid(row=0, column=0)<br/>
+                    <br/>
+                    btnB = tk.Button(fenetre, text="B")<br/>
+                    btnB.grid(row=1, column=0)<br/>
+                    <br/>
+                    btnC = tk.Button(fenetre, text="C")<br/>
+                    btnC.grid(row=0, column=1, rowspan=2)<br/>
+                    <br/>
+                    btnD = tk.Button(fenetre, text="D")<br/>
+                    btnD.grid(row=2, column=0, columnspan=2)<br/>
+                    <br/>
+                    fenetre.mainloop()
+                </p>
+            </div>
+            <h2>Programmation évènementielle</h2>
+            <p>
+                Les actions entreprises par l'utilisateur sont appelés des évènements :
+                <ul>
+                    <li>un clic sur un élément (<mark class="code">&lt;Button-1&gt;</mark> et <mark class="code">&lt;Button-2&gt;</mark>)</li>
+                    <li>un double-clic sur un élément (<mark class="code">&lt;Double-Button-1&gt;</mark> et <mark class="code">&lt;Double-Button-2&gt;</mark>)</li></li>
+                    <li>placer la souris sur un élément (<mark class="code">&lt;Enter&gt;</mark>)</li>
+                    <li>retirer la souris d'élément (<mark class="code">&lt;Leave&gt;</mark>)</li>
+                    <li>appuyer sur la lettre C (<mark class="code">&lt;KeyPress-c&gt;</mark>)</li>
+                </ul>
+            </p>
+            <p>
+                Les actions qui doivent être déclenchées par ces évènements sont écrites dans des fonctions. Celle-ci ont un unique paramètre : l'évènement qui les a déclenchées.
+            </p>
+            <p>
+                Les évènements et les actions sont alors liées par la méthode <mark class="code">.bind</mark>.
+            </p>
+            <p>
+                Pour un programme plus clair, on séparera le code en 4 étapes :
+                <ol>
+                    <li>définition des variables et des fonctions</li>
+                    <li>construction de la fenêtre principale et placement des widgets.</li>
+                    <li>liens entre widgets et actions</li>
+                    <li>appel à <mark class="code">.mainloop()</mark></li>
+                </ol>
+                Parfois, la première étape sera même écrite dans un module.
+            </p>
+            <p>
+                Voilà un exemple complet :
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    import tkinter as tk <br/>
+                    <font class=commentaire># Etape 1 : variables et fonctions.</font><br/>
+                    def saluer(event) :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;nom = entree.get()<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;labelB.config(text="Bonjour "+nom+" !")<br/>
+                    <font class=commentaire># Etape 2 : fenêtre principale et widgets.</font><br/>
+                    fenetre = tk.Tk()<br/>
+                    fenetre.title("Hello new world !")<br/>
+                    fenetre.geometry("800x400")<br/>
+                    <br/>
+                    labelA = tk.Label(fenetre, text="Votre prénom ?")<br/>
+                    labelA.pack()<br/>
+                    <br/>
+                    entree = tk.Entry(fenetre)<br/>
+                    entree.pack()<br/>
+                    <br/>
+                    btn = tk.Button(fenetre, text="Valider")</mark><br/>
+                    btn.pack()<br/>
+                    <br/>
+                    labelB = tk.Label(fenetre, text="Bonjour !")<br/>
+                    labelB.pack()<br/>
+                    <font class=commentaire># Etape 3 : lien entre widgets et actions.</font><br/>
+                    btn.bind("&lt;Button-1&gt;", saluer)<br/>
+                    <font class=commentaire># Etape 4 : appel à mainloop.</font><br/>
+                    fenetre.mainloop()
+                </p>
+            </div>
+            <h2>Exercices</h2>
+            <h3>Jeu « devine mon nombre »</h3>
+            <p>
+                Le fichier <a href="devine.py"><mark class="code">devine.py</mark></a> contient toutes les fonctions pour jouer à ce jeu en mode console.
+                Vous devez écrire une interface graphique pour ce jeu.
+                Vous ne devez pas modifier le fichier <mark class="code">devine.py</mark>, mais l'importer comme un module à l'aide de l'instruction <mark class="code">import devine</mark>.
+                Vous remarquerez que la ligne <mark class="code">if __name__=="__main__" :</mark> de ce fichier permet de lancer le jeu en mode console, mais de ne pas le lancer quand le fichier est importé comme module.
+            </p>
+            <h3>Jeu Tic-Tac-Toe</h3>
+            <p>
+                Le fichier <a href="tictactoe.py"><mark class="code">tictactoe.py</mark></a> contient toutes les fonctions pour jouer à ce jeu en mode console. Après avoir importé ce fichier comme un module, créez une interface graphique permettant de jouer à ce jeu.
+            </p>
+            <p>
+                Vous pourrez utiliser <mark class="code">.grid</mark> pour placer les widgets.
+                Les 9 boutons représentant les cases de la grille seront liés à la même fonction.
+                Pour retrouver les informations sur ce bouton, vous aurez besoin :
+            </p>
+            <ul>
+                <li>d'identifier le bouton à partir de l'évènement grâce à <mark class="code">btn = event.widget</mark></li>
+                <li>d'identifier la ligne de la grille où se situe ce bouton grâce à <mark class="code">row = btn.grid_info()["row"]</mark></li>
+                <li>d'identifier la colonne de la grille où se situe ce bouton grâce à <mark class="code">col = btn.grid_info()["column"]</mark></li>
+                <li>récupérer le texte de ce bouton grâce à <mark class="code">txt = btn.cget("text")</mark></li>
+            </ul>
+            <h3>Jeu de Puissance 4</h3>
+            <p>
+                Le fichier <a href="puissance4.py"><mark class="code">puissance4.py</mark></a> contient toutes les fonctions pour jouer à ce jeu en mode console. Après avoir importé ce fichier comme un module, créez une interface graphique permettant de jouer à ce jeu.
+            </p>
+            <h3>Jeu du pendu</h3>
+            <p>
+                Créez une interface graphique permettant de jouer au jeu du pendu.
+                Vous pourrez utiliser les images de l'archive <a href="images.zip">images.zip</a>.
+            </p>
+        </div>
+        <script type="text/javascript" src="script.js"></script>
+    </body>
+</html>

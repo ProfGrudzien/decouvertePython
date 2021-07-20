@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+    <body>
+        <div class="main">
+            <h1>Tri : point de vue algorithmique</h1>
+            <p>L'introduction des algorithmes de tri par sélection et par insertion est occasion de se poser les trois principales questions que l'on doit se poser dès que l'on écrit un algorithme.</p>
+            <h2>Terminaison</h2>
+            <p>Question posée : Le programme se termine-t-il ?</p>
+            <p>
+                Dans le cas d’algorithmes itératifs (ceux étudiés depuis le début de l'année),
+                seules les boucles <mark class="code">while</mark> pourraient empêcher l'algorithme de se terminer.
+                Pour prouver qu'il se termine, on identifie pour chaque boucle <mark class="code">while</mark> une quantité qui se rapproche à chaque passage d'une des conditions d'arrêt.
+                On parle de <mark>variant de boucle</mark>.
+            </p>
+            <h3>Cas du tri par insertion</h3>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    def tri(liste) :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;for i in range(1, len(liste)) :<br/>
+                    <font class=commentaire>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# mémoriser la première valeur de la partie non triée :</font><br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;valeur = liste[i]<br/>
+                    <font class=commentaire>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# décaler tous les éléments de la partie triée jusqu'à trouver l'emplacement pour la valeur mémorisée :</font><br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;j = i<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while j &gt; 0 and liste[j-1] &gt; valeur :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;liste[j] = liste[j-1]<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;j = j-1<br/>
+                    <font class=commentaire>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# insertion de la valeur mémorisée :</font><br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;liste[j] = valeur<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;return(liste)
+                </p>
+            </div>
+            <p>
+                Cet algorithme utilise une seule boucle <mark class="code">while</mark>.
+                Le variant de boucle est tout simplement la valeur de la variable <mark class="code">j</mark>,
+                positif avant la boucle <mark class="code">while</mark> et qui décroît de 1 à chaque passage dans la boucle.
+                La condition <mark class="code">while j &gt; 0</mark> nous assure donc que cette boucle se termine.
+            </p>
+            <p>
+                Remarque : dans le pire des cas, la valeur de <mark class="code">j</mark> attendra 0,
+                mais la plupart du temps la boucle <mark class="code">while</mark> se terminera avant.
+            </p>
+            <h2>Correction</h2>
+            <p>Question posée : Le programme donne-t-il bien la bonne réponse ?</p>
+            <p> 
+                Pour prouver qu'un programme donne la réponse attendue,
+                on identifie une propriété qui se conserve tout au long de l'algorithme.
+                On parle <mark>d'invariant</mark>.
+            </p>
+            <h3>Cas du tri par insertion</h3>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    def tri(liste) :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;for i in range(1, len(liste)) :<br/>
+                    <font class=commentaire>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# mémoriser la première valeur de la partie non triée :</font><br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;valeur = liste[i]<br/>
+                    <font class=commentaire>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# décaler tous les éléments de la partie triée jusqu'à trouver l'emplacement pour la valeur mémorisée :</font><br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;j = i<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while j &gt; 0 and liste[j-1] &gt; valeur :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;liste[j] = liste[j-1]<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;j = j-1<br/>
+                    <font class=commentaire>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# insertion de la valeur mémorisée :</font><br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;liste[j] = valeur<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;return(liste)
+                </p>
+            </div>
+            <p>L'invariant est :</p>
+            <p class="centrer">
+                «&nbsp;Après chaque passage dans la boucle <mark class="code">for i in range(1, len(liste))</mark>,
+                les <mark class="code">i+1</mark> premières valeurs de la liste sont triées.&nbsp;»
+            </p>
+            <p>Avant le premier passage, la première valeur de la liste est triée.</p>
+            <p>A chaque passage, la première valeur de la partie non triée est insérée au bon endroit parmi les <mark class="code">i</mark> premières valeurs.</p>
+            <p>A la fin du passage, on compte une valeur triée de plus.</p>
+            <p>Par <mark><a href="https://fr.wikipedia.org/wiki/Raisonnement_par_r%C3%A9currence">récurrence</a></mark>, on établi facilement que désormais les <mark class="code">i+1</mark> premières valeurs sont triées.</p>
+            <p>
+                Conclusion, au dernier passage dans la boucle, <mark class="code">i</mark> vaut <mark class="code">len(liste)-1</mark>
+                et donc les <mark class="code">i+1 = len(liste)</mark> premières valeurs sont triées.
+            </p>
+            <p>Autrement dit, toute la liste est triée.</p>
+            <h2>Complexité</h2>
+            <p>Question posée : Le programme est-il efficace ?</p>
+            <p>
+                Compter le nombre exact d'instructions nécessaire pour terminer un algorithme est une chose trop difficile.
+                Une estimation suffit amplement pour comparer l'efficacité de deux algorithmes.
+                La question plus précise que l'on devrait se poser est :
+            </p>
+            <p class="centrer">Si je multiplie par 10 la quantité de données, le temps d’exécution du programme sera multiplié par combien ?</p>
+            <p>
+                Les algorithmes sont rangés par catégories selon la réponse à cette dernière question. La catégorie est identifiée par une notation utilisant un grand O. Les catégories au programme de première sont :
+            </p>
+            <ul>
+                <li>O(1) : temps constant (quelque-soit la quantité de données, il faut un nombre bien déterminé d'instructions pour finir le programme.)</li>
+                <li>O(log(n)) : logarithmique</li>
+                <li>O(n) : linéaire</li>
+                <li>O(n²) : quadratique</li>
+            </ul>
+            <p>La catégorie d'un algorithme est appelée <mark>complexité</mark> de cet algorithme.</p>
+            <h3>Exemple n°1 : Retourner le premier élément d'une liste.</h3>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    def premier_element(liste) :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;if len(liste) == 0 :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return(None)<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;return(liste[0])
+                </p>
+            </div>
+            <p>Quelque soit la longueur de la liste, il faut une seule comparaison pour déterminer si la liste est vide puis une seule instruction <mark class="code">return</mark>. </p>
+            <p>La complexité de cet algorithme est O(1)</p>
+            <h3>Exemple n°2 : Recherche de la plus grande valeur d'une liste.</h3>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    def maximum(liste) :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;if len(liste) == 0 :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return(None)<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;maximum = liste[0]<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;for valeur in liste :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if valeur > maximum :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maximum = valeur<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;return(maximum)
+                </p>
+            </div>
+            <p>
+                Cette algorithme est basé sur une boucle qui parcourt tous les éléments de la liste.
+                Si la liste comporte <mark class="code">n</mark> éléments, il y a <mark class="code">n</mark> passage dans la boucle.
+                Cette algorithme est donc linéaire, sa complexité est égale à O(n)</p>
+            <h3>Exemple n°3 : Tri par sélection.</h3>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    def tri(liste) :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;for i in range(len(liste)-1) :<br/>
+                    <font class=commentaire>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# recherche de l'indice du minimum de la partie non triée :</font><br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i_min = i<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for j in range(i+1, len(liste)) :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if liste[j] &lt; liste[i_min]<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i_min = j<br/>
+                    <font class=commentaire>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# échange (si necessaire) :</font><br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if i != i_min :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;liste[i], liste[i_min] = liste[i_min], liste[i]<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;return(liste)
+                </p>
+            </div>
+            <p>Cet algorithme est basé sur 2 boucles imbriquées. On note <mark class="code">n</mark> le nombre d'éléments dans la liste.</p>
+            <p>
+                Pour la première boucle (<mark class="code">for i in range(len(liste)-1)</mark>), il y a <mark class="code">n-1</mark> passages,
+                pour <mark class="code">i</mark> allant de <mark class="code">0</mark> à <mark class="code">n-2</mark> inclus.
+            </p>
+            <p>
+                Lors de chaque passage dans la boucle principale, une deuxième boucle est appelée (<mark class="code">for j in range(i+1, len(liste))</mark>).
+                Le nombre de passage dans cette nouvelle boucle dépend de la valeur de la variable <mark class="code">i</mark> utilisée comme compteur de la première boucle.
+                On peut compter <mark class="code">n-(i+1) = n-i-1</mark> passages.
+            </p>
+            <p>
+                Ce nombre de varie entre <mark class="code">n-1</mark> pour le premier passage dans la boucle principale à <mark class="code">1</mark> pour le dernier passage.
+            </p>
+            <p>
+                Pour compter le nombre de passages dans ces deux boucles imbriquées, il suffit d'ajouter toutes les valeurs de <mark class="code">n-(i+1) = n-i-1</mark> lorsque <mark class="code">i</mark> varie de <mark class="code">0</mark> à <mark class="code">n-2</mark> inclus.
+            </p>
+            <p>
+                On obtient <mark class="code">n-1 + n-2 + ... + 2 + 1</mark> qui peut s'écrire aussi <mark class="code">1 + 2 + ... + n-2 + n-1</mark>.
+            </p>
+            <p>
+                On reconnaît la somme des n-1 premiers termes d'une <mark><a href="https://fr.wikipedia.org/wiki/Suite_arithm%C3%A9tique">suite arithmétique</a></mark> de premier terme u<sub>0</sub>=1 et de raison 1.
+            </p>
+            <p>
+                Cette somme est égale à <span class="frac"><span class="haut">(n-1) &times; n</span><span class="bas">2</span></span>.
+            </p>
+            <p>
+                Seul le terme de plus haut degré compte pour déterminer la complexité de cet algorithme.
+            </p>
+            <p>
+                Le tri pas sélection est donc de complexité quadratique O(n²).    
+            </p>
+        </div>
+        <script type="text/javascript" src="script.js"></script>
+    </body>
+</html>

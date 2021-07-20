@@ -48,21 +48,18 @@ li {
     text-align: justify;
 }
 
+ol.sous-num {
+    list-style-type: lower-alpha;
+}
+
 div.main {
     margin: auto;
     width: 60%;
     min-width: 660px;
 }
 
-.algo {
+div.algo {
     width: 650px;
-    margin: auto;
-    border: 1px solid gray;
-    padding: 5px;
-}
-
-.exemple {
-    width: 525px;
     margin: auto;
     border: 1px solid gray;
     padding: 5px;

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="style.css"/>
+        <link rel="stylesheet" href="tris.css"/>
+    </head>
+    <body>
+        <div class="main">
+            <h1>Tri par selection</h1>
+            <h2>Exercice 1 : trier les cartes selon l'algorithme du tri par selection</h2>
+            <ul>
+                <li>Rechercher le minimum de la <span class="non-triee">partie non triée</span>.</li>
+                <li>L'échanger avec la première carte de la <span class="non-triee">partie non triée</span>. Cette carte fait désormais partie de la <span class="triee">partie triée</span>.</li>
+                <li>Répéter tant qu'il y a des cartes dans la <span class="non-triee">partie non triée</span>.</li>
+            </ul>
+            <div class="tapis">
+                <div id="0" class="carte non-triee"></div>
+                <div id="1" class="carte non-triee"></div>
+                <div id="2" class="carte non-triee"></div>
+                <div id="3" class="carte non-triee"></div>
+                <div id="4" class="carte non-triee"></div>
+                <div id="5" class="carte non-triee"></div>
+                <div id="6" class="carte non-triee"></div>
+                <div id="7" class="carte non-triee"></div>
+                <div id="8" class="carte non-triee"></div>
+                <div id="9" class="carte non-triee"></div>
+            </div>
+            <p class="consigne">Cliquer pour sélectionner les cartes à échanger.</p>
+            <p class="erreur"></p>
+            <h2>Exercice 2 : comprendre l'algorithme</h2>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    def tri(liste) :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;for i in range(len(liste)-1) :<br/>
+                    <font class=commentaire>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# recherche de l'indice du minimum de la partie non triée :</font><br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i_min = i<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for j in range(i+1, len(liste)) :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if liste[j] &lt; liste[i_min] :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i_min = j<br/>
+                    <font class=commentaire>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# échange (si necessaire) :</font><br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if i != i_min :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;liste[i], liste[i_min] = liste[i_min], liste[i]<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;return(liste)
+                </p>
+            </div>
+            <ol>
+                <li>Pour une liste de n valeurs, combien d'échanges (au maximum) sont réalisés ? <input id="nbEchanges" type="text"/> <span></span></li>
+                <li>Lors de la recherche du minimum sur les k dernières valeurs, combien de comparaisons sont réalisées ? <input id="nbComparaisonsMin" type="text"/> <span></span></li>
+                <li>Pour une liste de n valeurs, combien de comparaisons sont réalisées ? <input id="nbComparaisons" type="text"/> <span></span></li>
+            </ol>
+            <div class="centrer">
+                <input type="button" value="Vérifier" id="btnVerifier"/>
+            </div>
+        </div>
+        <script type="text/javascript" src="script.js"></script>
+        <script type="text/javascript" src="triSelection.js"></script>
+    </body>
+</html>
+

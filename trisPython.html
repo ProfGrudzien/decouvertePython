@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+    <body>
+        <div class="main">
+            <h1>Le tri en Python</h1>
+            <h2>La méthode <mark class="code">.sort</mark></h2>
+            <p>
+                La méthode <mark class="code">.sort</mark> permet de trier la liste à laquelle elle s'applique. Attention, lors de l'utilisation de cette méthode, c'est bien la liste elle-même qui est modifiée.
+                Il ne faut donc pas attribuer à une variable le résultat de cette méthode. (D'ailleurs cette méthode retourne <mark class="code">None</mark>.)
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    L = [9, 4, 8, 7, 10]<br/>
+                    L.sort()<br/>
+                    print(L) <font class="commentaire"># résultat attendu : [4, 7, 8, 9, 10]</font>
+                </p>
+            </div>
+            <h2>La fonction <mark class="code">sorted</mark></h2>
+            <p>
+                La fonction <mark class="code">sorted</mark> trie les valeurs d'une liste dans une nouvelle liste.
+                L'ordre des éléments dans la liste donnée en paramètre est conservée.
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    L = [9, 4, 8, 7, 10]<br/>
+                    S = sorted(L)<br/>
+                    print(S) <font class="commentaire"># résultat attendu : [4, 7, 8, 9, 10]</font><br/>
+                    print(L) <font class="commentaire"># résultat attendu : [9, 4, 8, 7, 10]</font>
+                </p>
+            </div>
+            <h2>Le paramètre <mark class="code">reverse</mark> : tri par ordre décroissant</h2>
+            <p>
+                Par défaut, la fonction <mark class="code">sorted</mark> et la méthode <mark class="code">.sort</mark> trie les valeurs dans l'ordre croissant.
+                Pour trier les valeurs dans l'ordre décroissant, il suffit d'ajouter le paramètre <mark class="code">reverse=True</mark> dans les parenthèses de la fonction ou de la méthode.
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    L = [9, 4, 8, 7, 10]<br/>
+                    C = sorted(L)<br/>
+                    D = sorted(L, reverse=True)<br/>
+                    print(C) <font class="commentaire"># résultat attendu : [4, 7, 8, 9, 10]</font><br/>
+                    print(D) <font class="commentaire"># résultat attendu : [10, 9, 8, 7, 4]</font>
+                </p>
+            </div>
+            <h2>Le paramètre <mark class="code">key</mark> : tri complexes</h2>
+            <p>
+                Pour trier les éléments d'une liste, il faut qu'ils soient tous de même nature (que des nombres, que des chaînes de caractères, que des listes, ...).
+                L'ordre par défaut est croissant pour les nombres, alphabétiques pour les chaînes de caractères, par le premier élément pour les listes...
+                Comme vu précédemment, on peut inverser cette ordre en utilisant le paramètre <mark class="code">reverse</mark>.
+                Si l'on veut modifier l'ordre du tri, on peut utiliser un autre paramètre : le paramètre <mark class="code">key</mark>.
+                Pour cela, il faut écrire une fonction qui retournera pour chaque élément un valeur qui sera utilisé pour le tri.
+            </p>
+            <h3>Exemple n°1 : trier une liste de tuples par leurs deuxièmes valeurs.</h3>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    def calcul_cle(element) :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;return element[1]<br/>
+                    <br/>
+                    L = [(7, 'b'), (4, 'a'), (5, 'c')]<br/>
+                    L1 = sorted(L)<br/>
+                    L2 = sorted(L, key=calcul_cle)<br/>
+                    print(L1) <font class="commentaire"># résultat attendu : [(4, 'a'), (5, 'c'), (7, 'b')]</font><br/>
+                    print(L2) <font class="commentaire"># résultat attendu : [(4, 'a'), (7, 'b'), (5, 'c')]</font>
+                </p>
+            </div>
+            <h3>Exemple n°2 : trier une liste de tuples par leurs deuxièmes valeurs puis si besoin par leurs premières.</h3>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    def calcul_cle(element) :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;return [element[1], element[0]]<br/>
+                    <br/>
+                    L = [(7, 'l'), (4, 'o'), (5, 'l')]<br/>
+                    L1 = sorted(L)<br/>
+                    L2 = sorted(L, key=calcul_cle)<br/>
+                    print(L1) <font class="commentaire"># résultat attendu : [(4, 'o'), (5, 'l'), (7, 'l')]</font><br/>
+                    print(L2) <font class="commentaire"># résultat attendu : [(5, 'l'), (7, 'l'), (4, 'o')]</font>
+                </p>
+            </div>
+            <h2>Exercices :</h2>
+            <h3>Exercice n°1</h3>
+            <p>
+                Les deux programmes ci-dessous donne-t-il le même ordre de tri ?
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    L = [(3, 'z'), (9, 'o'), (3, 'a'), (1, 'o')]<br/>
+                    T = sorted(L, reverse=True)
+                </p>
+            </div>
+            <p></p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    def calcul_cle(element) :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;return [-element[0], element[1]]<br/>
+                    <br/>
+                    L = [(3, 'z'), (9, 'o'), (3, 'a'), (1, 'o')]<br/>
+                    T = sorted(L, key=calcul_cle)
+                </p>
+            </div>
+            <h3>Exercice n°2</h3>
+            <p>Trier la liste</p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    L = [{"prenom":"Ada", "nom":"Lovelace", "age":17},<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"prenom":"Charles", "nom":"Babbage", "age":18},<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"prenom":"John", "nom":"Von Neumann", "age":16}]
+                </p>
+            </div>
+            <ol class="sous-num">
+                <li>par ordre alphabétique du nom de famille</li>
+                <li>par age décroissant</li>
+            </ol>
+            <h3>Exercice n°3</h3>
+            <p>Trier cette liste en utilisant l'ordre :</p>
+            <ol>
+                <li>le plus grand nombre de points (defaite : 0, égalité : 1, victoire : 3)</li>
+                <li>la plus grande différence de buts générale</li>
+                <li>l'ordre alphabétique</li>
+            </ol>
+            <p>Les valeurs de cette liste représentent dans l'ordre :</p>
+            <ul>
+                <li>Le nom de la ville</li>
+                <li>Nombre de matchs gagnés</li>
+                <li>Nombre de matchs nuls</li>
+                <li>Nombre de matchs perdus</li>
+                <li>Buts marqués</li>
+                <li>Buts encaissés</li>
+            </ul>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    L1 = [("Lyon",20,9,8,67,45),<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;("Lille",22,9,6,67,30),<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;("Caen",7,12,18,29,53),<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;("Dijon",8,7,22,29,59),<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;("Nîmes",15,8,14,55,55),<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;("Nice",14,11,12,28,35),<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;("Reims",12,16,9,36,41),<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;("Paris",29,4,4,104,32),<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;("Nantes",13,9,15,48,47),<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;("Monaco",8,12,17,38,55),<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;("Amiens",8,11,18,29,51),<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;("Angers",10,15,12,43,48),<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;("Rennes",12,13,12,52,51),<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;("Bordeaux",9,11,17,33,42),<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;("Toulouse",8,14,15,34,55),<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;("Guingamp",5,12,20,27,66),<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;("Marseille",17,7,13,59,52),<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;("Montpellier",15,14,8,53,41),<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;("Strasbourg",10,16,11,57,48),<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;("Saint-Etienne",19,8,10,58,40)]
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript" src="script.js"></script>
+    </body>
+</html>

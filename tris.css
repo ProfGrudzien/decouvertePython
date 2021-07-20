@@ -1,0 +1,90 @@
+.tapis {
+    width: 910px;
+    margin: auto;
+    border-radius: 20px;
+    background-color: #145a32;
+    padding: 20px;
+    text-align: center;
+    user-select: none;
+    line-height: 100%;
+}
+
+.consigne {
+    text-align: center;
+    font-style: italic;
+}
+
+.erreur {
+    text-align: center;
+    color: red;
+}
+
+.carte {
+    display: inline-block;
+    border-radius: 10px;
+    background-color: white;
+    height: 100px;
+    width: 60px;
+    padding: 5px;
+    border: 2px solid transparent;
+    vertical-align: middle;
+}
+
+.carte-haut {
+    margin: 0px;
+    padding: 0px;
+    text-align: left;
+}
+
+.carte-centre {
+    margin: 0px;
+    padding: 0px;
+    height: 65px;
+    line-height: 65px;
+    font-size: 24pt;
+    text-align: center;
+}
+
+.carte-bas {
+    margin: 0px;
+    padding: 0px;
+    text-align: left;
+    transform: rotate(180deg);
+}
+
+.rouge {
+    color: red;
+}
+
+.vert {
+    color: green;
+}
+
+.noir {
+    color: black;
+}
+
+
+.triee {
+    background-color: #d1f2eb;
+}
+
+.non-triee {
+    background-color: #f4ecf7;
+}
+
+.levee {
+    transform: translate(0px, -10px);
+}
+
+.sep {
+    display: inline-block;
+    border-radius: 10px;
+    height: 100px;
+    width: 6px;
+    vertical-align: middle;
+}
+
+.sep:hover {
+    background-color: gray;
+}
