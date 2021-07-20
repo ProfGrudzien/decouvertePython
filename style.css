@@ -1,0 +1,119 @@
+body {
+    font-family: sans-serif;
+    line-height: 135%
+}
+
+h1 {
+    text-align: center;
+    font-weight: normal;
+    counter-reset: niveau1;
+}
+
+h2 {
+    font-weight: normal;
+    counter-increment: niveau2;
+    counter-reset: niveau3;
+}
+
+h2:before {
+    content: counter(niveau2) ") ";
+}
+
+h3 {
+    font-weight: normal;
+    counter-increment: niveau3;
+}
+
+h3:before {
+    content: counter(niveau3, lower-alpha) ") ";
+}
+
+p {
+    text-align: justify;
+}
+
+table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;
+}
+
+li {
+    text-align: justify;
+}
+
+div.main {
+    margin: auto;
+    width: 60%;
+    min-width: 660px;
+}
+
+.algo {
+    width: 650px;
+    margin: auto;
+    border: 1px solid gray;
+    padding: 5px;
+}
+
+.exemple {
+    width: 525px;
+    margin: auto;
+    border: 1px solid gray;
+    padding: 5px;
+    position: relative;
+}
+
+.copier {
+    position: absolute;
+    background-color: transparent;
+    border: none;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}
+
+p.code{
+    font-family : mono;
+    margin: 2px;
+    text-align: left;
+}
+
+.commentaire {
+    color: gray;
+}
+
+mark.code{
+    font-family : mono;
+    color: inherit;
+    background-color: #f3f3f3;
+    padding-left: 2px;
+    padding-right: 2px;
+    border: 1px solid gray;
+}
+
+.centrer {
+    text-align: center;
+}
+
+span.frac{
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+}
+
+span.haut{
+    display: block;
+    text-align: center;
+}
+
+span.bas{
+    display: block;
+    border-top: 1px solid;
+    text-align: center;
+}

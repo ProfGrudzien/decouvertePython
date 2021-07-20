@@ -1,0 +1,79 @@
+\documentclass[12pt,oneside,french]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper]{geometry}
+    \geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=1.5cm,rmargin=1.5cm}
+\usepackage{lmodern}
+    \renewcommand{\familydefault}{\sfdefault}
+\usepackage[french]{babel}
+    \DecimalMathComma
+    \renewcommand{\FrenchLabelItem}{\textbullet}
+    \parindent=0cm
+\usepackage{multicol}
+    \setlength{\columnsep}{0.5cm}
+\usepackage{fancyhdr}
+    \pagestyle{fancy}
+    \setlength{\headsep}{10pt}
+    \setlength{\headheight}{22pt}
+    \setlength{\footskip}{10pt}
+\usepackage{enumerate}
+\usepackage[table]{xcolor}
+\usepackage{tikz}
+\usepackage{amsthm}
+    \theoremstyle{definition}
+        \newtheorem{exo}{Exercice}
+\usepackage{tabularx}
+    \renewcommand{\arraystretch}{1.4}
+\usepackage{hyperref}
+    \hypersetup{
+        colorlinks=true,
+        linkcolor=black,
+        filecolor=black,      
+        urlcolor=blue,
+    }
+\usepackage{ifthen}
+\usepackage{scratch3}
+    \setscratch{baseline=c, scale=0.88}
+\usepackage{listings}
+    \lstset{
+        language=Python,
+        showstringspaces=false,
+        basicstyle=\ttfamily,
+        keywordstyle=\bfseries\color{blue},
+        commentstyle=\itshape\color{black!40},
+        identifierstyle=\color{black},
+        numberstyle=\color{green!40!black},
+        inputencoding=utf8,
+        extendedchars=true,
+        breaklines,
+        literate=
+            {à}{{\`a}}1
+            {è}{{\`e}}1
+            {é}{{\'e}}1
+            {ê}{{\^e}}1
+            {â}{{\^a}}1
+            {ö}{{\"a}}1
+            {ô}{{\^o}}1
+            {î}{{\^i}}1
+            {û}{{\^u}}1
+            {ç}{{\c{}}}1
+            {œ}{{\oe{}}}1
+            {ù}{{\`u}}1
+            {°}{{\up{$\circ$}}}1,  
+        stringstyle=\color{red!40!black},
+        }
+
+\newcommand{\ligne}{\noindent \rule{\linewidth}{.5pt}}
+\newcommand{\pointilles}{\noindent \rule{0pt}{1cm}\makebox[\linewidth]{\dotfill}}
+\newcommand{\interligne}{\rule[-8pt]{0pt}{25pt}}
+\newcommand{\reponse}[2]{\interligne \ifthenelse{\equal{#1}{c}}{\dotfill}{}{\color{blue}#2} \dotfill}
+\newcommand{\minireponse}[1]{\makebox[1cm]{\interligne{\color{blue}#1}}}
+
+\newcommand{\carte}{carte_fibre.png}
+\newcommand{\apt}{plan_appartement_correction.tex}
+    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\include{Fiche}
+\end{document}

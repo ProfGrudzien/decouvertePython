@@ -1,0 +1,347 @@
+\lhead{1\up{ère} NSI}
+\chead{\Large \textbf{1. De Scratch à Python}}
+\rhead{Python}
+\lfoot{Lycée Ismaël Dauphin -- Cavaillon}
+\cfoot{}
+\rfoot{page \thepage{} sur \pageref{fin}}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+
+Remarque : le bloc \begin{scratch}[baseline=1]\blockinit{quand \greenflag est cliqué}\end{scratch} ne se traduit pas en python.
+
+\begin{tabularx}{\linewidth}{|*{2}{X|}}\hline
+    \centering \arraybackslash \textbf{Scratch} & \centering \arraybackslash \textbf{Python} \\\hline
+    
+    % Afficher un texte
+    \multicolumn{2}{|c|}{\textbf{Afficher un texte}}\\\hline
+    \begin{scratch}
+        \blocklook{dire \ovalnum{Bonjour}}
+    \end{scratch}
+    &\begin{minipage}{\textwidth}
+        \lstinputlisting{print.py}
+    \end{minipage}
+    \\\hline
+    
+    % Assigner une valeur à une variable (nombre + texte)
+    \multicolumn{2}{|c|}{\textbf{Donner une valeur à une variable}}\\\hline
+    \begin{scratch}
+        \blockvariable{mettre \selectmenu{prenom} à \ovalnum{Anna}}
+    \end{scratch}
+    &\begin{minipage}{\textwidth}
+        \lstinputlisting{prenom.py}
+    \end{minipage}
+    \\\hline
+    \begin{scratch}
+        \blockvariable{mettre \selectmenu{age} à \ovalnum{18}}
+    \end{scratch}
+    &\begin{minipage}{\textwidth}
+        \lstinputlisting{age.py}
+    \end{minipage}
+    \\\hline
+    
+    % Afficher la valeur d'une variable
+    \multicolumn{2}{|c|}{\textbf{Afficher la valeur d'une variable}}\\\hline
+    \begin{scratch}
+        \blocklook{dire \ovalvariable{prenom}}
+    \end{scratch}
+    &\begin{minipage}{\textwidth}
+        \lstinputlisting{print_var.py}
+    \end{minipage}
+    \\\hline
+    
+    % Incrémenter une variable
+    \multicolumn{2}{|c|}{\textbf{Incrémenter une variable}}\\\hline
+    \begin{scratch}
+        \blockvariable{ajouter \ovalnum{1} à \selectmenu{age}}
+    \end{scratch}
+    &\begin{minipage}{\textwidth}
+        \lstinputlisting{incrementer.py}
+    \end{minipage}
+    \\\hline
+    
+    % Demander une valeur
+    \multicolumn{2}{|c|}{\textbf{Demander une valeur à l'utilisateur}}\\\hline
+    \multicolumn{2}{|c|}{\textit{Demander un texte}}\\\hline
+    \begin{scratch}
+        \blocksensing{demander \ovalnum{Ton nom ?} et attendre}
+        \blockvariable{mettre \selectmenu{nom} à \ovalsensing{réponse}}
+    \end{scratch}
+    &\begin{minipage}{\textwidth}
+        \lstinputlisting{input.py}
+    \end{minipage}
+    \\\hline
+    \multicolumn{2}{|c|}{\textit{Demander un nombre entier}}\\\hline
+    \begin{scratch}
+        \blocksensing{demander \ovalnum{Ton age ?} et attendre}
+        \blockvariable{mettre \selectmenu{age} à \ovalsensing{réponse}}
+    \end{scratch}
+    &\begin{minipage}{\textwidth}
+        \lstinputlisting{inputage.py}
+    \end{minipage}
+    \\\hline
+    \multicolumn{2}{|c|}{\textit{Demander un nombre décimal}}\\\hline
+    \begin{scratch}
+        \blocksensing{demander \ovalnum{Taille ?} et attendre}
+        \blockvariable{mettre \selectmenu{taille} à \ovalsensing{réponse}}
+    \end{scratch}
+    &\begin{minipage}{\textwidth}
+        \lstinputlisting{inputtaille.py}
+    \end{minipage}
+    \\\hline
+    
+    % Concaténer deux textes
+    \multicolumn{2}{|c|}{\textbf{Concaténer deux textes}}\\\hline
+    \multicolumn{2}{|c|}{\textit{Dans une variable}}\\\hline
+    \begin{scratch}
+        \blockvariable{mettre \selectmenu{txt} à \ovaloperator{regrouper \ovalnum{Bonjour~} et \ovalvariable{nom}}}
+    \end{scratch}
+    &\begin{minipage}{\textwidth}
+        \lstinputlisting{concat.py}
+    \end{minipage}
+    \\\hline
+    \begin{scratch}
+        \blockvariable{mettre \selectmenu{txt} à \ovaloperator{regrouper \ovalvariable{age} et \ovalnum{ans.}}}
+    \end{scratch}
+    &\begin{minipage}{\textwidth}
+        \lstinputlisting{concatage.py}
+    \end{minipage}
+    \\\hline
+    \multicolumn{2}{|c|}{\textit{Pour affichage}}\\\hline
+    \begin{scratch}
+        \blocklook{dire \ovaloperator{regrouper \ovalnum{Bonjour~} et \ovalvariable{nom}}}
+    \end{scratch}
+    &\begin{minipage}{\textwidth}
+        \lstinputlisting{concatprint.py}
+    \end{minipage}
+    \\\hline
+    \begin{scratch}
+        \blocklook{dire \ovaloperator{regrouper \ovaloperator{regrouper \ovalnum{Tu as } et \ovalvariable{age}} et \ovalnum{ ans.}}}
+    \end{scratch}
+    &\begin{minipage}{\textwidth}
+        \lstinputlisting{concatprintage.py}
+    \end{minipage}
+    \\\hline
+    
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{|*{2}{X|}}\hline
+    \centering \arraybackslash \textbf{Scratch} & \centering \arraybackslash \textbf{Python} \\\hline
+    
+    % Boucle pour
+    \multicolumn{2}{|c|}{\textbf{Répéter des instructions}}\\\hline
+    \begin{scratch}
+        \blockrepeat{répéter \ovalnum{10} fois}{\blocklook{dire \ovalnum{Bonjour}}}
+    \end{scratch}
+    &\begin{minipage}{\textwidth}
+        \lstinputlisting{for.py}
+    \end{minipage}
+    \\\hline
+    
+    % Si
+    \multicolumn{2}{|c|}{\textbf{Condition si}}\\\hline
+    \begin{scratch}
+        \blockif{si \booloperator{\ovalvariable{heure} < \ovalnum{12}} alors}{\blocklook{dire \ovalnum{matin}}}
+    \end{scratch}
+    &\begin{minipage}{\textwidth}
+        \lstinputlisting{if.py}
+    \end{minipage}
+    \\\hline
+    
+    % Si -- Sinon
+    \multicolumn{2}{|c|}{\textbf{Condition si - sinon}}\\\hline
+    \begin{scratch}
+        \blockifelse{si \booloperator{\ovalvariable{heure} < \ovalnum{12}} alors}
+            {\blocklook{dire \ovalnum{matin}}}
+            {\blocklook{dire \ovalnum{après-midi}}}
+    \end{scratch}
+    &\begin{minipage}{\textwidth}
+        \lstinputlisting{ifelse.py}
+    \end{minipage}
+    \\\hline
+    
+    % Si -- Sinon si -- sinon
+    \multicolumn{2}{|c|}{\textbf{Condition si - sinon si - sinon}}\\\hline
+    \begin{scratch}
+        \blockifelse{si \booloperator{\ovalvariable{heure} < \ovalnum{12}} alors}
+            {\blocklook{dire \ovalnum{matin}}}
+            {\blockifelse{si \booloperator{\ovalvariable{heure} = \ovalnum{12}} alors}
+                {\blocklook{dire \ovalnum{midi}}}
+                {\blocklook{dire \ovalnum{après-midi}}}}
+    \end{scratch}
+    &\begin{minipage}{\textwidth}
+        \lstinputlisting{ifelifelse.py}
+    \end{minipage}
+    \\\hline
+    
+    % Jusqu'à ce que / tant que
+    \multicolumn{2}{|c|}{\textbf{Jusqu'à ce que (scratch) / tant que (python)}}\\\hline
+    \begin{scratch}
+        \blockvariable{mettre \selectmenu{i} à \ovalnum{0}}
+        \blockrepeat{répéter jusqu'à ce que \booloperator{\ovalvariable{i} > \ovalnum{9}}}
+        {
+            \blocklook{dire \ovalvariable{i}}
+            \blockvariable{ajouter \ovalnum{1} à \selectmenu{i}}
+        }
+    \end{scratch}
+    &\begin{minipage}{\textwidth}
+        \lstinputlisting{while.py}
+    \end{minipage}
+    \\\hline
+    
+\end{tabularx}
+
+\newpage
+
+{\huge Exercices}
+
+\large
+
+\begin{exo}~\\
+    Sur Scratch, traduire le programme python suivant :
+    \lstinputlisting{exo1.py}
+\end{exo}
+
+\begin{exo}~\\
+    Traduire en python le programme suivant :
+    \begin{center}
+        \begin{scratch}
+            \blockinit{quand \greenflag est cliqué}
+            \blocksensing{demander \ovalnum{Choisir un nombre} et attendre}
+            \blockvariable{mettre \selectmenu{A} à \ovalsensing{réponse}}
+            \blockvariable{mettre \selectmenu{A} à \ovaloperator{\ovalvariable{A} $+$ \ovalnum{3}}}
+            \blockvariable{mettre \selectmenu{A} à \ovaloperator{\ovalvariable{A} $*$ \ovalnum{2}}}
+            \blockvariable{mettre \selectmenu{A} à \ovaloperator{\ovalvariable{A} $-$ \ovalnum{5}}}
+            \blocklook{dire \ovaloperator{regrouper \ovalnum{Le programme de calcul donne} et \ovalvariable{A}}}
+        \end{scratch}
+    \end{center}
+\end{exo}
+
+\begin{exo}~\\
+    Traduire en python le programme suivant :
+    \begin{center}
+        \begin{scratch}
+            \blockinit{quand \greenflag est cliqué}
+            \blockvariable{mettre \selectmenu{puissance} à \ovalnum{1}}
+            \blockrepeat{répéter \ovalnum{10} fois}{
+                \blockvariable{mettre \selectmenu{puissance} à \ovaloperator{\ovalvariable{puissance} $*$ \ovalnum{2}}}
+            }
+            \blocklook{dire \ovalvariable{puissance}}
+        \end{scratch}
+    \end{center}
+\end{exo}
+
+\newpage
+
+\begin{exo}~\\
+    Traduire en python le programme suivant :
+    \begin{center}
+        \begin{scratch}[scale=0.8]
+            \blockinit{quand \greenflag est cliqué}
+            \blocksensing{demander \ovalnum{De quel nombre souhaitez vous la table ?} et attendre}
+            \blockvariable{mettre \selectmenu{a} à \ovalsensing{réponse}}
+            \blockvariable{mettre \selectmenu{n} à \ovalnum{0}}
+            \blockrepeat{répéter \ovalnum{11} fois}
+                {
+                    \blocklook{dire \ovaloperator{regrouper \ovalvariable{a} et \ovaloperator{regrouper \ovalnum{x} et \ovaloperator{regrouper \ovalvariable{n} et \ovaloperator{regrouper \ovalnum{=} et \ovaloperator{\ovalvariable{a} $*$ \ovalvariable{n}}}}}}}
+                    \blockvariable{ajouter \ovalnum{1} à \selectmenu{n}}
+                }
+        \end{scratch}
+    \end{center}
+\end{exo}
+
+\begin{exo}~\\
+    Traduire en python le programme suivant :
+    \begin{center}
+        \begin{scratch}
+            \blockinit{quand \greenflag est cliqué}
+            \blocksensing{demander \ovalnum{Donner la longueur du côté AB} et attendre}
+            \blockvariable{mettre \selectmenu{AB} à \ovalsensing{réponse}}
+            \blocksensing{demander \ovalnum{Donner la longueur du côté AC} et attendre}
+            \blockvariable{mettre \selectmenu{AC} à \ovalsensing{réponse}}
+            \blocksensing{demander \ovalnum{Donner la longueur du côté BC} et attendre}
+            \blockvariable{mettre \selectmenu{BC} à \ovalsensing{réponse}}
+            \blockifelse{si \booloperator{
+                \ovaloperator{
+                    \ovaloperator{\ovalvariable{AB} $*$ \ovalvariable{AB}}
+                    $+$
+                    \ovaloperator{\ovalvariable{BC} $*$ \ovalvariable{BC}}
+                } 
+                $=$
+                \ovaloperator{
+                    \ovalvariable{AC} $*$ \ovalvariable{AC}}}
+                alors}
+                {\blocklook{dire \ovalnum{Le triangle ABC est rectangle en B.}}}
+                {\blocklook{dire \ovalnum{Le triangle ABC n'est pas rectangle en B.}}}
+        \end{scratch}
+    \end{center}
+\end{exo}
+
+\newpage
+
+\begin{exo}~\\
+    Traduire en python le programme suivant :
+    \begin{center}
+        \begin{scratch}
+            \blockinit{quand \greenflag est cliqué}
+            \blockvariable{mettre \selectmenu{i} à \ovalnum{0}}
+            \blockrepeat{répéter jusqu'à ce que \booloperator{\ovaloperator{\ovalvariable{i} $*$ \ovalvariable{i}} $>$ \ovalvariable{3333}}}{
+                \blockvariable{ajouter \ovalnum{1} à \selectmenu{i}}
+            }
+            \blocklook{dire \ovalvariable{i}}
+        \end{scratch}
+    \end{center}
+\end{exo}
+
+\begin{exo}~\\
+    Traduire en python le programme suivant :
+    \begin{center}
+        \begin{scratch}
+            \blockinit{quand \greenflag est cliqué}
+            \blocksensing{demander \ovalnum{Quelle est la valeur de a ?} et attendre}
+            \blockvariable{mettre \selectmenu{a} à \ovalsensing{réponse}}
+            \blocksensing{demander \ovalnum{Quelle est la valeur de b ?} et attendre}
+            \blockvariable{mettre \selectmenu{b} à \ovalsensing{réponse}}
+            \blockrepeat{répéter jusqu'à ce que \booloperator{\ovalvariable{a} $=$ \ovalvariable{b}}}
+            {
+            \blockifelse{si \booloperator{\ovalvariable{a} > \ovalvariable{b}} alors}
+                {
+                    \blockvariable{mettre \selectmenu{a} à \ovaloperator{\ovalvariable{a} $-$ \ovalvariable{b}}}
+                }
+                {
+                    \blockvariable{mettre \selectmenu{b} à \ovaloperator{\ovalvariable{b} $-$ \ovalvariable{a}}}
+                }
+            }
+            \blocklook{dire \ovaloperator{regrouper \ovalnum{Le PGCD de a et b est } et \ovalvariable{a}}}
+        \end{scratch}
+    \end{center}
+\end{exo}
+
+\newpage
+
+\begin{exo}~\\
+    Traduire en python le programme suivant :
+    \begin{center}
+        \begin{scratch}
+            \blockinit{quand \greenflag est cliqué}
+            \blocksensing{demander \ovalnum{Choisir un premier nombre} et attendre}
+            \blockvariable{mettre \selectmenu{a} à \ovalsensing{réponse}}
+            \blocksensing{demander \ovalnum{Choisir un deuxième nombre} et attendre}
+            \blockvariable{mettre \selectmenu{b} à \ovalsensing{réponse}}
+            \blocksensing{demander \ovalnum{Choisir un troisième nombre} et attendre}
+            \blockvariable{mettre \selectmenu{c} à \ovalsensing{réponse}}
+            \blockifelse{si \booloperator{\ovalvariable{a} > \ovalvariable{b}} alors}
+                {
+                \blockifelse{si \booloperator{\ovalvariable{a} > \ovalvariable{c}} alors}
+                    {\blocklook{dire \ovaloperator{regrouper \ovalnum{le plus grand des trois nombres est} et \ovalvariable{a}}}}
+                    {\blocklook{dire \ovaloperator{regrouper \ovalnum{le plus grand des trois nombres est} et \ovalvariable{c}}}}
+                }
+                {
+                \blockifelse{si \booloperator{\ovalvariable{b} > \ovalvariable{c}} alors}
+                    {\blocklook{dire \ovaloperator{regrouper \ovalnum{le plus grand des trois nombres est} et \ovalvariable{b}}}}
+                    {\blocklook{dire \ovaloperator{regrouper \ovalnum{le plus grand des trois nombres est} et \ovalvariable{c}}}}
+                }
+        \end{scratch}
+    \end{center}
+\end{exo}
+
+\label{fin}
