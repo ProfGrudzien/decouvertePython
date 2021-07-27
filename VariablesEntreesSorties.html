@@ -79,7 +79,7 @@
             <p>
                 Dans un premier temps, nous utiliserons uniquement les types de variable les plus simples :
                 <ul>
-                    <li><mark class="code">str</mark> (pour string) : les chaînes de caractère (textes)</li>
+                    <li><mark class="code">str</mark> (pour string) : les chaînes de caractères (textes)</li>
                     <li><mark class="code">int</mark> (pour integer) : les nombres entiers (relatifs)</li>
                     <li><mark class="code">float</mark> : les nombre décimaux. Remarque : il faut utiliser le point et non la virgule pour séparer partie entière et partie décimale.</li>
                 </ul>
@@ -109,7 +109,7 @@
                     </p>
                 </div>
                 Exemple : <mark class="code">str(a)</mark> donne <mark class="code">"7"</mark>, <mark class="code">int(a)</mark> donne <mark class="code">7</mark> et <mark class="code">float(a)</mark> donne <mark class="code">7.0</mark>
-            </div><br/>
+            </div>
             <div class="exercice">
                 On considère les 3 variables <mark class="code">a</mark>, <mark class="code">b</mark> et <mark class="code">c</mark> :
                 <div class="algo">
@@ -133,7 +133,106 @@
                 </ol>
             </div>
             <h2>Afficher des messages</h2>
+            <p>
+                La fonction <mark class="code">print</mark> permet d'afficher des messages à l'écran. Elle permet d'afficher du texte ou bien la valeur d'une variable. Exemple :
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    prenom = "Emma" <br/>
+                    age = 13 <br/>
+                    print("Bonjour") <font class="commentaire"># affiche le texte Bonjour</font><br/>
+                    print(prenom) <font class="commentaire"># affiche Emma</font><br/>
+                    print(age) <font class="commentaire"># affiche 13</font>
+                </p>
+            </div>
+            <p>
+                La fonction <mark class="code">print</mark> permet de facilement afficher des phrases dont certains mots sont stockés dans des variables. Exemple :
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    prenom = "Emma" <br/>
+                    age = 13 <br/>
+                    print("Bonjour", prenom, "tu as", age, "ans.") <font class="commentaire"># affiche la phrase Bonjour Emma tu as 13 ans.</font><br/>
+                </p>
+            </div>
+            <div class="exercice">
+                On considère les instructions suivantes :
+                <div class="algo">
+                    <input type="button" class="copier" value="📑" title="copier">
+                    <p class="code">
+                        quantite = 5 <br/>
+                        article = "fleurs" <br/>
+                        prix_unitaire = 2.3
+                    </p>
+                </div>
+                Ecrire l'instruction qui permet d'afficher la phrase « 5 fleurs à 2.3 € : 11.5 € ».<br/>
+                Cette instruction doit faire appel aux variables <mark class="code">quantite</mark>, <mark class="code">article</mark> et <mark class="code">prix_unitaire</mark>.
+            </div>
+            <div class="exercice">
+                A l'aide de la fonction <mark class="code">print</mark>, reproduire le lapin suivant :
+                <div class="algo">
+                    <input type="button" class="copier" value="📑" title="copier">
+                    <p class="code">
+                        (\___/) <br/>
+                        (='.'=) <br/>
+                        ( U U ) <br/>
+                        (")_(") 
+                    </p>
+                </div>
+            </div>
+            <div class="exercice">
+                <div class="algo">
+                    A l'aide de la fonction <mark class="code">print</mark>, reproduire la figure suivante :
+                    <p class="code">
+                        X <br/>
+                        XX <br/>
+                        XXX <br/>
+                        XXXX <br/>
+                        XXXXX <br/>
+                        XXXXXX <br/>
+                        XXXXXXX <br/> 
+                    </p>
+                </div>
+            </div>
             <h2>Demander des valeurs à l'utilisateur</h2>
+            <p>
+                La fonction <mark class="code">input</mark> permet de demander une valeur à l'utilisateur. Exemple :
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    prenom = input("Quel est ton prénom ? ") <br/>
+                    age = input("Quel age as-tu ? ") <br/>
+                    print("Bonjour", prenom, "tu as", age, "ans.")
+                </p>
+            </div>
+            <p>
+                Attention, la valeur stockée grâce à la fonction <mark class="code">input</mark> est toujours une chaîne de caractères, même si l'utilisateur ne saisi que des chiffres. Dans certains cas, il faut convertir la réponse de l'utilisateur en nombre entier ou en nombre décimal à l'aide des fonctions <mark class="code">int</mark> ou <mark class="code">float</mark>. Exemple :
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    article = input("Que souhaites tu acheter ? ") <br/>
+                    prix_unitaire = <mark>int(</mark>input("Quel est le prix unitaire ? ")<mark>)</mark> <br/>
+                    quantite = <mark>float(</mark>input("Combien souhaites tu en acheter ? ")<mark>)</mark> <br/>
+                    print(quantite, article, "à", prix_unitaire, "€ :", quantite*prix_unitaire, "€")
+                </p>
+            </div>
+            <div class="exercice">
+                Ecrire un programme qui demande une taille (en m) et une masse (en kg) puis affiche l'Indice de Masse Corporelle. L'IMC se calcule grâce à la formule <span class="frac"><span class="haut">masse</span><span class="bas">taille²</span></span>
+            </div>
+            <p>
+                La fonction <mark class="code">input</mark> ne permet pas d'afficher des phrases dépendant de variables aussi simplement que la fonction <mark class="code">print</mark>. Si besoin, il faut utiliser la <mark>concaténation</mark> grâce au symbole <mark class="code">+</mark>. Exemple :
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    prenom = input("Quel est ton prénom ? ") <br/>
+                    age = input("Bonjour" + prenom + ", quel age as-tu ? ")
+                </p>
+            </div>
         </div>
         <script type="text/javascript" src="script.js"></script>
     </body>
