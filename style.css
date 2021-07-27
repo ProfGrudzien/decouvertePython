@@ -32,6 +32,20 @@ p {
     text-align: justify;
 }
 
+div.exercice {
+    counter-increment: counterExo;
+    width: 666px;
+    margin: auto;
+    border: 1px solid blue;
+    padding: 5px;
+}
+
+div.exercice:before {
+    font-weight: bold;
+    content: "Exercice " counter(counterExo) ".\a";
+    white-space: pre;
+}
+
 table {
     border-collapse: collapse;
     table-layout: fixed;
@@ -76,9 +90,15 @@ div.algo {
 }
 
 p.code{
-    font-family : mono;
+    font-family : monospace;
+    font-size : 12pt;
     margin: 2px;
     text-align: left;
+}
+
+.mono{
+    font-family : monospace;
+    font-size : 12pt;
 }
 
 .commentaire {
@@ -86,7 +106,8 @@ p.code{
 }
 
 mark.code{
-    font-family : mono;
+    font-family : monospace;
+    font-size: 12pt;
     color: inherit;
     background-color: #f3f3f3;
     padding-left: 2px;

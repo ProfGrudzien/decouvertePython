@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+    <body>
+        <div class="main">
+            <h1>Variables, Entrées et Sorties</h1>
+            <p>
+                Dans cette activité, nous allons découvrir comment stocker des informations (nombres, textes, ...) afin de les réutiliser puis découvrir comment communiquer avec le langage Python : afficher des messages ou demander à l'utilisateur des informations.
+            </p>
+            <h2>Variables</h2>
+            <p>
+                Les variables peuvent être vues comme des petites boites. Elle peuvent contenir une information et portent une étiquette (leur nom) pour les reconnaître.
+            </p>
+            <p>
+                En Python, les variables sont déclarés tout simplement avec le symbole <mark class="code">=</mark>. L'information stockée peut être un nombre ou un texte comme le montre les exemples suivants :
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    prenom = "Emma" <br/>
+                    age = 13 <br/>
+                </p>
+            </div>
+            <p>
+                Le nom des variables doit répondre à certaines contraintes :
+                <ul>
+                    <li>le nom peut contenir des lettres, des chiffres et le caractère <mark class="code">_</mark></li>
+                    <li>les espaces ne sont pas autorisés</li>
+                    <li>le nom peut contenir des chiffres mais ne dois pas commencer par un chiffre</li>
+                    <li>les accents sont autorisés, mais il est préférable de ne pas les utiliser</li>
+                    <li>des mots sont réservés par Python et ne sont pas utilisables comme nom de variable. Exemples : <mark class="code">in</mark>, <mark class="code">for</mark>, <mark class="code">range</mark>, <mark class="code">print</mark>, ...</li>
+                </ul>
+                De préférence, on choisira des noms de variable explicites, c'est-à-dire qui décrivent l'information contenu par la variable.
+            </p>
+            <div class="exercice">
+                Pour chaque nom de variable proposé, déterminer s'ils sont corrects. Si c'est le cas, sont-ils recommandés ?
+                <ol class="sous-num">
+                    <li><mark class="code">prénom</mark></li>
+                    <li><mark class="code">nom</mark></li>
+                    <li><mark class="code">age</mark></li>
+                    <li><mark class="code">2be</mark></li>
+                    <li><mark class="code">nombre_de_patients</mark></li>
+                    <li><mark class="code">nb2patients</mark></li>
+                    <li><mark class="code">n</mark></li>
+                    <li><mark class="code">type</mark></li>
+                </ol>
+            </div>
+            <p>
+                Lorsque l'on utilise le symbole <mark class="code">=</mark> pour déclarer une variable qui existait déjà, le contenu de celle-ci est effacé puis remplacé par la nouvelle information. Exemple :
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    prenom = "Emma" <br/>
+                    prenom = "Anna" <br/>
+                </p>
+            </div>
+            <p>
+                A la fin de ce programme, la variable <mark class="code">prenom</mark> contient le texte <mark class="code">"Anna"</mark>.
+            </p>
+            <div class="exercice">
+                A la fin de ce programme, que contiennent les variables <mark class="code">a</mark>, <mark class="code">b</mark> et <mark class="code">c</mark> ?
+                <div class="algo">
+                    <input type="button" class="copier" value="📑" title="copier">
+                    <p class="code">
+                        a = 12 <br/>
+                        b = 3 <br/>
+                        c = "orange" <br/>
+                        b = a - 7 <br/>
+                        c = "pomme" <br/>
+                        a = a/b
+                    </p>
+                </div>
+            </div>
+            <h2>Types de variables</h2>
+            <p>
+                Dans un premier temps, nous utiliserons uniquement les types de variable les plus simples :
+                <ul>
+                    <li><mark class="code">str</mark> (pour string) : les chaînes de caractère (textes)</li>
+                    <li><mark class="code">int</mark> (pour integer) : les nombres entiers (relatifs)</li>
+                    <li><mark class="code">float</mark> : les nombre décimaux. Remarque : il faut utiliser le point et non la virgule pour séparer partie entière et partie décimale.</li>
+                </ul>
+            </p>
+            <p>
+                Attention, dans le langage courant, « 2 » peut être vue de différentes manières :
+                <ul>
+                    <li>Le caractère « 2 ». En Python, on utilise alors <mark class="code">'2'</mark> ou <mark class="code">"2"</mark></li>
+                    <li>Le nombre entier « 2 ». En Python, on utilise alors <mark class="code">2</mark></li>
+                    <li>Le nombre décimal « 2 ». En Python, on utilise alors <mark class="code">2.0</mark></li>
+                </ul>
+            </p>
+            <p>
+                On a parfois besoin de convertir des variables dans un autre type. On utilise alors les fonctions <mark class="code">str</mark>, <mark class="code">int</mark> ou <mark class="code">float</mark>.
+            </p>
+            <div class="exercice">
+                Pour les variables suivantes, indiquer le résultat de la conversion à l'aide des fonctions <mark class="code">str</mark>, <mark class="code">int</mark> ou <mark class="code">float</mark>.
+                <div class="algo">
+                    <input type="button" class="copier" value="📑" title="copier">
+                    <p class="code">
+                        a = 7 <br/>
+                        b = "2" <br/>
+                        c = "2.1" <br/>
+                        d = "abc" <br/>
+                        e = 2 <br/>
+                        f = 2.1
+                    </p>
+                </div>
+                Exemple : <mark class="code">str(a)</mark> donne <mark class="code">"7"</mark>, <mark class="code">int(a)</mark> donne <mark class="code">7</mark> et <mark class="code">float(a)</mark> donne <mark class="code">7.0</mark>
+            </div><br/>
+            <div class="exercice">
+                On considère les 3 variables <mark class="code">a</mark>, <mark class="code">b</mark> et <mark class="code">c</mark> :
+                <div class="algo">
+                    <input type="button" class="copier" value="📑" title="copier">
+                    <p class="code">
+                        a = 2.4 <br/>
+                        b = 5 <br/>
+                        c = "pomme"
+                    </p>
+                </div>
+                Donnez le type du résultat des instructions suivantes :
+                <ol class="sous-num">
+                    <li><mark class="code">a + b</mark></li>
+                    <li><mark class="code">b * b</mark></li>
+                    <li><mark class="code">a * b</mark></li>
+                    <li><mark class="code">c * 3</mark></li>
+                    <li><mark class="code">c + "d'Api"</mark></li>
+                    <li><mark class="code">a + c</mark></li>
+                    <li><mark class="code">a / b</mark></li>
+                    <li><mark class="code">b / b</mark></li>
+                </ol>
+            </div>
+            <h2>Afficher des messages</h2>
+            <h2>Demander des valeurs à l'utilisateur</h2>
+        </div>
+        <script type="text/javascript" src="script.js"></script>
+    </body>
+</html>
