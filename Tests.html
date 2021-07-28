@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+    <body>
+        <div class="main">
+            <h1>Tests</h1>
+            <p>
+                Dans cette activité, nous allons découvrir comment exécuter une instruction seulement lorsqu'une condition est vérifiée.
+            </p>
+            <h2>Test « si »</h2>
+            <p>
+                Le test « si » permet de tester une condition et seulement si elle est vérifiée, exécute des instructions. En python, comme dans beaucoup d'autre langage, le mot-clé utilisé est <mark class="code">if</mark>. Les instructions à effectuer seulement si la condition est vérifiée sont identifiées par une indentation (décallage des instructions vers la droite). La fin de cette indentation indique que les instructions suivantes doivent être exécutées quelque-soit le résultat du test. Exemple :
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    code = input("Votre code ?") <br/>
+                    if code == "1234" : <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;print("Carte SIM dévérouillée") <br/>
+                </p>
+            </div>
+            <p>
+                Remarque : en Python, on sépare les deux sens du symbole <mark class="code">=</mark> :
+                <ul>
+                    <li>on déclare qu'une variable est égale à une valeur grâce à <mark class="code">=</mark></li>
+                    <li>on vérifie si deux valeurs sont égales grâce à <mark class="code">==</mark></li>
+                </ul>
+            </p>
+            <div class="exercice">
+                Ecrire un programme qui demande l'age de l'utilisateur et affiche « accès refusé » si l'age est strictement inférieur à 18.
+            </div>
+            <div class="exercice">
+                Lorsqu'il est 19h à Paris, il est 14h à Rio.
+                Compléter ce programme pour qu'il retourne l'heure à Rio lorsqu'on lui donne l'heure de Paris.
+                <div class="algo">
+                    <input type="button" class="copier" value="📑" title="copier">
+                    <p class="code">
+                        Paris = int(input("Quelle heure est-il à Paris ? ")) <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        print("Il est", Rio, "à Rio.") <br/>
+                    </p>
+                </div>
+            </div>
+            <h2>Test « si ... sinon »</h2>
+            <p>
+                Le test « si » peut être complété pour executer des instructions différentes selon si la condition est vérifiée ou non. Exemple :
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    code = input("Votre code ?") <br/>
+                    if code == "1234" : <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;print("Carte SIM dévérouillée") <br/>
+                    else : <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;print("Code incorrect") <br/>
+                </p>
+            </div>
+            <div class="exercice">
+                A l'université, un élève est admis si sa moyenne est supérieure ou égale à 10.
+                Ecrire un programme qui demande la moyenne d'un élève puis affiche « Admis » ou « Refusé ».
+            </div>
+            <h2>Test « si ... sinon si ... sinon »</h2>
+            <p>
+                Enfin, on peut enchaîner les conditions. Le mot-clé <mark class="code">elif</mark> (contraction de else et de if) permet de vérifiée si une deuxième condition est vérifiée dans le cas où la première condition ne le serait pas. On peut enchaîner plusieurs <mark class="code">elif</mark> et on peut ajouter aussi un <mark class="code">else</mark> à la fin. Dans ce cas, les instructions indentées qui suivent le mot-clé <mark class="code">else</mark> seront exécutées uniquement si aucune des conditions précédentes ne sont vérifiées. Exemple :
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    age = int(input("Quel âge as-tu ?"))<br/>
+                    if age &lt; 23 :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;print("Tu es plus jeune que moi.")<br/>
+                    elif age &gt; 23 :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;print("Tu es plus vieux que moi.")<br/>
+                    else :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;print("Tu as le même âge que moi.")
+                </p>
+            </div>
+            <div class="exercice">
+                Ecrire un programme qui demande le nom et le score de deux joueurs puis affiche le nom du vainqueur (le joueur qui a le plus de points).
+            </div>
+            <div class="exercice">
+                Au rugby, les enfants sont classés en différentes catégories selon leur âge : Poussins (moins de 11 ans), Benjamins (moins de 14 ans) et Minimes (moins de 15 ans). Ecrire un programme demandant l'âge d'un enfant et affichant sa classe d'âge.
+            </div>
+            <h2>Booléens</h2>
+            <p>
+                Le résultat d'une condition doit être vrai ou faux (En Python, <mark class="code">True</mark> ou <mark class="code">False</mark>). Une variable qui ne prends comme valeur que vrai ou faux est de type booléen (en référence à George Boole, fondateur de l'algèbre booléenne).
+            </p>
+            <p>
+                On peut construire des variables booléennes à partir de variables booléennes grâce aux mots-clés <mark class="code">and</mark>, <mark class="code">or</mark> et <mark class="code">not</mark>.
+                <ul>
+                    <li>L'expression <mark class="code">A and B</mark> est vraie si à la fois <mark class="code">A</mark> et <mark class="code">B</mark> sont vrais et fausse si un des deux ou les deux sont faux.</li>
+                    <li>L'expression <mark class="code">A or B</mark> est vraie si au moins l'une des expressions <mark class="code">A</mark> et <mark class="code">B</mark> est vrai et fausse si les deux sont faux.</li>
+                    <li>L'expression <mark class="code">not A</mark> est vraie si <mark class="code">A</mark> est faux et fausse si <mark class="code">A</mark> est vrai.</li>
+                </ul>
+                Exemple :
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    note = int(input("Quelle note as tu obtenu ? "))<br/>
+                    if note &gt; 20 or note &lt; 0 :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;print("Note non valide.")<br/>
+                    else :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;print("Note acceptée.")
+                </p>
+            </div>
+            <div class="exercice">
+                Donnez deux valeur de <mark class="code">y</mark> pour lesquelles la condition suivante est vraie :
+                <p class="centrer"><mark class="code">(y&lt;3 and y == 2) or (y &gt; 5 and y != 6)</mark></p>
+            </div>
+            <div class="exercice">
+                Qu'affiche le programme suivant si <mark class="code">x</mark> est égal à 100 ? Et si <mark class="code">x</mark> est égal à 200 ?
+                <div class="algo">
+                    <input type="button" class="copier" value="📑" title="copier">
+                    <p class="code">
+                        if x &lt;= 150 : <br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;print(x+10) <br/>
+                        else : <br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;print(x-30) <br/>
+                    </p>
+                </div>
+            </div>
+            <div class="exercice">
+                Compléter cet algorithme pour qu'il affiche la plus grande valeur contenue dans les variables <mark class="code">a</mark>, <mark class="code">b</mark> et <mark class="code">c</mark>.
+                <div class="algo">
+                    <input type="button" class="copier" value="📑" title="copier">
+                    <p class="code">
+                        a = int(input("Valeur de a : "))<br/>
+                        b = int(input("Valeur de b : "))<br/>
+                        c = int(input("Valeur de c : "))<br/>
+                        if <br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;print(a, "est la plus grande valeur")<br/>
+                        elif <br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;print(b, "est la plus grande valeur")<br/>
+                        else :<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;print(c, "est la plus grande valeur")<br/>
+                    </p>
+                </div>
+            </div>
+            <div class="exercice">
+                Sachant que l'expression <mark class="code">not(a or b)</mark> a la valeur <mark class="code">True</mark>, quelles peuvent être les valeurs des variables booléennes <mark class="code">a</mark> et <mark class="code">b</mark> ? 
+            </div>
+        </div>
+        <script type="text/javascript" src="script.js"></script>
+    </body>
+</html>
