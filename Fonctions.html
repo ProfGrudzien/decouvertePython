@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+    <body>
+        <div class="main">
+            <h1>Fonctions</h1>
+            <p>
+                Dans cette activité, nous allons découvrir les fonctions qui permettent de réutiliser très facilement des morceaux de code.
+            </p>
+            <h2>Fonctions retournant une seule valeur</h2>
+            <p>
+                Ces fonctions permettent de calculer une valeur à partir d'une ou plusieurs valeurs de départ que l'on appelera <mark>paramètres</mark>. Souvent ce calcul se fait à l'aide d'une formule. En Python, on utilise le mot-clé <mark class="code">def</mark> pour déclarer une fonction et le mot-clé <mark class="code">return</mark> pour renvoyer le résultat. Exemple :
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    def double(x) : <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;return 2*x <br/>
+                </p>
+            </div>
+            <div class="exercice">
+                Ecrire un fonction <mark class="code">carre</mark> qui retourne le carré d'une nombre donné en paramètres.
+            </div>
+            <p>
+                Remarque : lorsque l'on déclare une fonction, les instructions ne sont pas executées. Elle le seront uniquement lors de l'appel de cette fonction. Cet appel se fait en réutilisant le nom donné à la fonction. Exemple :
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    def double(x) : <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;return 2*x <br/>
+                    <br/>
+                    print("Le double de 3 est", double(3)) <br/>
+                    print("Le double de 5 est", double(5)) <br/>
+                    print("Le double de 0 est", double(0)) <br/>
+                </p>
+            </div>
+            <div class="exercice">
+                Tester la fonction <mark class="code">carre</mark> écrite précédemment avec les valeurs <mark class="code">5</mark>, <mark class="code">1</mark>, <mark class="code">0</mark>, <mark class="code">-1</mark>.
+            </div>
+            <p>
+                La valeur retournée par une fonction peut être stockée dans une variable pour être réutilisée plus tard. Exemple :
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    def double(x) : <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;return 2*x <br/>
+                    <br/>
+                    a = int(input("Quel est votre nombre ? "))<br/>
+                    b = double(a)<br/>
+                    c = double(b)<br/>
+                    print("Le double de", a, "est", b, "et le double de", b, "est", c)
+                </p>
+            </div>
+            <p>
+                Remarque : lorsque l'instruction <mark class="code">return</mark> est éxécutée, la fonction s'arrête. Les instructions suivantes ne sont donc pas executées. Cela permet souvent de simplifier un test <mark class="code">if</mark> car la partie <mark class="code">else</mark> devient souvent facultative. Exemple :
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    def valeur_absolue(x) : <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;if x &lt; 0 :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return -x <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;return x
+                </p>
+            </div>
+            </p>
+            <div class="exercice">
+                La suite de Collatz est définie de la manière suivante :
+                <ul>
+                    <li>si la valeur actuelle <mark class="code">a</mark> est paire, alors la valeur suivante est <mark class="code">a/2</mark></li>
+                    <li>si la valeur actuelle <mark class="code">a</mark> est impaire, alors la valeur suivante est <mark class="code">3*a + 1</mark></li>
+                </ul>
+                <ol class="sous-num">
+                    <li>Ecrire une fonction <mark class="code">valeur_suivante_collatz(a)</mark> qui retourne la valeur suivante de la liste de Collatz.</li>
+                    <li>On choisit comme valeur de départ <mark class="code">7</mark>. Afficher les 5 valeurs suivantes.</li>
+                </ol>
+            </div>
+            <div class="exercice">
+                On considère la fonction suivante :
+                <div class="algo">
+                    <input type="button" class="copier" value="📑" title="copier">
+                    <p class="code">
+                        def affichage_mystere(x) : <br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;if x &lt; 0 :<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("pomme")<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 0 <br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;if x &lt; 10 :<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("poire") <br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;print("ananas")<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;return 10<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;print("abricot")
+                    </p>
+                </div>
+                Quels sont les messages affichés lors des appels :
+                <ol class="sous-num">
+                    <li><mark class="code">affichage_mystere(12)</mark></li>
+                    <li><mark class="code">affichage_mystere(3)</mark></li>
+                    <li><mark class="code">affichage_mystere(-8)</mark></li>
+                </ol>
+            </div>
+            <p>
+                Les fonctions peuvent prendre en compte plusieurs paramètres. Exemple :
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    def moyenne(a, b) : <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;return (a + b)/2<br/>
+                </p>
+            </div>
+            <div class="exercice">
+                Ecrire un fonction <mark class="code">maximum(a, b)</mark> qui retourne le plus grand des deux nombres <mark class="code">a</mark> et <mark class="code">b</mark>.
+            </div>
+            <p>
+                Les fonctions peuvent aussi ne pas prendre de paramètres. Exemple :
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    def gateau() :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;print("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|")<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;print("&nbsp;&nbsp;&nbsp;@%@%@%@%@%@%@")<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;print("&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}")<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;print("&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}")<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;print("&nbsp;@%@%@%@%@%@%@%@%@")<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;print("&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}")<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;print("&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}")<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;print("&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}")<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;print("@%@%@%@%@%@%@%@%@%@")
+                </p>
+            </div>
+            <p>
+                On peut remarquer que cette fonction ne retourne aucune valeur.
+            </p>
+            <div class="exercice">
+                Ecrire un fonction <mark class="code">chiffres()</mark> qui affiche les chiffres ecrites en toutes lettres, un chiffre par ligne.
+            </div>
+            <h2>Fonctions retournant plusieurs valeurs</h2>
+            <h2>Portée des variables</h2>
+            <h2>Documenter une fonction</h2>
+            <h2>Fonctions utiles</h2>
+        </div>
+        <script type="text/javascript" src="script.js"></script>
+    </body>
+</html>
