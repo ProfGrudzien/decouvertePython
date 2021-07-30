@@ -140,9 +140,173 @@
                 Ecrire un fonction <mark class="code">chiffres()</mark> qui affiche les chiffres ecrites en toutes lettres, un chiffre par ligne.
             </div>
             <h2>Fonctions retournant plusieurs valeurs</h2>
+            <p>
+                Une fonction peur retourner plusieurs valeurs. Les valeurs peuvent être récupérées en utilisant autant de variables. Exemple :
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    def milieu(xA, yA, xB, yB) : <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;xM = (xA + xB)/2<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;yM = (yA + yB)/2<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;return xM, yM<br/>
+                    <br/>
+                    xA = 2 <br/>
+                    yA = 3 <br/>
+                    print("Le point A a pour coordonnées (", xA, ";", yA, ")") <br/>
+                    <br/>
+                    xB = 7 <br/>
+                    yB = 8 <br/>
+                    print("Le point B a pour coordonnées (", xB, ";", yB, ")") <br/>
+                    <br/>
+                    xM, yM = milieu(2, 3, 7, 8) <br/>
+                    print("Le milieu du segment [AB] a pour coordonnées (", xM, ";", yM, ")")
+                </p>
+            </div>
+            <div class="exercice">
+                Ecrire une fonction <mark class="code">minimax(a, b)</mark> qui retourne deux valeurs : la première est la plus petite des deux valeurs <mark class="code">a</mark> et <mark class="code">b</mark>, la deuxième la plus grande. Tester cette fonction en affichant les valeurs obtenues pour :
+                <ol class="sous-num">
+                    <li><mark class="code">a = 5</mark> et <mark class="code">b = 7</mark></li>
+                    <li><mark class="code">a = -3.05</mark> et <mark class="code">b = -3.055</mark></li>
+                    <li><mark class="code">a = 8</mark> et <mark class="code">b = 8</mark></li>
+                </ol>
+            </div>
             <h2>Portée des variables</h2>
+            <p>
+                Pour ne pas se soucier des variables qui existent déjà, les variables déclarées à l'intérieur d'une fonction sont <mark>locales</mark>. C'est notament le cas des variables correspondant aux paramètres de la fonction. Un variable locale est utilisable uniquement dans la fonction où elle est déclarée. Elle est totalement indépendante d'une variable qui porterai le même nom mais qui serait déclarée à l'extérieur de la fonction. Illustration :
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    def f(a, b) : <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;a = a + 1<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;b = 9<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;print(a, b, c)<br/>
+                    <br/>
+                    a = 5<br/>
+                    b = 3<br/>
+                    c = 7<br/>
+                    print(a, b, c) <font class="commentaire"># affichage attendu : 5 3 7</font><br/>
+                    f(a, b)<font class="commentaire">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# affichage attendu : 6 9 7</font><br/>
+                    print(a, b, c) <font class="commentaire"># affichage attendu : 5 3 7</font><br/>
+                </p>
+            </div>
+            <p>
+                En revanche, on peut accéder depuis une fonction à une variable déclarée en dehors de cette fonction. Il est cependant impossible de lui assigner une nouvelle valeur. Même s'il est possible de déclarée une variable comme <mark>globale</mark> pour pouvoir lui affecter une nouvelle valeur, il est plus sage de placer cette variable en paramètre et retourner sa nouvelle valeur grâce à <mark class="code">return</mark>.
+            </p>
+            <p>Exemple avec <mark class="code">global</mark> :</p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    def echo(nb) : <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<mark>global txt</mark><br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;txt = txt * nb<br/>
+                    <br/>
+                    txt = "hou"<br/>
+                    print(txt) <font class="commentaire"># affichage attendu : hou </font><br/>
+                    echo(3)<br/>
+                    print(txt) <font class="commentaire"># affichage attendu : houhouhou</font><br/>
+                    echo(2)<br/>
+                    print(txt) <font class="commentaire"># affichage attendu : houhouhouhouhouhou</font><br/>
+                </p>
+            </div>
+            <p>Exemple avec <mark class="code">return</mark> :</p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    def echo(<mark>txt,</mark> nb) : <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;txt = txt * nb<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<mark>return txt</mark><br/>
+                    <br/>
+                    txt = "hou"<br/>
+                    print(txt) <font class="commentaire"># affichage attendu : hou </font><br/>
+                    <mark>txt =</mark> echo(<mark>txt,</mark> 3)<br/>
+                    print(txt) <font class="commentaire"># affichage attendu : houhouhou</font><br/>
+                    <mark>txt =</mark> echo(<mark>txt,</mark> 2)<br/>
+                    print(txt) <font class="commentaire"># affichage attendu : houhouhouhouhouhou</font><br/>
+                </p>
+            </div>
             <h2>Documenter une fonction</h2>
+            <p>
+                Il faut prendre la bonne habitude de documenter ses fonctions. Cela permet, lors de la relecture du code, de savoir quel sont leurs rôles et quels sont les paramètres à leurs donner. Python propose un format de commentaires spécial appelé <mark>docstring</mark>. Contrairement aux commentaires, les docstrings s'afficheront lors de l'appel de la fonction <mark class="code">help</mark> avec pour paramètre le nom de la fonction. Exemple :
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    def echo(txt, nb) : <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;""" Retourne la répétition d'une chaîne de caractères.<br/>
+                    <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;txt : la chaîne de caractères à répéter.<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;nb &nbsp;: le nombre de répétitions.<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"""<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;txt = txt * nb<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;return txt<br/>
+                    <br/>
+                    help(echo)
+                </p>
+            </div>
             <h2>Fonctions utiles</h2>
+            <h3>Division Euclidienne</h3>
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    def division_euclidienne(a, b) : <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;""" Retourne le quotient et le reste de la division euclidienne de `a` par `b`.<br/>
+                    <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;a : le dividende entier<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;b : le diviseur entier<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;Retourne une erreur si b est égal à 0<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"""<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;q = a//b<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;r = a%b<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;if r < 0 :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;q = q + 1<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r = r - b<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;return q, r<br/>
+                </p>
+            </div>
+            <h3>Demander de répondre par « oui » ou par « non »</h3>
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    def demander_oui_non(question) : <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;""" Demande à l'utilisateur de répondre à la `question` par "oui" ou par "non".<br/>
+                    <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;question : la question posée à l'utilisateur.<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;Redemande tant que la valeur saisie ne correspond ni à "oui" ni à "non".<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;Retourne une valeur booléenne.<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"""<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;reponse = input(question)<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;if reponse == "oui" or reponse == "Oui" or reponse == "OUI" :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return True<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;if reponse == "non" or reponse == "Non" or reponse == "NON" :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return False<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;print("Réponse incorrecte : vous devez réponse par "oui" ou par "non".)<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;return demander_oui_non(question)<br/>
+                </p>
+            </div>
+            <h3>Demander un nombre entier</h3>
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    def demander_entier(phrase) : <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;""" Demande un nombre entier à l'utilisateur.<br/>
+                    <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;phrase : une chaîne de caractères décrivant la valeur demandée à l'utilisateur.<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;Après avoir affiché la `phrase`, demande à l'utilisateur de saisir un nombre entier.<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;Redemande tant que la valeur saisie ne peut pas être convertie en nombre entier.<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"""<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;try :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;entier = int(input(phrase))<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return entier<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;except :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("Réponse incorrecte : vous devez saisir un nombre entier.")<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return demander_entier(phrase)
+                </p>
+            </div>
         </div>
         <script type="text/javascript" src="script.js"></script>
     </body>
