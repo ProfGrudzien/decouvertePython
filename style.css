@@ -34,7 +34,7 @@ p {
 
 div.exercice {
     counter-increment: counterExo;
-    width: 666px;
+    width: 650px;
     margin: 5px auto;
     border: 1px solid blue;
     padding: 5px;
@@ -74,6 +74,7 @@ div.main {
 
 div.algo {
     width: 650px;
+    max-width: 95%;
     margin: auto;
     border: 1px solid gray;
     padding: 5px;

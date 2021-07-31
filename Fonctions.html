@@ -12,7 +12,7 @@
             </p>
             <h2>Fonctions retournant une seule valeur</h2>
             <p>
-                Ces fonctions permettent de calculer une valeur à partir d'une ou plusieurs valeurs de départ que l'on appelera <mark>paramètres</mark>. Souvent ce calcul se fait à l'aide d'une formule. En Python, on utilise le mot-clé <mark class="code">def</mark> pour déclarer une fonction et le mot-clé <mark class="code">return</mark> pour renvoyer le résultat. Exemple :
+                Ces fonctions permettent de calculer une valeur à partir d'une ou plusieurs valeurs de départ que l'on appellera <mark>paramètres</mark>. Souvent ce calcul se fait à l'aide d'une formule. En Python, on utilise le mot-clé <mark class="code">def</mark> pour déclarer une fonction et le mot-clé <mark class="code">return</mark> pour renvoyer le résultat. Exemple :
             </p>
             <div class="algo">
                 <input type="button" class="copier" value="📑" title="copier">
@@ -25,7 +25,7 @@
                 Ecrire un fonction <mark class="code">carre</mark> qui retourne le carré d'une nombre donné en paramètres.
             </div>
             <p>
-                Remarque : lorsque l'on déclare une fonction, les instructions ne sont pas executées. Elle le seront uniquement lors de l'appel de cette fonction. Cet appel se fait en réutilisant le nom donné à la fonction. Exemple :
+                Remarque : lorsque l'on déclare une fonction, les instructions ne sont pas exécutées. Elle le seront uniquement lors de l'appel de cette fonction. Cet appel se fait en réutilisant le nom donné à la fonction. Exemple :
             </p>
             <div class="algo">
                 <input type="button" class="copier" value="📑" title="copier">
@@ -57,7 +57,7 @@
                 </p>
             </div>
             <p>
-                Remarque : lorsque l'instruction <mark class="code">return</mark> est éxécutée, la fonction s'arrête. Les instructions suivantes ne sont donc pas executées. Cela permet souvent de simplifier un test <mark class="code">if</mark> car la partie <mark class="code">else</mark> devient souvent facultative. Exemple :
+                Remarque : lorsque l'instruction <mark class="code">return</mark> est exécutée, la fonction s'arrête. Les instructions suivantes ne sont donc pas executées. Cela permet souvent de simplifier un test <mark class="code">if</mark> car la partie <mark class="code">else</mark> devient souvent facultative. Exemple :
             <div class="algo">
                 <input type="button" class="copier" value="📑" title="copier">
                 <p class="code">
@@ -75,7 +75,16 @@
                     <li>si la valeur actuelle <mark class="code">a</mark> est impaire, alors la valeur suivante est <mark class="code">3*a + 1</mark></li>
                 </ul>
                 <ol class="sous-num">
-                    <li>Ecrire une fonction <mark class="code">valeur_suivante_collatz(a)</mark> qui retourne la valeur suivante de la liste de Collatz.</li>
+                    <li>
+                        Ecrire une fonction <mark class="code">valeur_suivante_collatz(a)</mark> qui retourne la valeur suivante de la liste de Collatz. On pourra faire appel à la fonction <mark class="code">est_paire(n)</mark> définie ci-dessous :
+                        <div class="algo">
+                            <input type="button" class="copier" value="📑" title="copier">
+                            <p class="code">
+                                def est_paire(n) : <br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;return n%2 == 0
+                            </p>
+                        </div>
+                    </li>
                     <li>On choisit comme valeur de départ <mark class="code">7</mark>. Afficher les 5 valeurs suivantes.</li>
                 </ol>
             </div>
@@ -260,7 +269,7 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;"""<br/>
                     &nbsp;&nbsp;&nbsp;&nbsp;q = a//b<br/>
                     &nbsp;&nbsp;&nbsp;&nbsp;r = a%b<br/>
-                    &nbsp;&nbsp;&nbsp;&nbsp;if r < 0 :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;if r < 0 :<font class="commentaire"> # le reste doit être positif</font><br/>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;q = q + 1<br/>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r = r - b<br/>
                     &nbsp;&nbsp;&nbsp;&nbsp;return q, r<br/>

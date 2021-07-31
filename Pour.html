@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+    <body>
+        <div class="main">
+            <h1>Fonctions</h1>
+            <p>
+                Dans cette activité, nous allons découvrir la boucle « pour » qui permet de répéter des instructions plusieurs fois.
+            </p>
+            <h2>Première approche</h2>
+            <p>
+                La boucle « pour » permet de répéter plusieurs fois un bloc d'instructions. La boucle est introduite grâce au mot-clé <mark class="code">for</mark> et le bloc d'instructions à répété est identifié par une indentation. Exemple :
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    for i in range(5) : <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;print("Je vous reçoit 5 sur 5 !") <br/>
+                </p>
+            </div>
+            <div class="exercice">
+                Ecrire un programme qui affiche 2000 fois « Bon, on va regarder K2000 ! ».
+            </div>
+            <div class="exercice">
+                Voici le code permettant de calculer le terme suivant de la suite de Collatz (vu en exercice lors du chapitre sur les fonctions) :
+                <div class="algo">
+                    <input type="button" class="copier" value="📑" title="copier">
+                    <p class="code">
+                        valeur_suivante_collatz(a) : <br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;if a%2 == 0 : <br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return a//2 <br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;return 3*a + 1 <br/>
+                    </p>
+                </div>
+                Ecrire une fonction <mark class="code">collatz(depart, nombre)</mark> qui affiche les <mark class="code">nombres</mark> valeurs suivantes de la suite de Collatz, avec pour valeur initiale <mark class="code">depart</mark>.
+            </div>
+            <p>
+                La variable <mark class="code">i</mark> correspond à un compteur. Elle permet d'appliquer un traitement différent à chaque passage. Attention, avec <mark class="code">for i in range(5)</mark>, la variable <mark class="code">i</mark> est initialisée à <mark class="code">0</mark> et donc au dernier passage, la valeur de <mark class="code">i</mark> sera <mark class="code">4</mark>. Exemple :
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    for i in range(5) : <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;print("La valeur de i est", i)
+                </p>
+            </div>
+            <div class="exercice">
+                Ecrire un programme qui affiche la progression d'un téléchargement de 0% à 100% puis affiche « Téléchargement terminé ! ».
+            </div>
+            <h2>Changer la valeur de départ de la boucle</h2>
+            <p>
+                La fonction <mark class="code">range</mark> peut être utilisé avec 1 seul paramètre comme on vient de le voir, mais aussi avec 2 paramètres. A ce moment là, le premier paramètre indique la valeur de départ et le deuxième paramètre indique la valeur où arrêter la boucle. Le deux instructions suivantes sont donc équivalentes : <mark class="code">for i in range(5)</mark> et <mark class="code">for i in range(0, 5)</mark>. Un autre exemple :
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    for i in range(10, 20) : <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;print("La valeur de i est", i)
+                </p>
+            </div>
+            <div class="exercice">
+                Ecrire un programme qui affiche les carrés des nombres compris entre 100 et 200 inclus.
+            </div>
+            <h2>Ajouter un pas</h2>
+            <p>
+                La fonction <mark class="code">range</mark> peut même être utilisé avec un troisième paramètre. Celui ci indique la pas, c'est-à-dire l'écart entre deux valeurs consécutives. Le deux instructions suivantes sont donc équivalentes : <mark class="code">for i in range(10, 20)</mark> et <mark class="code">for i in range(10, 20, 1)</mark>. Un autre exemple :
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    print("les multiples de 3 compris entre 10 et 20 sont :")<br/>
+                    for i in range(12, 20, 3) : <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;print(i)
+                </p>
+            </div>
+            <div class="exercice">
+                Ecrire un programme qui affiche les multiples de 17 compris entre 800 et 900.
+            </div>
+            <div class="exercice">
+                Ecrire un programme qui affiche un décompte de 10 à 1 puis affiche « Top ! »
+            </div>
+        </div>
+        <script type="text/javascript" src="script.js"></script>
+    </body>
+</html>
