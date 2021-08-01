@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+    <body>
+        <div class="main">
+            <h1>La boucle « tant que »</h1>
+            <p>
+                Dans cette activité, nous allons découvrir la boucle « tant que » qui permet de répéter des instructions tant qu'une condition est vérifiée. Elle permet par exemple de réaliser une boucle lorsque l'on ne connaît pas à l'avance le nombre de répétitions.
+            </p>
+            <p>
+                Les boucles « tant que » s'écrivent à l'aide du mot-clé <mark class="code">while</mark> suivi de la condition à vérifier. Comme pour les boucle « pour » et pour les tests, le bloc d'instruction à répéter est identifié par une indentation. Exemple :
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    seuil = int(input("Entier strictement positif : "))<br/>
+                    puissance = 1 <br/>
+                    exposant = 0 <br/>
+                    while puissance &lt; seuil :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;puissance = puissance * 2 <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;exposant = exposant + 1 <br/>
+                    print(seuil, "est compris entre 2 puissance", exposant - 1, "et 2 puissance", exposant)
+                </p>
+            </div>
+            <p>
+                Les boucles « tant que » présente un risque de boucle infinie si la condition n'est jamais vrai. C'est pourquoi, il faut toujours veiller à :
+                <ul>
+                    <li>l'initialisation : la condition doit être vérifiable au premier passage dans la boucle.</li>
+                    <li>la terminaison : la condition doit être mis à jour si besoin à chaque passage et doit être vrai après un nombre fini de répétitions.</li>
+                </ul>
+                Si vous exécutez une boucle infinie, <mark>pas de panique !</mark> Il suffit de presser les touches <font class="mono">Ctrl</font> et <font class="mono">C</font> en même temps sous <font class="mono">IDLE</font> ou bien utiliser le bouton <font class="mono">STOP</font> sous <font class="mono">replit.com</font>.
+            </p>
+            <div class="exercice">
+                Un seul de ces trois programme s'exécute correctement. Lequel ? Quel est le problème pour les deux autres ?
+                <div class="algo">
+                    <input type="button" class="copier" value="📑" title="copier">
+                    <p class="code">
+                        i = 0<br/>
+                        while i &lt; 10 :<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;print(i)
+                    </p>
+                </div>
+                <div class="algo">
+                    <input type="button" class="copier" value="📑" title="copier">
+                    <p class="code">
+                        while i &lt; 10 :<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;i = i + 1<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;print(i)
+                    </p>
+                </div>
+                <div class="algo">
+                    <input type="button" class="copier" value="📑" title="copier">
+                    <p class="code">
+                        i = 0<br/>
+                        while i &lt; 10 :<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;i = i + 1<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;print(i)
+                    </p>
+                </div>
+            </div>
+            <div class="exercice">
+                La conjecture de Syracuse suggère que, pour tout nombre de départ strictement positif, la suite de Collatz atteint toujours la valeur 1. Par exemple, pour la valeur de départ 5, les 10 termes suivants sont : 16, 8, 4, 2, 1, 4, 2, 1, 4, 2. La valeur 1 est atteinte à la cinquième itération. Ecrire une fonction <mark class="code">Syracuse(n)</mark> qui affiche tous les termes de la suite de Collatz pour la valeur de départ <mark class="code">n</mark>. Vous pourrez encore une fois réutiliser la fonction <mark class="code">valeur_suivante_collatz</mark>.
+                <div class="algo">
+                    <input type="button" class="copier" value="📑" title="copier">
+                    <p class="code">
+                        valeur_suivante_collatz(a) : <br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;if a%2 == 0 : <br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return a//2 <br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;return 3*a + 1 <br/>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="script.js"></script>
+    </body>
+</html>
