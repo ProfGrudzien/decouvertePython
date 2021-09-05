@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+    <body>
+        <div class="main">
+            <h1>Récursivité</h1>
+            <p>
+                Dans cette activité, nous allons découvrir le principe de la récursivité.
+            </p>
+            <h2>Retour sur un exercice précédent</h2>
+            <div class="exercice">
+                Ecrire une fonction qui demande un identifiant à l'utilisateur.
+                Cette fonction doit redemander un identifiant jusqu'à ce que l'utilisateur donne un identifiant non vide (différent de <mark class="code">""</mark>)
+            </div>
+            <p>
+                Cette fonction est constuite sur la logique suivante : demander un identifiant tant que l'identifiant donné par l'utilisateur est vide.
+            </p>
+            <p>
+                On peut adopter une autre logique : demander un identifiant à l'utilisateur puis, s'il est vide, demander à nouveau un identifiant à l'utilisateur.
+            </p>
+            <div class="exercice">
+                Compléter la fonction suivante :
+                <div class="algo">
+                    <input type="button" class="copier" value="📑" title="copier">
+                    <p class="code">
+                        def demander_identifiant() : <br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;identifiant = input("Quel est votre identifiant ? ") <br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;if identifiant != "" :<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return ...<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;else :<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("Erreur de saisie.")<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return ...<br/>
+                    </p>
+                </div>
+            </div>
+            <h2>Définition</h2>
+            <p>
+                Une fonction est récursive si elle se définit à partir d'elle-même. Par exemple, une fonction qui comporte, dans son corps, au moins un appel à elle-même est une fonction récursive.
+            </p>
+            <p>
+                Les fonctions basées sur une simple boucle <mark class="code">while</mark> peuvent très facilement être traduite en fonction récursive. Exemple :
+                <div class="algo">
+                    <input type="button" class="copier" value="📑" title="copier">
+                    <p class="code">
+                        def nombre_bits(n) : <br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;""" Retourne le nombre de bits nécessaire pour coder un entier naturel en binaire.<br/>
+                        <br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;n : le nombre entier naturel écrit en base 10.<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;"""<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;assert n >= 0, 'Cette fonction attend un entier positif ou nul'<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;compteur = 1<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;while n > 1 : <br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n = n // 2<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;compteur = compteur + 1<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;return compteur<br/>
+                    </p>
+                </div>
+                Se traduit de manière récursive en :
+                <div class="algo">
+                    <input type="button" class="copier" value="📑" title="copier">
+                    <p class="code">
+                        def nombre_bits(n) : <br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;""" Retourne le nombre de bits nécessaire pour coder un entier naturel en binaire.<br/>
+                        <br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;n : le nombre entier naturel écrit en base 10.<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;"""<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;assert n >= 0, 'Cette fonction attend un entier positif ou nul'<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;if n > 1 :<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 1 + nombre_bits(n//2)<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;else :<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 1<br/>
+                    </p>
+                </div>
+            </p>
+            <p>
+            Tout comme lorsque l'on écrit des boucles <mark class="code">while</mark>, il faut être très vigilent sur la condition d'arrêt d'une fonction récursive. Lorsque ces conditions sont mal écrites, le message d'erreur <mark class="code">'maximum recursion depth exceeded'</mark> apparaît.
+            </p>
+            <img src="Gru.jpg">
+            <div class="exercice">
+                Ecrire une fonction qui énumèrent les éléments d'une liste, c'est-à-dire qui retourne une chaîne de caractère composée des éléments séparés par une virgule ou par un « et » et termine l'énumération par un point.<br/>Exemple :<br/><mark class="code">enumeration(["pêche", "pomme", "poire", "abricot"])</mark><br/>donne :<br/><mark class="code">"pêche, pomme, poire et abricot."</mark>
+            </div>
+            <div class="exercice">
+                Ecrire une fonction récursive qui retourne le plus grand élément d'une liste de nombres entiers.
+            </div>
+            <div class="exercice">
+                Ecrire une fonction récursive qui vérifie si une chaîne de caractères est un palindrome (identique en la lisant de la droite vers la gauche ou de la gauche vers la droite).<br/>
+                La fonction sera alors testée avec les chaînes de caractères :
+                <ul>
+                    <li>EMMA</li>
+                    <li>ANNA</li>
+                    <li>canoë</li>
+                    <li>kayak</li>
+                    <li>engage le jeu que je le gagne</li>
+                </ul>
+                Pour aller plus loin :<br>
+                Modifier cette fonction pour qu'elle ignore les espaces.
+            </div>
+            <div class="exercice">
+                Ecrire une fonction récursive qui vérifie si deux chaînes de caractères sont des anagrammes (composées des mêmes lettres).<br/>
+                Cette fonction peut faire appel à la fonction <mark class="code">premier_indice</mark> suivante :
+                <div class="algo">
+                    <input type="button" class="copier" value="📑" title="copier">
+                    <p class="code">
+                        def premier_indice(liste, valeur, offset=0) : <br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;""" Si `valeur` est dans la liste `liste`, retourne le premier indice où l'on trouve cette valeur. Sinon, retourne -1<br/>
+                        <br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;liste&nbsp;  : la liste où l'on cherche une valeur.<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;valeur : la valeur que l'on cherche dans la liste.<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;offset : le nombre de valeurs déjà écartées par récurrence.<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;"""<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;if len(liste) == 0 :<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return -1<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;elif liste[0] == valeur :<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return offset<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;else :<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return premier_indice(liste[1:], valeur, offset+1)<br/>
+                    </p>
+                </div>
+            </div>
+            <h2>Pile des appels récursifs</h2>
+            <h2>Applications</h2>
+            <h3>Suite de Fibonacci</h3>
+            <h3>Tour de Hanoï</h3>
+            <h3>Tri fusion</h3>
+        </div>
+        <script type="text/javascript" src="script.js"></script>
+    </body>
+</html>

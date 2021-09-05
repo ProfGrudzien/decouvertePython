@@ -66,6 +66,13 @@ ol.sous-num {
     list-style-type: lower-alpha;
 }
 
+img {
+    display: block;
+    width: 650px;
+    max-width: 95%;
+    margin: 5px auto;
+}
+
 div.main {
     margin: auto;
     width: 60%;
