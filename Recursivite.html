@@ -94,6 +94,7 @@
                     <li>ANNA</li>
                     <li>canoë</li>
                     <li>kayak</li>
+                    <li>azfghza</li>
                     <li>engage le jeu que je le gagne</li>
                 </ul>
                 Pour aller plus loin :<br>
@@ -140,8 +141,8 @@
                 <p class="code" id="lvl1">maximum([10, 8, 4, 9, 7])</p>
             </div>
             <div align="center">
-                <input type="button" value="<" id="prev"></input>
-                <input type="button" value=">" id="next"></input>
+                <input type="button" value="<" id="prev" class="navigation"></input>
+                <input type="button" value=">" id="next" class="navigation"></input>
             </div>
             <script type="text/javascript" src="recursivite.js"></script>
             <div class="exercice">
@@ -149,7 +150,57 @@
             </div>
             <h2>Applications</h2>
             <h3>Recherche dichotomique</h3>
+            <p>
+                La recherche dichotomique est un algorithme de recherche d'une valeur dans une liste <mark>triée</mark> vu en première.<br/>
+                Nous allons voir ici une programmation récursive de la recherche dichotomique.
+            </p>
+            <p>
+                Le principe de la recherche dichotomique consiste à comparer la valeur recherchée avec la valeur centrale de la liste afin d'éliminer la moitié des valeurs où ne peut pas se trouver la valeur recherchée.
+            </p>
+            <div class="exercice">
+                <ol>
+                    <li>Dans une liste de <mark class="code">n</mark> éléments, quel est l'indice de l'élément central ?</li>
+                    <li>Si la valeur recherchée est plus grande que la valeur centrale, quelle partie de la liste faut-il éliminer ?</li>
+                    <li>Quelle est la condition d'arrêt de la récursivité ?</li>
+                    <li>Ecrire la pile d'exécution lors de l'appel de : <br/> <mark class="code">recherche_dichotomique([12, 13, 15, 17, 21, 22, 22], 15)</mark></li>
+                    <li>Ecrire la pile d'exécution lors de l'appel de : <br/> <mark class="code">recherche_dichotomique([0, 1, 1, 2, 3, 5, 8, 13, 21], 7)</mark></li>
+                    <li>Programmer la recherche dichotomique de manière récursive.</li>
+                </ol>
+            </div>
             <h3>Rendu du monnaie</h3>
+            <p>
+                En classe de première, nous avons vu un algorithme de rendu de monnaie.
+                Cet algorithme était dit <mark>glouton</mark> car il était basé sur des choix qui paraissaient optimaux à chaque étape, mais ne garantissait pas que le résultat global était optimal.
+                Une solution pour trouver le rendu optimal serai de déterminer toutes les solutions de rendu de monnaie possible.
+            </p>
+            <p>
+                Nous allons écrire un algorithme récursif qui permet de dresser cette liste.<br/>
+                On suppose que le montant à rendre et un nombre entier, tout comme le montant des pièces et des billets.<br/>
+                On suppose également que l'on dispose de toutes les pièces et billets en quantité illimitée.<br/>
+                La liste des pièces et billets disponibles est : <mark class="code">[500, 200, 100, 50, 20, 10, 5, 2, 1]</mark><br/>
+                Par la suite, on parlera uniquement de pièces pour simplifier les explications.
+            </p>
+            <p>
+                Le principe est le suivant :
+                <ul>
+                    <li>
+                        si le montant est supérieur ou égal à la valeur de la première pièce, alors deux choix s'offrent à moi :
+                        <ul>
+                            <li>j'utilise cette pièce et je cherche à rendre une montant plus petit avec les mêmes pièces disponibles.</li>
+                            <li>je n'utilise pas cette pièce et je cherche à rendre le même montant avec les autres pièces disponibles.</li>
+                        </ul>
+                    </li>
+                    <li>si le montant est inférieur à la valeur de la première pièce, alors je cherche à rendre le même montant avec les autres pièces disponibles.</li>
+                </ul>
+            </p>
+            <div class="exercice">
+                <ol>
+                    <li>Quelles sont les conditions d'arrêts ?</li>
+                    <li>Parmi les conditions d'arrêts, laquelle aboutit à un rendu de monnaie possible ?</li>
+                    <li>Ecrire la pile d'exécution pour rendre 6 euros avec la liste de pièces et de billets disponibles ci-dessus.</li>
+                    <li>Programmer de manière récursive le programme affichant les rendus de monnaie possible.</li>
+                </ol>
+            </div>
             <h3>Suite de Fibonacci</h3>
             <h3>Tour de Hanoï</h3>
         </div>
