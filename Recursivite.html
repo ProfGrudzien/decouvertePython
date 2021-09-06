@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8"/>
         <link rel="stylesheet" href="style.css"/>
+        <link rel="stylesheet" href="recursivite.css"/>
     </head>
     <body>
         <div class="main">
@@ -78,7 +79,7 @@
             <p>
             Tout comme lorsque l'on écrit des boucles <mark class="code">while</mark>, il faut être très vigilent sur la condition d'arrêt d'une fonction récursive. Lorsque ces conditions sont mal écrites, le message d'erreur <mark class="code">'maximum recursion depth exceeded'</mark> apparaît.
             </p>
-            <img src="Gru.jpg">
+            <img src="images/Gru.jpg">
             <div class="exercice">
                 Ecrire une fonction qui énumèrent les éléments d'une liste, c'est-à-dire qui retourne une chaîne de caractère composée des éléments séparés par une virgule ou par un « et » et termine l'énumération par un point.<br/>Exemple :<br/><mark class="code">enumeration(["pêche", "pomme", "poire", "abricot"])</mark><br/>donne :<br/><mark class="code">"pêche, pomme, poire et abricot."</mark>
             </div>
@@ -121,10 +122,36 @@
                 </div>
             </div>
             <h2>Pile des appels récursifs</h2>
+            <p>
+                Le premier appel de la fonction récursifs doit attendre le résultat des autres appels récursifs.
+                Pour cela, les appels sont stockés dans une «&nbsp;pile d'exécution&nbsp;». Les piles sont des structures algorithmiques qui seront étudiés en détails plus tard dans l'année.
+            </p>
+            <p>
+                Dans la pratique, ces piles ne sont pas de tailles infinies. L'écriture d'une fonction récursive sans prendre de précaution peut mener à remplir cette pile est entraîne un dépassement de mémoire. C'est la raison du message <mark class="code">'maximum recursion depth exceeded'</mark>.
+            </p>
+            <p>
+                Voici une illustration de la pile d'appels récursifs lorsque l'on utilise la fonction récursive <mark class="code">maximum</mark> de l'exercice 4 (plus grand élément d'une liste) sur la liste <mark class="code">[10, 8, 4, 9, 7]</mark>
+            </p>
+            <div class="algo" id="pile">
+                <p class="code" id="lvl5">maximum([7])</p>
+                <p class="code" id="lvl4">maximum([9, 7])</p>
+                <p class="code" id="lvl3">maximum([4, 9, 7])</p>
+                <p class="code" id="lvl2">maximum([8, 4, 9, 7])</p>
+                <p class="code" id="lvl1">maximum([10, 8, 4, 9, 7])</p>
+            </div>
+            <div align="center">
+                <input type="button" value="<" id="prev"></input>
+                <input type="button" value=">" id="next"></input>
+            </div>
+            <script type="text/javascript" src="recursivite.js"></script>
+            <div class="exercice">
+                Ecrire la pile d'exécution lors lors de l'appel de <mark class="code">est_palydrome("kayak")</mark> (exercice 5).
+            </div>
             <h2>Applications</h2>
+            <h3>Recherche dichotomique</h3>
+            <h3>Rendu du monnaie</h3>
             <h3>Suite de Fibonacci</h3>
             <h3>Tour de Hanoï</h3>
-            <h3>Tri fusion</h3>
         </div>
         <script type="text/javascript" src="script.js"></script>
     </body>
