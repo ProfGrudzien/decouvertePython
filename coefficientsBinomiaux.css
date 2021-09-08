@@ -1,0 +1,18 @@
+span.big {
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    font-size: 30pt;
+    font-weight: lighter;
+}
+
+span.binom{
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+}
+
+span.coeff{
+    display: block;
+    text-align: center;
+}

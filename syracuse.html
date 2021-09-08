@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="style.css"/>
+        <link rel="stylesheet" href="recursivite.css"/>
+    </head>
+    <body>
+        <div class="main">
+            <h1>Conjecture de Syracuse</h1>
+            <p>
+                La suite de Collatz est définie de la façon suivante :
+                <ul>
+                    <li>le premier terme est un nombre entier naturel strictement positif</li>
+                    <li>
+                        En notant a la valeur de la suite à un rang quelquonque, la valeur suivante est :
+                        <ul>
+                            <li>a/2, si a est pair</li>
+                            <li>3 &times; a + 1, si a est impair</li>
+                        </ul>
+                    </li>
+                </ul>
+            </p>
+            <p>
+                Il semble que, quelque-soit le nombre de départ choisit, cette suite prends toujours la valeur 1.
+                Depuis les années 60, de nombreux mathématiciens cherchent à démontrer cette conjecture qui s'appelle « la conjecture de Syracuse ».
+                Grâce à l'informatique, cette conjecture a pu être vérifiée pour toutes les valeurs de départ inférieures à 1,25 &times; 2<sup>62</sup>.
+            </p>
+            <p>
+                Vous devez écrire une fonction récursive <mark class="code">syracuse(n)</mark> donnant le nombre d'itérations pour atteindre 1 en utilisant pour premier terme le nombre entier naturel strictement positif <mark class="code">n</mark>.
+            </p>
+        </div>
+        <script type="text/javascript" src="script.js"></script>
+    </body>
+</html>

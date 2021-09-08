@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+    <body>
+        <div class="main">
+            <h1>Jeu de la Dame</h1>
+            <p>
+                Cet exercice est nommé en référence à l'excellente série qui porte ce nom.
+                Le vrai nom de ce problème est « le problème des 8 reines ».
+                La question posée est : comment placé sur un échiquier 8 reines sans qu’aucune d'elle ne soit en mesure d'en prendre une autre.
+            </p>
+            <p>
+                Petit rappel des règles : <br/>
+                Au échec, la reines est la pièce la plus mobile ! Elle peut se déplacer du nombre de case voulue, dans les 8 directions possibles (2 horizontales, 2 verticales, 4 en diagonales).
+            </p>
+            <p>
+                Beaucoup de mathématiciens, y compris Gauss (1777-1855) ont travaillé sur ce problème.
+                Sans outils informatiques, il aurait trouvé seulement 72 sur les 92 solutions de ce problème.
+            </p>
+            <p>
+                Votre mission est d'écrire un algorithme récursif pour lister les 92 solutions de ce problème.<br/>
+                Pour cela, je vous conseil de commencer par écrire deux fonctions annexes (en itératif) :
+                <ul>
+                    <li><mark class="code">positions_compatibles(A, B)</mark> qui indique si deux reines peuvent être placées ou non sur les cases <mark class="code">A</mark> et <mark class="code">B</mark>. Les variables <mark class="code">A</mark> et <mark class="code">B</mark> des tuples (ligne, colonne)</li>
+                    <li><mark class="code">emplacement_possible(reines, position)</mark> qui indique si une reines peut être placée sur la case <mark class="code">position</mark> sans être mangée par une des reines de la liste <mark class="code">reines</mark></li>
+                </ul>
+            </p>
+        </div>
+        <script type="text/javascript" src="script.js"></script>
+    </body>
+</html>
