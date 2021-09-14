@@ -202,7 +202,83 @@
                 </ol>
             </div>
             <h3>Suite de Fibonacci</h3>
+                <p>
+                    La suite de Fibonacci est définie par :
+                    <ul>
+                        <li>u<sub>0</sub> = 1</li>
+                        <li>u<sub>1</sub> = 1</li>
+                        <li>u<sub>n+2</sub> = u<sub>n+1</sub> + u<sub>n</sub>, pour tout entier naturel n</li>
+                    </ul>
+                </p>
+                <div class="exercice">
+                    <ol>
+                        <li>Programmer de manière récursive la fonction <mark class="code">fibo(n)</mark> donnant la valeur de u<sub>n</sub></li>
+                        <li>Ecrire la pile d'exécution lors de l'appel de <mark class="code">fibo(4)</mark></li>
+                    </ol>
+                </div>
+                <p>
+                    La récursivité sur la suite de Fibonacci pose vite des problèmes ! Le nombre d'appels récursifs devient vite impressionnant ! Cependant cette fonction peut être optimisée car beaucoup de ces appels sont identiques. Ces résultats pourraient être stockés lors du premier calcul pour être réutilisé lors de autres appels. Cela s'appelle la <mark>mémoïsation</mark> et cette nouvelle approche s'appelle <mark>programmation dynamique</mark>.
+                </p>
+                <div class="algo">
+                    <input type="button" class="copier" value="📑" title="copier">
+                    <p class="code">
+                        def fibo(n, M={}) : <br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;"""M est un dictionnaire servant à la mémoïsation"""<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;if n in M :<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return M[n]<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;if n == 0 :<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 1<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;if n == 1 :<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 1<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;valeur = fibo(n-1, M) + fibo(n-2, M)<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;M[n] = valeur<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;return valeur
+                    </p>
+                </div>
             <h3>Tour de Hanoï</h3>
+                <p>
+                    Les <a href="https://fr.wikipedia.org/wiki/Tours_de_Hano%C3%AF">Tours de Hanoï</a> sont un jeu de réflexion ou le but est de déplacer une tour formée de disque d'un pilier vers un autre en utilisant un troisième pilier intermédiaire. A tout moment, il est impossible de déposer un disque sur un disque de rayon plus petit.
+                    <img src="images/hanoi.jpg"/>
+                    <div class="exercice">
+                        <ol>
+                            <li>Avec combien de disque ce problème est-il évident ?</li>
+                            <li>Expliquer comment résoudre le problème à 3 disques en utilisant la résolution du problème à 2 disques et du problème à 1 disque.</li>
+                            <li>Expliquer comment résoudre le problème à 4 disques en utilisant la résolution du problème à 3 disques et du problème à 1 disque.</li>
+                            <li>
+                                Ecrire une fonction <mark class="code">hanoi(depart, arrive, intermediaire)</mark> affichant toutes les étapes pour résoudre le déplacement de la tour <mark class="code">depart</mark> vers la tour <mark class="code">arrive</mark> en utilisant la tour <mark class="code">intermediaire</mark>.<br/>
+                                Les tours sont des listes dont la première valeur est le nom du pilier puis les autres sont les entiers représentants les rayons des disques placées dans cette tour.<br/>
+                                Pour résoudre le problème de la tour de Hanoï à 8 disques, nous appellerons <mark class="code">hanoi(["A", 8, 7, 6, 5, 4, 3, 2, 1], ["C"], ["B"])</mark><br/>
+                                Vous pourrez utiliser la fonction <mark class="code">affichage_hanoi.py</mark> pour afficher les étapes intermédiaires.
+                            </li>
+                        </ol>
+                    </div>
+                    <div class="algo">
+                        <input type="button" class="copier" value="📑" title="copier">
+                        <p class="code">
+                            def affichage_hanoi(tour1, tour2, tour3) :<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;tours = sorted([tour1, tour2, tour3])<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;rayon_max = max(tour1[1:] + tour2[1:] + tour3[1:])<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;hauteur = len(tour1) + len(tour2) + len(tour3)<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;longueur = 6*rayon_max + 9<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;centres = [rayon_max+1, 3*rayon_max+4, 5*rayon_max+7]<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;G = [[" " for j in range(longueur)] for i in range(hauteur)]<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;for j in range(longueur) :<br/>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;G[0][j] = "▇"<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;for t in range(3) :<br/>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for i in range(hauteur) :<br/>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;G[i][centres[t]] = "│"<br/>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;G[0][centres[t]] = "▇"<br/>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for i in range(1, len(tours[t])) :<br/>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for k in range(tours[t][i]+1) :<br/>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;G[i][centres[t]-k] = "▇"<br/>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;G[i][centres[t]+k] = "▇"<br/>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("")<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;for i in range(hauteur-1, -1, -1) :<br/>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(''.join(G[i]))<br/>
+
+                        </p>
+                    </div>
+                </p>
             <h2>Autres exercices</h2>
             <ol>
                 <li><a href="miroir.html">miroir d'un mot</a></li>
