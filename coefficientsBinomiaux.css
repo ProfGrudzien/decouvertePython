@@ -16,3 +16,7 @@ span.coeff{
     display: block;
     text-align: center;
 }
+
+span.math{
+    white-space: nowrap;
+}
