@@ -217,7 +217,7 @@
                     </ol>
                 </div>
                 <p>
-                    La récursivité sur la suite de Fibonacci pose vite des problèmes ! Le nombre d'appels récursifs devient vite impressionnant ! Cependant cette fonction peut être optimisée car beaucoup de ces appels sont identiques. Ces résultats pourraient être stockés lors du premier calcul pour être réutilisé lors de autres appels. Cela s'appelle la <mark>mémoïsation</mark> et cette nouvelle approche s'appelle <mark>programmation dynamique</mark>.
+                    La récursivité sur la suite de Fibonacci pose vite des problèmes ! Le nombre d'appels récursifs devient vite impressionnant ! Cependant cette fonction peut être optimisée car beaucoup de ces appels sont identiques. Ces résultats pourraient être stockés lors du premier calcul pour être réutilisés lors de autres appels. Cela s'appelle la <mark>mémoïsation</mark> et cette nouvelle approche s'appelle <mark>programmation dynamique</mark>.
                 </p>
                 <div class="algo">
                     <input type="button" class="copier" value="📑" title="copier">
@@ -245,8 +245,8 @@
                             <li>Expliquer comment résoudre le problème à 3 disques en utilisant la résolution du problème à 2 disques et du problème à 1 disque.</li>
                             <li>Expliquer comment résoudre le problème à 4 disques en utilisant la résolution du problème à 3 disques et du problème à 1 disque.</li>
                             <li>
-                                Ecrire une fonction <mark class="code">hanoi(depart, arrive, intermediaire)</mark> affichant toutes les étapes pour résoudre le déplacement de la tour <mark class="code">depart</mark> vers la tour <mark class="code">arrive</mark> en utilisant la tour <mark class="code">intermediaire</mark>.<br/>
-                                Les tours sont des listes dont la première valeur est le nom du pilier puis les autres sont les entiers représentants les rayons des disques placées dans cette tour.<br/>
+                                Ecrire une fonction <mark class="code">hanoi(n, depart, arrive, intermediaire)</mark> affichant toutes les étapes pour résoudre le déplacement de <mark class="code">n</mark> disques du pilier <mark class="code">depart</mark> vers le pilier <mark class="code">arrive</mark> en utilisant le pilier <mark class="code">intermediaire</mark>.<br/>
+                                Les piliers sont des listes dont la première valeur est le nom du pilier puis les autres sont les entiers représentants les rayons des disques placées dans ce pilier.<br/>
                                 Pour résoudre le problème de la tour de Hanoï à 8 disques, nous appellerons <mark class="code">hanoi(["A", 8, 7, 6, 5, 4, 3, 2, 1], ["C"], ["B"])</mark><br/>
                                 Vous pourrez utiliser la fonction <mark class="code">affichage_hanoi.py</mark> pour afficher les étapes intermédiaires.
                             </li>
