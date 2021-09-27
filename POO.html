@@ -65,30 +65,87 @@
             </p>
             <h2>Déclarer un objet et lui associer des attributs</h2>
             <p>
-                Pour déclarer un objet, je dois décrire tous les éléments qui le composent. Ensuite, je pourrais créer plusieurs <mark>instances</mark> de cet objets en variant les valeurs données aux attributs. Voici un exemple pour créer l'objet <mark class=code>joueur</mark> qui permettra de stocker des cartes :
+                Pour déclarer un objet, je dois décrire tous les éléments qui le composent. Ensuite, je pourrais créer plusieurs <mark>instances</mark> de cet objets en variant les valeurs données aux attributs. Voici un exemple pour créer l'objet <mark class=code>Joueur</mark> qui permettra de stocker des cartes :
             </p>
             <div class="algo">
                 <input type="button" class="copier" value="📑" title="copier">
                 <p class="code">
-                    class joueur : <br/>
+                    class Joueur : <br/>
                     &nbsp;&nbsp;&nbsp;&nbsp;def __init__(self) :<br/>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.cartes = []<br/>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.nom = "Toto"<br/>
                 </p>
             </div>
             <p>
-                Le mot clé <mark class="mode">class</mark> permet de donner le nom de l'objet crée.<br/>
-                La fonction <mark class="mode">__init__</mark> est la fonction appelée lorsqu'une instance de l'objet sera crée.<br/>
-                Le mot clé <mark class="mode">self</mark> fait référence à l'objet lui-même.<br/>
-                Les attributs se déclarent grâce à un point. Exemple : <mark class="mode">self.cartes</mark>
+                Le mot clé <mark class="code">class</mark> permet de donner le nom de l'objet crée.<br/>
+                La fonction <mark class="code">__init__</mark> est la fonction appelée lorsqu'une instance de l'objet sera crée. Cette fonction s'appelle le <mark>constructeur</mark><br/>
+                Le mot clé <mark class="code">self</mark> fait référence à l'objet lui-même.<br/>
+                Les attributs se déclarent grâce à un point. Exemple : <mark class="code">self.cartes</mark>
             </p>
             <div class="exercice">
                 Ecrire le code permettant de déclarer les objets :
                 <ul>
-                    <li><mark class=code>carte</mark> avec les attributs <mark class=code>valeur</mark>, <mark class=code>couleur</mark> et <mark class=code>points</mark></li>
-                    <li></li>
-                    <li></li>
+                    <li><mark class=code>Carte</mark> avec les attributs <mark class=code>valeur</mark>, <mark class=code>couleur</mark> et <mark class=code>points</mark>. Pour le moment, choississez une valeur quelquonque pour chaque attribut.</li>
+                    <li><mark class=code>Pioche</mark> avec les attributs <mark class=code>cartes</mark> et <mark class=code>defausse</mark>. Pour le moment, la valeur de ces attributs est une liste vide.</li>
+                    <li><mark class=code>Jeu</mark> avec les attributs <mark class=code>joueurs</mark>, <mark class=code>nb_joueurs</mark>, <mark class=code>sens</mark> et <mark class=code>carte_en_cours</mark>. Pour le moment, choississez une valeur quelquonque pour chaque attribut.</li>
                 </ul>
+            </div>
+            <h2>Créer une instance d'un objet</h2>
+            <p>
+                On utilise le nom de l'objet pour crée une <mark>instance</mark> de l'objet. Exemple :
+                <div class="algo">
+                    <input type="button" class="copier" value="📑" title="copier">
+                    <p class="code">
+                        c = Carte()<br/>
+                        paul = Joueur()
+                    </p>
+                </div>
+            </p>
+            <p>
+                On accède aux attribut de l'objet en utilisant le point. Exemple :
+                <div class="algo">
+                    <input type="button" class="copier" value="📑" title="copier">
+                    <p class="code">
+                        print(c.valeur)<br/>
+                        print(c.couleur)<br/>
+                        print(paul.nom)<br/>
+                    </p>
+                </div>
+            </p>
+            <h2>Constructeur plus détaillé</h2>
+            <p>
+                On peut donner les valeurs des attributs en tant que paramètres du constructeur. Exemple :
+                <div class="algo">
+                    <input type="button" class="copier" value="📑" title="copier">
+                    <p class="code">
+                        class Joueur : <br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;def __init__(self<mark>, nom</mark>) :<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.cartes = []<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mark>self.nom = nom</mark><br/>
+                        paul = Joueur("Paul")
+                    </p>
+                </div>
+            </p>
+            <div class="exercice">
+                Modifier les constructeurs des objets <mark class=code>Carte</mark>, <mark class=code>Pioche</mark> et <mark class=code>Jeu</mark> pour ajouter si besoin des valeurs aux attributs.
+            </div>
+            <h2>Ajouter des méthodes aux objets</h2>
+            <p>
+                Les fonctions qui vont modifier l'objet sont aussi encapsulées avec cet objet. On parle alors de <mark>méthode</mark>.
+                <div class="algo">
+                    <input type="button" class="copier" value="📑" title="copier">
+                    <p class="code">
+                        class Joueur : <br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;def __init__(self, nom) :<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.cartes = []<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.nom = nom<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;def ajouter_carte(self, carte) :<br/>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.cartes.append(carte)<br/>
+                    </p>
+                </div>
+            </p>
+            <div class="exercice">
+                Créer les méthodes <mark class="code">jouer_carte</mark>, <mark class="code">piocher</mark>, <mark class="code">main_est_vide</mark>, <mark class="code">nombre_cartes</mark> pour l'objet <mark class="code">Joueur</mark>.
             </div>
         </div>
         <script type="text/javascript" src="script.js"></script>
