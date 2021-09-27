@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+    <body>
+        <div class="main">
+            <h1>Programmation Orienté Objet</h1>
+            <h2>Situation de départ</h2>
+            <p>
+                Je souhaite écrire un jeu de UNO et une intelligence artificielle pour occuper mes dimanche après-midi pluvieux.<br/>
+                Je m'organise à l'avance et je souhaite trouver un moyen de gérer les cartes, la pioche, et les mains des joueurs et le jeu en lui même.<br/>
+                Le choix du type de variable utilisé m'orientera vers une façon de programmer, et il me sera difficile de changer de point de vue sans tout devoir réécrire. Les principaux choix qui s'offrent à moi sont : les listes, les tuples ou les dictionnaires.<br/>
+                Voici mes attentes concernant les 4 éléments que je dois gérer :
+                <ul>
+                    <li>
+                        pour les cartes :
+                        <ul>
+                            <li>la valeur de la carte</li>
+                            <li>la couleur de la carte</li>
+                            <li>le nombre de points en fin de partie</li>
+                            <li>l'action à accomplir si c'est une carte spéciale</li>
+                        </ul>
+                    </li>
+                    <li>
+                        pour la pioche :
+                        <ul>
+                            <li>les cartes qui composent la pioche</li>
+                            <li>identifier si la pioche est vide</li>
+                            <li>piocher une carte</li>
+                            <li>mélanger la pioche</li>
+                            <li>ajouter des cartes</li>
+                        </ul>
+                    </li>
+                    <li>
+                        pour les joueurs :
+                        <ul>
+                            <li>le nom du joueur</li>
+                            <li>les cartes en main</li>
+                            <li>jouer une carte</li>
+                            <li>ajouter une carte à la main</li>
+                            <li>identifier si la main est vide</li>
+                        </ul>
+                    </li>
+                    <li>
+                        pour le jeu :
+                        <ul>
+                            <li>mise en place</li>
+                            <li>sens du jeu</li>
+                            <li>faire jouer les joueurs</li>
+                            <li>annoncer le vainqueur</li>
+                        </ul>
+                    </li>
+                </ul>
+            </p>
+            <p>
+                Chaque chose listée ci-dessus conduira à une variable ou à une fonction. A moins que ...
+            </p>
+            <p>
+                A moins que rassemble ces fonctions et ces variables dans uniquement 5 conteneurs : <mark class=code>carte</mark>, <mark class=code>joueur</mark>, <mark class=code>pioche</mark> et <mark class=code>jeu</mark>.<br/>
+                La programmation orienté objet permet de créer ces conteneurs qui s'appellent alors des <mark>objets</mark>.<br/>
+                Les variables contenues dans ces objets sont des <mark>attributs</mark>.<br/>
+                Les fonctions contenues dans ces objets sont des <mark>méthodes</mark>.
+            </p>
+            <h2>Déclarer un objet et lui associer des attributs</h2>
+            <p>
+                Pour déclarer un objet, je dois décrire tous les éléments qui le composent. Ensuite, je pourrais créer plusieurs <mark>instances</mark> de cet objets en variant les valeurs données aux attributs. Voici un exemple pour créer l'objet <mark class=code>main</mark> qui permettra de stocker des cartes :
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    class main : <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;def __init__(self) :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.cartes = []<br/>
+                </p>
+            </div>
+            <p>
+                Le mot clé <mark class="mode">class</mark> permet de donner le nom de l'objet crée.<br/>
+                La fonction <mark class="mode">__init__</mark> est la fonction appelée lorsqu'une instance de l'objet sera crée.<br/>
+                Le mot clé <mark class="mode">self</mark> fait référence à l'objet lui-même.<br/>
+                Les attributs se déclarent grâce à un point. Exemple : <mark class="mode">self.cartes</mark>
+            </p>
+            <div class="exercice">
+                Ecrire le code permettant de déclarer les objets :
+                <ul>
+                    <li><mark class=code>carte</mark> avec les attributs <mark class=code>valeur</mark>, <mark class=code>couleur</mark> et <mark class=code>points</mark></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+        <script type="text/javascript" src="script.js"></script>
+    </body>
+</html>
