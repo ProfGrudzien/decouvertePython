@@ -139,14 +139,39 @@
                         &nbsp;&nbsp;&nbsp;&nbsp;def __init__(self, nom) :<br/>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.cartes = []<br/>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.nom = nom<br/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;def ajouter_carte(self, carte) :<br/>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.cartes.append(carte)<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;def jouer_carte(self, carte) :<br/>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.cartes.remove(carte)<br/>
+                    </p>
+                </div>
+                On retrouve le mot clé <mark class="code">def</mark> aussi utilisé pour définir une fonction. Le premier paramètre est <mark class="code">self</mark>, pour faire référence à l'objet lui-même.
+            </p>
+            <div class="exercice">
+                Créer les méthodes <mark class="code">piocher</mark>, <mark class="code">main_est_vide</mark>, <mark class="code">nombre_cartes</mark> et <mark class="code">trier_cartes</mark> pour l'objet <mark class="code">Joueur</mark>.
+            </div>
+            <div class="exercice">
+                Ajouter la méthode <mark class="code">est_jouable</mark> à l'objet <mark class="code">Carte</mark>. Cette méthode prend en paramètre une valeur et une couleur et vérifie si la carte elle-même peut être jouée.
+            </div>
+            <div class="exercice">
+                Créer les méthodes <mark class="code">est_vide</mark>, <mark class="code">melanger</mark>, <mark class="code">ajouter_carte</mark>, <mark class="code">reremplir</mark>, <mark class="code">piocher</mark> et <mark class="code">defausser</mark> pour l'objet <mark class="code">Pioche</mark>.
+            </div>
+            <h2>Méthodes spéciales</h2>
+            <p>
+                Quelques méthodes sont créées pour tous les objets.
+                Si l'on ne réécrit pas ces méthodes, le comportement par défaut est utilisé. C'est par exemple le cas de la méthode <mark class="code">__str__</mark> qui retourne le texte à afficher lorsque l'on utilise la fonction <mark class="code">print</mark> par exemple. On peut réécrire cette fonction, qui doit retourner une chaîne de caractères.
+                <div class="algo">
+                    <input type="button" class="copier" value="📑" title="copier">
+                    <p class="code">
+                        class Joueur : <br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;def __init__(self<mark>, nom</mark>) :<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.cartes = []<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mark>self.nom = nom</mark><br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;def __str__(self) :<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return self.nom<br/>
+                        paul = Joueur("Paul")<br/>
+                        print(paul) <font class="commentaire"># affichage attendu : Paul</font>
                     </p>
                 </div>
             </p>
-            <div class="exercice">
-                Créer les méthodes <mark class="code">jouer_carte</mark>, <mark class="code">piocher</mark>, <mark class="code">main_est_vide</mark>, <mark class="code">nombre_cartes</mark> pour l'objet <mark class="code">Joueur</mark>.
-            </div>
         </div>
         <script type="text/javascript" src="script.js"></script>
     </body>
