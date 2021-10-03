@@ -196,6 +196,77 @@
                 </ol>
                 Remarque : sous linus ou sous replit.com, vous pouvez aussi essayer <a href="UNO_console_couleur.py"><mark class="code">UNO_console_couleur.py</mark></a>.
             </div>
+            <h3>Le jeu de la vie de Conway</h3>
+            <p>
+                Le jeu de la vie de Conway est un automate cellulaire imaginé par John Horton Conway en 1970.<br/>
+                Les cases d'un tableau représentent des cellules qui peuvent être dans un des deux états suivant : vivante ou morte.<br/>
+                Une fois la situation initiale donnée, ces cellules évoluent génération après génération en suivant uniquement les deux règles suivantes :
+                <ul>
+                    <li>Une cellule morte devient vivante uniquement si elle a exactement 3 cellules voisines vivantes.</li>
+                    <li>Une cellule vivante reste vivante uniquement si elle a 2 ou 3 cellules voisines vivantes.</li>
+                </ul>
+                Exceptées les cellules sur les bords du tableau, chaque cellule admet 8 voisines : 2 verticalement, 2 horizontalement et 4 en diagonale.
+            </p>
+            <div class="exercice">
+                Définir un objet <mark class="code">Grille</mark> qui regroupe (au minimum) les attributs et méthodes suivantes.
+                <ul>
+                    <li><mark class="code">largeur</mark> et <mark class="code">hauteur</mark> : les dimensions de la grille</li>
+                    <li><mark class="code">lire_valeur(i ,j)</mark> qui retourne la valeur stockée dans la case de la ligne <mark class="code">i</mark> et de la colonne <mark class="code">j</mark></li>
+                    <li><mark class="code">ecrire_valeur(i, j, valeur)</mark> qui modifie la valeur stockée dans la case de la ligne <mark class="code">i</mark> et de la colonne <mark class="code">j</mark></li>
+                    <li><mark class="code">voisins(i, j)</mark> qui retourne la liste des cases voisines</li>
+                </ul>
+                Lors de l'initialisation d'une grille, l'utilisateur donne :
+                <ul>
+                    <li>la largeur de la grille</li>
+                    <li>la hauteur de la grille</li>
+                    <li>une fonction ou un constructeur prenant comme paramètres <mark class="code">i</mark> et <mark class="code">j</mark> et permettant de calculer la valeur initiale de la case de la ligne <mark class="code">i</mark> et de la colonne <mark class="code">j</mark></li>
+                </ul>
+                Enregistrer le programme dans un fichier <mark class="code">grille.py</mark>.
+            </div>
+            <div class="exercice">
+                Définir un objet <mark class="code">Cellule</mark> qui regroupe (au minimum) les attributs et méthodes suivantes.
+                <ul>
+                    <li><mark class="code">i</mark> et <mark class="code">j</mark> : les coordonnées de la cellule</li>
+                    <li><mark class="code">naitre()</mark> qui permet de faire passer la cellule à l'état vivant</li>
+                    <li><mark class="code">mourir()</mark> qui permet de faire passer la cellule à l'état mort</li>
+                    <li><mark class="code">est_en_vie()</mark> qui retourne <mark class="code">True</mark> si la cellule est à l’état vivant, <mark class="code">False</mark> sinon.</li>
+                    <li><mark class="code">calcul_evolution()</mark> qui permet de calculer l'état à la prochaine génération</li>
+                    <li><mark class="code">evoluer()</mark> qui permet de faire passer la cellule dans son nouvel état</li>
+                </ul>
+                Lors de l'initialisation d'une cellule, l'utilisateur donne uniquement 2 paramètres&nbsp;: les coordonnées <mark class="code">i</mark> et <mark class="code">j</mark> de la cellule.<br/>
+            Remarque : le calcul de l'évolution est séparé de l'évolution lui même car ce calcul doit être effectué simultanément sur toutes les cellules de la grille en prenant en compte l'état actuel de la cellule et non celui de la prochaine génération.<br/>
+                Enregistrer le programme dans un fichier <mark class="code">Conway.py</mark>.
+            </div>
+            <div class="exercice">
+                Vérifions que les fichiers des exercices précédents s'intègrent bien avec l'interface graphique prévue :
+                <ol>
+                    <li>Enregistrer l'interface graphique <a href="AutomateCellulaire.py"><mark class="code">AutomateCellulaire.py</mark></a> dans le même dossier que les fichiers <mark class="code">grille.py</mark> et <mark class="code">Conway.py</mark></li>
+                    <li>Toujours dans ce même dossier, créer un fichier <mark class="code">main.py</mark> contenant les lignes suivantes :</li>
+                    <div class="algo">
+                        <input type="button" class="copier" value="📑" title="copier">
+                        <p class="code">
+                            from AutomateCellulaire import automate<br/>
+                            &nbsp;<br/>
+                            V = [(3,3), (3,4), (3,5)] <font class="commentaire"># liste des coordonnées des cellules initialement vivantes</font><br/>
+                            automate(15, 30, 30, V)
+                        </p>
+                    </div>
+                    <li>Exécuter le programme du fichier <mark class="code">main.py</mark> pour voir l'évolution de la première structure intéressante : le clignotant (blinker)</li>
+                    <li>En modifiant la liste <mark class="code">V</mark>, vous pouvez essayer d'autres structures intéressantes comme :
+                        <ul>
+                            <li>un bloc de 2 sur 2 cellules</li>
+                            <li>un bloc de 3 sur 3 cellules</li>
+                            <li>un bloc de 5 sur 5 cellules</li>
+                            <li>un bloc de 6 sur 6 cellules</li>
+                            <li>un bloc de 9 sur 9 cellules</li>
+                            <li>un bloc de 17 sur 17 cellules</li>
+                            <li>un bloc de 20 sur 20 cellules</li>
+                            <li>un ligne de 10 cellules</li>
+                            <li>un ligne de 16 cellules</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
             <h3>Votre jeu de cartes ou de tuiles</h3>
             <div class="exercice">
                 Créer toutes les classes nécessaires pour gérer le jeu de cartes ou de tuiles de votre choix. Quelques idées :
