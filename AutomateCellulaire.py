@@ -3,7 +3,7 @@
 
 from tkinter import *
 from grille import Grille
-from Conway import Cellule_Conway as Cellule
+from Conway import Cellule
 
 def automate(cote, hauteur, largeur, coordonnees_cellules_vivantes) :
 
