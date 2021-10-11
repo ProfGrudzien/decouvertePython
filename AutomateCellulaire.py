@@ -3,7 +3,7 @@
 
 from tkinter import *
 from grille import Grille
-from Conway import Cellule
+from Conway import Cellule_Conway as Cellule
 
 def automate(cote, hauteur, largeur, coordonnees_cellules_vivantes) :
 
@@ -55,9 +55,18 @@ def automate(cote, hauteur, largeur, coordonnees_cellules_vivantes) :
             cellule.naitre()
         dessiner()
     
+    def animer() :
+        fenetre.continuer = not fenetre.continuer
+        start()
+    
+    def start() :
+        if fenetre.continuer :
+            suivant()
+            fenetre.after(10, start)
    
     fenetre = Tk()
     fenetre.title("Automate cellulaire")
+    fenetre.continuer = False
 
     canvas = Canvas(fenetre, width=cote*largeur, height=cote*hauteur)
     canvas.pack()
@@ -66,14 +75,20 @@ def automate(cote, hauteur, largeur, coordonnees_cellules_vivantes) :
         for j in range(largeur) :
             grille.lire_valeur(i,j).rectangle = canvas.create_rectangle((i*cote, j*cote, (i+1)*cote, (j+1)*cote), outline="gray", fill="white")
 
-    bouton_suivant = Button(fenetre, text="évoluer", command = suivant)
-    bouton_suivant.pack()
+    boite = Frame(fenetre)
+    boite.pack()
 
-    bouton_suivant_100 = Button(fenetre, text="évoluer 100 fois", command = suivant_100)
-    bouton_suivant_100.pack()
+    bouton_suivant = Button(boite, text="évoluer", command = suivant)
+    bouton_suivant.pack(side = LEFT)
 
-    bouton_redemarrer = Button(fenetre, text="redemarrer", command = redemarrer)
-    bouton_redemarrer.pack()
+    bouton_suivant_100 = Button(boite, text="évoluer 100 fois", command = suivant_100)
+    bouton_suivant_100.pack(side = LEFT)
+
+    bouton_redemarrer = Button(boite, text="redemarrer", command = redemarrer)
+    bouton_redemarrer.pack(side = LEFT)
+
+    bouton_animation = Button(boite, text="start/stop", command = animer)
+    bouton_animation.pack(side = LEFT)
 
     dessiner()
 
