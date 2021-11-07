@@ -1,0 +1,98 @@
+table {
+    border-collapse: separate;
+    border-spacing: 4px 10px;
+    margin: auto;
+}
+
+tr {
+    margin-bottom: 20px;
+}
+
+td {
+    border: 1px solid black;
+    background-color: #ff6347;
+    height: 40px;
+    width: 50px;
+    text-align: center;
+    empty-cells: hide;
+    padding: 2px;
+}
+
+td.cut_left {
+    border-right: 3px solid black;
+    padding-right: 0px;
+}
+
+td.cut_right {
+    border-left: 3px solid black;
+    padding-left: 0px;
+}
+
+td.green {
+    background-color: #98fb98;
+}
+
+input[type=button] {
+    height: 40px;
+    font-size: 16pt;
+}
+
+input[type=range] {
+    width: 300px;
+}
+
+#pile-container {
+    width: 650px;
+    height: 300px;
+    margin-top: 0px;
+    display: block;
+    border: 1px solid;
+    position: relative;
+    overflow: hidden;
+    margin: auto;
+}
+
+#table-container {
+    width: 970px;
+    height: 300px;
+    margin-top: 0px;
+    display: block;
+    position: relative;
+    vertical-align: bottom;
+    margin: auto;
+    transform: scale(0.8);
+}
+
+#pile {
+    width: 100%;
+    margin: 10px;
+    text-align: left;
+    position: absolute;
+    bottom: 0px;
+}
+
+.centrer {
+    text-align: center;
+}
+
+.empile{
+    animation-duration: 1s;
+    animation-name: slidein;
+}
+
+.depile{
+    animation-duration: 1s;
+    animation-name: slideout;
+    visibility: hidden;
+}
+
+@keyframes slidein {
+    from {padding-bottom: 230px}
+    to {padding-bottom: 0px}
+}
+
+@keyframes slideout {
+    from {padding-bottom: 0px; visibility: visible;}
+    to {padding-bottom: 230px;}
+}
+

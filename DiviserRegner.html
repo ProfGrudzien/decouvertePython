@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="style.css"/>
+        <link rel="stylesheet" href="DiviserRegner.css"/>
+    </head>
+    <body>
+        <div class="main">
+            <h1>Diviser pour regner</h1>
+            <p>
+                La programmation « diviser pour régner » est une méthode de programmation qui consiste à découper un problème en sous-problèmes très faciles à résoudre.<br/>
+                Ces programmes se décomposent en trois étapes :
+                <ul>
+                    <li>Diviser : découper le problème principal en sous-problèmes</li>
+                    <li>Régner : résoudre les sous-problèmes séparément</li>
+                    <li>Combiner : utiliser les réponses des sous-problèmes pour construire réponse au problème principal</li>
+                </ul>
+            </p>
+            <h2>Exponentiation rapide</h2>
+            <p>
+                Le calcul de la puissance d'un nombre <mark class="code">a</mark> par un exposant entier naturel <mark class=code>n</mark> peut se faire à l'aide d'une boucle. Dans ce cas, l'algorithmie est de complexité linéaire <mark class=code>O(n)</mark>.
+            </p>
+            <p>
+                Le principe de l'exponentiation rapide est le suivant :
+                <ul>
+                    <li>si <mark class=code>n</mark> est égal à <mark class=code>0</mark>, alors <mark class=code>a<sup>n</sup> = 1</mark></li>
+                    <li>si <mark class=code>n</mark> est pair (et non nul) alors <mark class=code>a<sup>n</sup> = (a &times; a)<sup>n/2</sup></mark></li>
+                    <li>si <mark class=code>n</mark> est impair alors <mark class=code>a<sup>n</sup> = a &times; a<sup>n-1</sup> </mark></li>
+                </ul>
+            </p>
+            <div class="exercice">
+                <ol>
+                    <li>Ecrire une fonction récursive <mark class="code">puissance(a, n)</mark> qui retourne la valeur de <mark class=code>a<sup>n</sup></mark> grâce au principe de l'exponentiation rapide.</li>
+                    <li>Construire la pile des appels récursifs lors de l'appel de <mark class="code">puissance(3, 7)</mark></li>
+                    <li>Combien de multiplications sont effectuées lors du calcul de <mark class=code>3<sup>7</sup></mark> en utilisant une boucle simple ?</li>
+                    <li>Combien de multiplications sont effectuées lors du calcul de <mark class=code>3<sup>7</sup></mark> en utilisant l'exponentiation rapide ?</li>
+                </ol>
+            </div>
+            <h2>Tri Fusion</h2>
+            <p>
+                Les algorithmes de tri vues en première sont de complexité quadratique (<mark class="code">O(n<sup>2</sup>)</mark>).
+            </p>
+            <p>
+                Le tri fusion exploite la programmation diviser pour régner afin de réduire cette complexité. Il est basé sur :
+                <ul>
+                    <li>Diviser : séparer la liste en deux listes de longueurs équivalentes</li>
+                    <li>Régner : trier séparément ces deux listes</li>
+                    <li>Combiner : reconstituer la liste entière triée à partir des deux moitiés triées (la fusion)</li>
+                </ul>
+            </p>
+            <div class="exercice">
+                On souhaite écrire la fonction permettant de fusionner deux listes triées <mark class="code">L1</mark> et <mark class="code">L2</mark> en une seule liste <mark class="code">L</mark> triée.
+                <ol>
+                    <li>Où se situe la première valeur devant apparaître dans la liste <mark class="code">L</mark> ?</li>
+                    <li>On doit parcourir les deux listes <mark class="code">L1</mark> et <mark class="code">L2</mark> afin d'en extraire à chaque fois la plus petite valeur. Quelle type de boucle semble être la plus indiquée ?</li>
+                    <li>Quelles sont les conditions d'arrêt de cette boucle ?</li>
+                    <li>A la fin de cette boucle, a-t-on parcouru toutes les valeurs ?</li>
+                    <li>Ecrire une fonction <mark class="code">fusion(L1, L2)</mark> qui retourne le résultat de la fusion de deux listes <mark class="code">L1</mark> et <mark class="code">L2</mark></li>
+                    <li>Combien de comparaisons sont effectuées pour la fusion de deux listes ne <mark class="code">n</mark> éléments ?</li>
+                </ol>
+            </div>
+            <div class="exercice">
+                Compléter la fonction <mark class="code">tri_fusion</mark> suivante :
+                <div class="algo">
+                    <input type="button" class="copier" value="📑" title="copier">
+                    <p class="code">
+                        def tri_fusion(L) : <br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<font class="commentaire"># critère d'arrêt : la liste contient 0 ou 1 élément</font><br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;if len(L) > 1 :<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font class="commentaire"># diviser :</font><br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font class="commentaire"># régner :</font><br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font class="commentaire"># combiner :</font><br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </p>
+                </div>
+            </div>
+            <p>
+                Voici une animation présentant la pile des appels récursifs de la fonction <mark class="code">tri_fusion</mark> :
+                <div class="animation">
+                    <div id="table-container">
+                        <table>
+                            <tr>
+                                <td id="0-0"></td>
+                                <td id="0-1"></td>
+                                <td id="0-2"></td>
+                                <td id="0-3"></td>
+                                <td id="0-4"></td>
+                                <td id="0-5"></td>
+                                <td id="0-6"></td>
+                                <td id="0-7"></td>
+                                <td id="0-8"></td>
+                                <td id="0-9"></td>
+                                <td id="0-10"></td>
+                                <td id="0-11"></td>
+                                <td id="0-12"></td>
+                                <td id="0-13"></td>
+                                <td id="0-14"></td>
+                                <td id="0-15"></td>
+                            </tr>
+                            <tr>
+                                <td id="1-0"></td>
+                                <td id="1-1"></td>
+                                <td id="1-2"></td>
+                                <td id="1-3"></td>
+                                <td id="1-4"></td>
+                                <td id="1-5"></td>
+                                <td id="1-6"></td>
+                                <td id="1-7"></td>
+                                <td id="1-8"></td>
+                                <td id="1-9"></td>
+                                <td id="1-10"></td>
+                                <td id="1-11"></td>
+                                <td id="1-12"></td>
+                                <td id="1-13"></td>
+                                <td id="1-14"></td>
+                                <td id="1-15"></td>
+                            </tr>
+                            <tr>
+                                <td id="2-0"></td>
+                                <td id="2-1"></td>
+                                <td id="2-2"></td>
+                                <td id="2-3"></td>
+                                <td id="2-4"></td>
+                                <td id="2-5"></td>
+                                <td id="2-6"></td>
+                                <td id="2-7"></td>
+                                <td id="2-8"></td>
+                                <td id="2-9"></td>
+                                <td id="2-10"></td>
+                                <td id="2-11"></td>
+                                <td id="2-12"></td>
+                                <td id="2-13"></td>
+                                <td id="2-14"></td>
+                                <td id="2-15"></td>
+                            </tr>
+                            <tr>
+                                <td id="3-0"></td>
+                                <td id="3-1"></td>
+                                <td id="3-2"></td>
+                                <td id="3-3"></td>
+                                <td id="3-4"></td>
+                                <td id="3-5"></td>
+                                <td id="3-6"></td>
+                                <td id="3-7"></td>
+                                <td id="3-8"></td>
+                                <td id="3-9"></td>
+                                <td id="3-10"></td>
+                                <td id="3-11"></td>
+                                <td id="3-12"></td>
+                                <td id="3-13"></td>
+                                <td id="3-14"></td>
+                                <td id="3-15"></td>
+                            </tr>
+                            <tr>
+                                <td id="4-0"></td>
+                                <td id="4-1"></td>
+                                <td id="4-2"></td>
+                                <td id="4-3"></td>
+                                <td id="4-4"></td>
+                                <td id="4-5"></td>
+                                <td id="4-6"></td>
+                                <td id="4-7"></td>
+                                <td id="4-8"></td>
+                                <td id="4-9"></td>
+                                <td id="4-10"></td>
+                                <td id="4-11"></td>
+                                <td id="4-12"></td>
+                                <td id="4-13"></td>
+                                <td id="4-14"></td>
+                                <td id="4-15"></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="pile-container">
+                        <div id="pile"></div>
+                    </div>
+                </div>
+                <div class="centrer">
+                    <input id="btn-prev" type="button" value="<"/>
+                    <input type="range" id="index" min="0" max="11">
+                    <input id="btn-next" type="button" value=">"/>
+                </div>
+                <p class="centrer">Nombre de comparaisons : <span id="nbComparaisons"></span></p>
+            </p>
+            <p>
+                Le tri fusion est un algorithme de complexité <mark class="code">O(nlog(n))</mark>. Démonstration :
+            </p>
+            <p>
+              Pour tout <mark class="code">p ⩾ 0</mark>, on note <mark class="code">C<sub>p</sub></mark> le nombre de comparaisons pour un tri fusion récursif d'une liste de <mark class="code">2<sup>p</sup></mark> éléments.
+            </p>
+            <p>
+                Pour <mark class="code">p = 0</mark>, cet algorithme n'effectue aucune comparaison. Donc <mark class="code">C<sub>0</sub> = 0</mark>.
+            </p>
+            <p>
+                Pour <mark class="code">p > 0</mark>, cet algorithme appelle deux tris fusions récursifs sur des listes de <mark class="code">2<sup>p-1</sup></mark> éléments et une fusion de deux listes de <mark class="code">2<sup>p-1</sup></mark> éléments.<br/>
+                On a donc <mark class="code">C<sub>p</sub> = 2 × C<sub>p-1</sub> + 2 × 2<sup>p-1</sup> = 2 × C<sub>p-1</sub> + 2<sup>p</sup></mark> comparaisons.
+            </p>
+            <p>
+                On introduit la suite annexe définie pour <mark class="code">p ⩾ 0</mark> par <mark class="code">u<sub>p</sub> = <span class="frac"><span class="haut">C<sub>p</sub></span><span class="bas">2<sup>p</sup></span></span></mark>. On a donc :<br/>
+                <mark class="code">u<sub>0</sub> = <span class="frac"><span class="haut">C<sub>0</sub></span><span class="bas">2</span></span> = <span class="frac"><span class="haut">0</span><span class="bas">2</span></span> = 0</mark>
+                et pour tout <mark class="code">p > 0</mark> :
+                <mark class="code">u<sub>p</sub>
+                = <span class="frac"><span class="haut">C<sub>p</sub></span><span class="bas">2<sup>p</sup></span></span>
+                = <span class="frac"><span class="haut">2 × C<sub>p-1</sub> + 2<sup>p</sup></span><span class="bas">2<sup>p</sup></span></span>
+                = <span class="frac"><span class="haut">2 × C<sub>p-1</sub></span><span class="bas">2<sup>p</sup></span></span> + <span class="frac"><span class="haut">2<sup>p</sup></span><span class="bas">2<sup>p</sup></span></span>
+                = <span class="frac"><span class="haut">C<sub>p-1</sub></span><span class="bas">2<sup>p-1</sup></span></span> + 1
+                = u<sub>p-1</sub> + 1</mark>
+            </p>
+            <p>
+                On reconnaît ici la définition par récurrence d'une suite arithmétique de raison <mark class="code">1</mark> et de premier terme <mark class="code">u<sub>0</sub> = 0</mark>.<br/>
+                Donc pour tout <mark class="code">p ⩾ 1</mark>, on a <mark class="code">u<sub>p</sub> = p</mark>
+            </p>
+            <p>
+                Par définition de la suite <mark class="code">u<sub>p</sub></mark>, on a :
+                <mark class="code">C<sub>p</sub> = u<sub>p</sub> × 2<sup>p</sup> = p × 2<sup>p</sup></mark>
+            </p>
+            <p>
+                En notant <mark class="code">N = 2<sup>p</sup></mark>, on a <mark class="code">p = log<sub>2</sub>(N)</mark>, et <mark class="code">C<sub>p</sub></mark> s'écrit :
+                <mark class="code">log<sub>2</sub>(N) × N = N log<sub>2</sub>(N)</mark>
+            </p>
+            <p>
+                La complexité du tri fusion récursif est <mark class="code">O(nlog(n))</mark>.
+            </p>
+            <h2>Ordonnancement de chaînes de montage</h2>
+            <p>
+                Nous allons résoudre un même problème en utilisant les différentes méthodes de résolutions vues jusqu'ici.
+            </p>
+            <p>
+                Voici la situation : en temps normal, dans une usine de fabrication automobile, les voitures sont construites en suivant une seule ligne de montage. Ces chaînes de montages réalisent la même voiture, qui passe de poste en poste. Le remplacement des outils par des outils plus performant implique que le temps de montage sur les postes réalisant la même opération sur deux chaînes différentes ne sont pas identiques.<br/>
+                Le directeur de l'usine doit produire en urgence une voiture. Pour accélérer les temps de fabrication, il décide de la changer de chaîne de montage au moment opportun. Il doit donc déterminer entre quels postes changer de chaîne pour minimiser le temps de fabrication.
+            </p>
+            <p>
+                Voici le schéma des chaînes de montage que nous utiliserons dans ces exercices.
+                <img src="images/imgChaineMontage.png"></img>
+                Les nombres indiquent les temps de montages sur les postes ou bien les temps nécessaires aux changement de postes.
+            </p>
+            <h3>Mise en place des objets utilisés pour toutes les solutions</h3>
+            <div class="exercice">
+                Ecrire une classe <mark class="code">Poste</mark> possédants les attributs suivants :
+                <ul>
+                    <li><mark class="code">nom</mark> : le nom du poste</li>
+                    <li><mark class="code">temps_execution</mark> : le temps de montage de ce poste</li>
+                    <li><mark class="code">chaine</mark> : le numéro de la chaîne de ce poste</li>
+                    <li><mark class="code">postes_precedents</mark> : un dictionnaire dont les clés seront les postes précédents et les valeurs les temps de déplacement entre le poste précédent et ce poste</li>
+                    <li><mark class="code">postes_suivants</mark> : un dictionnaire dont les clés seront les postes suivants et les valeurs les temps de déplacement entre ce poste et le poste suivant</li>
+                </ul>
+                Le constructeur prendra en paramètre :
+                <ul>
+                    <li><mark class="code">nom</mark> : le nom du poste</li>
+                    <li><mark class="code">temps_execution</mark> : le temps de montage de ce poste</li>
+                    <li><mark class="code">numero_chaine</mark> : le numéro de la chaîne de ce poste</li>
+                </ul>
+            </div>
+            <div class="exercice">
+                Ecrire une fonction <mark class="code">ajouter_transition(poste1, poste2, temps_passage)</mark> qui met à jour les dictionnaires des objets <mark class="code">poste1</mark> et <mark class="code">poste2</mark> de classe <mark class="code">Poste</mark>.
+            </div>
+            <div class="exercice">
+                Utiliser la classe <mark class="code">Poste</mark> et la fonction <mark class="code">ajouter_transition</mark> pour saisir les informations disponible sur le schéma ci-dessus.
+            </div>
+            <h3>Naïf itératif et naïf récursif</h3>
+            <p>Une approche naïve consiste à tester toutes les possibilités afin de trouver la plus rapide.<br/>
+               Dans notre cas, il n'y a que <mark class="code">2<sup>4</sup>=16</mark> possibilités, mais cette approche est inenvisageable sur des chaînes de montages possédants trop de postes.
+            </p>
+            <div class="exercice">
+                A chaque étape de fabrication, le directeur à le choix entre deux postes. En représentant par un <mark class="code">1</mark> les postes de la chaîne numéro 1 et par un <mark class="code">0</mark> les postes de la chaîne numéro 2, chaque chemin est représenté par une nombre en binaire de 4 bits.<br/>
+                Une simple boucle permettra ensuite de calculer les temps de montage en suivant les 16 chaînes possibles et de trouver la plus rapide.
+                <ol>
+                    <li>Ecrire une fonction <mark class="code">enBinaire(n, b=8)</mark> qui convertit un nombre <mark class="code">n</mark> en binaire puis complète si besoin cette écriture pour avoir un minimum de <mark class="code">b</mark> bits.</li>
+                    <li>Ecrire une fonction <mark class="code">temps_montage(chemin)</mark> qui retourne le temps de montage en suivant le chemin donné sous forme de nombre binaire à 4 bits.</li>
+                    <li>Ecrire les instructions permettant de trouver le chemin optimal présentant le temps de montage le plus petit.</li>
+                </ol>
+            </div>
+            <div class="exercice">
+                <ol>
+                    <li>
+                        Ecrire une fonction<br/> <mark class="code">temps_montage(poste_actuel, chemin_actuel="", temps_actuel=0, liste_resultat=[])</mark> qui retournera la liste des couples <mark class="code">(chemin, temps_de_montage)</mark> pour tous les chemins partant du <mark class="code">poste_actuel</mark> et allant jusqu'au poste final.
+                    </li>
+                    <li>
+                        Utiliser cette fonction pour trouver la chaîne la plus rapide.
+                    </li>
+                </ol>
+            </div>
+            <h3>Algorithme glouton</h3>
+            <p>
+                Un algorithme glouton consiste à choisir à chaque étape la solution qui est optimale.
+            </p>
+            <p>
+                Attention, la solution globale obtenue n'est pas toujours la solution optimale.
+            </p>
+            <div class="exercice">
+                <ol>
+                    <li>En regardant uniquement les postes suivants, comment choisir le poste qui semble être le plus judicieux ?</li>
+                    <li>Ecrire les instructions permettant de résoudre ce problème par un algorithme glouton.</li>
+                    <li>La solution donnée par l'algorithme glouton pour cette situation est-elle la solution optimale ?</li>
+                </ol>
+            </div>
+            <h3>Algorithme randomisé</h3>
+            <p>
+                Les algorithmes randomisés sont utiles pour les problèmes d'optimisation lorsque le nombre de cas est trop important pour tous les tester. Il consiste à en choisir aléatoirement quelques uns et de choisir la meilleurs des solutions testées. 
+            </p>
+            <div class="exercice">
+                <ol>
+                    <li>Réutiliser les fonctions de la résolution naïve basée sur le binaire pour teste aléatoirement 10 chemins possibles et afficher le meilleur de ces 10 chemins.</li>
+                    <li>En lançant le programme 5 fois, dans combien de cas trouve-t-on une solution au moins aussi bonne que la solution donnée par l'algorithme glouton ?</li>
+                </ol>
+            </div>
+            <div class="exercice">
+                <ol>
+                    <li>Ecrire une fonction <mark class="code">temps_montage_chemin_aleatoire(depart)</mark> retournant le couple <mark class="code">(chemin, temps_de_montage)</mark> d'un chemin choisit de façon aléatoire en choisissant à chaque étape un poste parmi les postes suivant disponibles.</li>
+                </ol>
+            </div>
+            <h3>Programmation dynamique</h3>
+            <div class="exercice">
+                Ecrire une fonction récursive utilisant l'observation suivante : « le meilleur chemin passe par l'un des postes précédents au poste actuel ». Utilisez un dictionnaire pour éviter de recalculer des temps de montage déjà calculés.
+            </div>
+        </div>
+        <script type="text/javascript" src="script.js"></script>
+        <script type="text/javascript" src="DiviserRegner.js"></script>
+    </body>
+</html>

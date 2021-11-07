@@ -114,13 +114,14 @@ p.code{
 }
 
 mark.code{
+    display: inline-block;
     font-family : monospace;
     font-size: 12pt;
     color: inherit;
     background-color: #f3f3f3;
-    padding-left: 2px;
-    padding-right: 2px;
     border: 1px solid gray;
+    margin: 1px 0px;
+    padding: 0px 3px;
 }
 
 .centrer {
