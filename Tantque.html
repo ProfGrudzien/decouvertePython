@@ -66,11 +66,11 @@
                 Cette fonction doit redemander un identifiant jusqu'à ce que l'utilisateur donne un identifiant non vide (différent de <mark class="code">""</mark>)
             </div>
             <div class="exercice">
-                La conjecture de Syracuse suggère que, pour tout nombre de départ strictement positif, la suite de Collatz atteint toujours la valeur 1. Par exemple, pour la valeur de départ 5, les 10 termes suivants sont : 16, 8, 4, 2, 1, 4, 2, 1, 4, 2. La valeur 1 est atteinte à la cinquième itération. Ecrire une fonction <mark class="code">Syracuse(n)</mark> qui affiche tous les termes de la suite de Collatz pour la valeur de départ <mark class="code">n</mark>. Vous pourrez encore une fois réutiliser la fonction <mark class="code">valeur_suivante_collatz</mark>.
+                La conjecture de Syracuse suggère que, pour tout nombre de départ strictement positif, la suite de Collatz atteint toujours la valeur 1. Par exemple, pour la valeur de départ 5, les 10 termes suivants sont : 16, 8, 4, 2, 1, 4, 2, 1, 4, 2. La valeur 1 est atteinte à la cinquième itération. Ecrire une fonction <mark class="code">Syracuse(n)</mark> qui affiche tous les termes de la suite de Collatz pour la valeur de départ <mark class="code">n</mark> jusqu'à obtenir 1. Vous pourrez encore une fois réutiliser la fonction <mark class="code">valeur_suivante_collatz</mark>.
                 <div class="algo">
                     <input type="button" class="copier" value="📑" title="copier">
                     <p class="code">
-                        valeur_suivante_collatz(a) : <br/>
+                        def valeur_suivante_collatz(a) : <br/>
                         &nbsp;&nbsp;&nbsp;&nbsp;if a%2 == 0 : <br/>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return a//2 <br/>
                         &nbsp;&nbsp;&nbsp;&nbsp;return 3*a + 1 <br/>
