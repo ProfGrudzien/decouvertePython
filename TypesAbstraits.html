@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+    <body>
+        <div class="main">
+            <h1>Types abstraits</h1>
+            <h2>Les types abstraits</h2>
+            <p>
+                Les langages de programmation utilisent quelques types primitifs :
+                <ul>
+                    <li>les nombres entiers</li>
+                    <li>les nombres flottants</li>
+                    <li>les booléens</li>
+                    <li>les chaînes de caractères</li>
+                </ul>
+                Les autres types (tuples, listes, dictionnaires, ...) sont des types plus élaborés.
+            </p>
+            <p>
+                Selon les situations, on a besoin de ces types élaborés. Leur implémentation peut être prévu ou non dans le langage de programmation utilisé. Si ce n'est pas le cas, on peut programmer un moyen pour les utiliser. L'utilisation ne dépend donc pas de la façon dont ils sont implémentés du moment que ces implémentations proposent tous les outils nécessaire au non fonctionnement de ces types élaborés. On parle alors de types abstraits.
+            </p>
+            <p>
+                Cette année, nous étudierons 4 familles de types abstraits :
+                <ul>
+                    <li>les structures linéaires : les piles, les files, les listes</li>
+                    <li>les structures à accès par clé : les dictionnaires</li>
+                    <li>les structures hiérarchiques : les arbres</li>
+                    <li>les structures relationnelles : les graphes</li>
+                </ul>
+            </p>
+            <h2>Les piles</h2>
+            <p>
+                Lorsque nous avons étudié les fonctions récursives nous avons parlé de pile d'exécution.<br/>
+                Il est donc maintenant temps de définir plus en détail la notion de pile.
+            </p>
+            <h3>Les besoins</h3>
+            <p>
+                Nous avons besoin d'une structure stockant les appels de la fonction récursive en attente de résultat.
+                De part la récursivité, le résultat de la fonction ajoutée en dernier à la pile permet de trouver le résultat de la précédente.
+                Dans une structure en pile, on a donc besoin d'accéder au dernier élément stocké. Le nom a été choisit car il fait le parallèles avec une pile d'assiettes par exemple (en supposant qu'on ne puisse prendre les assiettes qu'une par une).
+                Bien entendu, une liste (au sens de python) peut convenir pour représenter une pile d'appels récursif, mais le type liste de python permet beaucoup plus de choses que ce dont on a besoin. Voici les seuls outils nécessaires :
+                <ul>
+                    <li>créer une pile vide</li>
+                    <li>déterminer si une pile est vide</li>
+                    <li>empiler une valeur à la pile (l'ajouter en haut de pile)</li>
+                    <li>dépiler une valeur à la pile (lire puis retirer la valeur en haut de pile)</li>
+                </ul>
+                En anglais, on parle de <mark>stack</mark> ou de structure <mark>LIFO</mark> : "Last In = First Out" c'est-à-dire « dernier entré = premier sorti ».
+            </p>
+            <div class="exercice">
+                Décrire le contenu des variables <mark class="code">P</mark> et <mark class="code">v</mark> à la fin de ces instructions :
+                <ol>
+                    <li>P = nouvelle pile vide</li>
+                    <li>empiler 3 à P</li>
+                    <li>empiler 2 à P</li>
+                    <li>v = dépiler P</li>
+                    <li>empiler 5 à P</li>
+                    <li>empiler 7 à P</li>
+                    <li>empiler 9 à P</li>
+                </ol>
+            </div>
+            <p>
+                L'exercice précédent montre bien qu'il n'est pas nécessaire de connaître la façon dont est implémenté la pile pour pouvoir l'utiliser. Seul compte la syntaxe pour appeler les différents outils. Pour la suite, nous utiliserons la syntaxe de la Programmation Orienté Objet : <mark class="code">P = Pile()</mark> ; <mark class="code">P.est_vide()</mark> ; <mark class="code">P.empiler(valeur)</mark> ; <mark class="code">P.depiler()</mark>
+            </p>
+            <h3>Implémentation</h3>
+            <div class="exercice">
+                A l'aide du type <mark class="code">list</mark> de Python, proposer l'implémentation d'un objet modélisant une pile.
+            </div>
+            <div class="exercice">
+                On peut aussi utiliser le principe de la récursivité.<br/>
+                Une pile non vide peut être vue comme un couple : la valeur au sommet et une autre pile contenant toutes les autres valeurs.<br/>
+                Proposer une implémentation d'un objet modélisant une pile sans utiliser le type <mark class="code">list</mark> de Python.
+            </div>
+            <h3>Applications</h3>
+            <ul>
+                <li>recherche d'un minimum</li>
+                <li>copie d'une pile</li>
+                <li>historique de navigation</li>
+                <li>vérification de la syntaxe d'une expression avec parenthèses</li>
+                <li>tri pile</li>
+            </ul>
+        </div>
+        <script type="text/javascript" src="script.js"></script>
+    </body>
+</html>
