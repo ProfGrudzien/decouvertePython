@@ -74,13 +74,43 @@
                 Proposer une implémentation d'un objet modélisant une pile sans utiliser le type <mark class="code">list</mark> de Python.
             </div>
             <h3>Applications</h3>
-            <ul>
-                <li>recherche d'un minimum</li>
-                <li>copie d'une pile</li>
-                <li>historique de navigation</li>
-                <li>vérification de la syntaxe d'une expression avec parenthèses</li>
-                <li>tri pile</li>
-            </ul>
+            Pour tous les exercices suivants, vous importerez une des deux implémentations d'une pile.
+            <div class="exercice">
+                Ecrire une fonction <mark class="code">min_pile(P)</mark> qui retourne la plus petite valeur contenue dans la pile <mark class="code">P</mark>.<br/>
+                Attention, à la fin de cette fonction, la pile <mark class="code">P</mark> doit avoir retrouvé son état initial.<br/>
+                Pour cela, on peut utiliser une seconde pile <mark class="code">Q</mark>.
+            </div>
+            <div class="exercice">
+                Ecrire une fonction <mark class="code">copie_pile(P)</mark> qui retourne une copie de la pile <mark class="code">P</mark>, c'est-à-dire une pile contenant les mêmes valeurs que la pile <mark class="code">P</mark>.<br/>
+                Attention, à la fin de cette fonction, la pile <mark class="code">P</mark> doit avoir retrouvé son état initial.
+            </div>
+            <div class="exercice">
+                Lorsque l'on tape une expression mathématique dans des logiciels adaptés, un premier contrôle de la syntaxe est réalisé sur les parenthèses et les crochets : 
+                <ul>
+                    <li>on ne peut pas fermer une parenthèses ou un crochet s'il ne correspond pas à une parenthèses ou un crochet ouvert.</li>
+                    <li>dans l'expression mathématique, il doit y avoir autant de parenthèses ouvrantes que de parenthèses fermantes.</li>
+                    <li>dans l'expression mathématique, il doit y avoir autant de crochets ouvrants que de crochets fermants.</li>
+                </ul>
+                Un moyen très simple de vérifier ce point de syntaxe est d'utiliser une pile.<br/>
+                On parcourt les caractères de l'expression une par une puis :
+                <ul>
+                    <li>S'il s'agît d'une parenthèse ouvrante ou d'un crochet ouvrant, on l'empile.</li>
+                    <li>S'il s'agît d'une parenthèse fermante ou d'un crochet fermant, on vérifie qu'il coïncide avec la valeur dépilée.</li>
+                    <li>Sinon on ne fait rien</li>  
+                </ul>
+                Ecrire une fonction <mark class="code">controle_syntaxe(expression)</mark> qui vérifie l'<mark class="code">expression</mark>.
+            </div>
+            <div class="exercice">
+                On souhaite enregistrer l'historique de navigation utilisable grâce aux boutons "précédent" ou "suivant" du navigateur dans des piles.
+                <ol>
+                    <li>Pourquoi une pile semble tout indiquée pour stocker les url des pages précédemment visitée ?</li>
+                    <li>Lorsque l'on utilise le bouton "précédent", comment stocker les url que l'on devra retrouver en utilisant "suivant" ?</li>
+                    <li>Ecrire un objet <mark class="code">historique</mark> contenant les méthodes suivantes :
+                        <mark class="code">visiter_site(url)</mark>, <mark class="code">url_actuelle()</mark>, <mark class="code">page_precedente(url)</mark>, <mark class="code">page_suivante(url)</mark><br/>
+                        Vous choisirez vous même les attributs que vous utiliserez.
+                    </li>
+                </ol>
+            </div>
         </div>
         <script type="text/javascript" src="script.js"></script>
     </body>
