@@ -111,6 +111,67 @@
                     </li>
                 </ol>
             </div>
+            <h2>Les files</h2>
+            <h3>Les besoins</h3>
+            <p>
+                Nous avons étudier une structure permettant de traiter des éléments dans leur ordre d'arrivée.
+                Dans une structure de file, on a accède au premier élément stocké. Le nom a été choisit car il fait le parallèles avec une file d'attente (à une caisse d'un magasin par exemple.).
+                Voici les seuls outils nécessaires :
+                <ul>
+                    <li>créer une file vide</li>
+                    <li>déterminer si une file est vide</li>
+                    <li>enfiler une valeur à la file (l'ajouter en fin de file)</li>
+                    <li>défiler une valeur à la file (lire puis retirer la valeur en début de file)</li>
+                </ul>
+                En anglais, on parle de <mark>queue</mark> ou de structure <mark>FIFO</mark> : "First In = First Out" c'est-à-dire « premier entré = premier sorti ».
+            </p>
+            <div class="exercice">
+                Décrire le contenu des variables <mark class="code">F</mark> et <mark class="code">v</mark> à la fin de ces instructions :
+                <ol>
+                    <li>F = nouvelle file vide</li>
+                    <li>enfiler 3 à F</li>
+                    <li>enfiler 2 à F</li>
+                    <li>v = défiler F</li>
+                    <li>enfiler 5 à F</li>
+                    <li>enfiler 7 à F</li>
+                    <li>enfiler 9 à F</li>
+                </ol>
+            </div>
+            <h3>Implémentation</h3>
+            <div class="exercice">
+                A l'aide du type <mark class="code">list</mark> de Python, proposer l'implémentation d'un objet modélisant une file.
+                Il faut implémenter les méthodes : <mark class="code">est_vide()</mark> ; <mark class="code">enfiler(valeur)</mark> et <mark class="code">defiler()</mark>.
+            </div>
+            <div class="exercice">
+                On peut aussi utiliser deux piles pour construire une file.
+                L'une des deux piles permet de stocker les éléments que l'on enfile, la seconde à stocker les éléments que l'on va défiler.
+                Appelons ces deux piles <mark class="code">E</mark> (comme entrée) et <mark class="code">S</mark> (comme sortie).
+                <ol>
+                    <li>Dans quelle pile empile-t-on la valeur que l'on souhaite empiler ?</li>
+                    <li>
+                        On souhaite défiler une valeur.
+                        <ol>Peut on dépiler la pile <mark class="code">E</mark> ?</ol>
+                        <ol>Dans quelle pile doit-on dépiler ?</ol>
+                        <ol>Si cette pile est vide, que faire ?</ol>
+                    </li>
+                    <li>
+                        Vérifier que cette structure respecte le comportement d'une file en dessinant les deux piles à chaque étape suivante :
+                        <ul>
+                            <li>Créer une file vide F</li>
+                            <li>Enfiler la valeur 1</li>
+                            <li>Enfiler la valeur 2</li>
+                            <li>Défiler une valeur</li>
+                            <li>Enfiler la valeur 3</li>
+                            <li>Défiler une valeur</li>
+                            <li>Défiler une valeur (encore)</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Implémenter en Python une classe <mark class="code">File</mark> construite sur deux piles.
+                    </li>
+                </ol>
+            </div>
+            <h3>Applications</h3>
         </div>
         <script type="text/javascript" src="script.js"></script>
     </body>
