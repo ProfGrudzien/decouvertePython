@@ -172,6 +172,136 @@
                 </ol>
             </div>
             <h3>Applications</h3>
+            Pour tous les exercices suivants, vous importerez une des deux implémentations d'une file.
+            <div class="exercice">
+                Ecrire une fonction <mark class="code">min_file(F)</mark> qui retourne la plus petite valeur contenue dans la file <mark class="code">F</mark>.<br/>
+                Attention, à la fin de cette fonction, la file <mark class="code">F</mark> doit avoir retrouvé son état initial.
+            </div>
+            <div class="exercice">
+                Ecrire une fonction <mark class="code">copie_file(F)</mark> qui retourne une copie de la file <mark class="code">F</mark>, c'est-à-dire une file contenant les mêmes valeurs que la file <mark class="code">F</mark>.<br/>
+                Attention, à la fin de cette fonction, la pile <mark class="code">F</mark> doit avoir retrouvé son état initial.
+            </div>
+            <div class="exercice">
+                <p>
+                    Le directeur d'une grande surface nous demande d'établir un moyen de prévoir le nombre de caisse à ouvrir en fonction du nombre de client entrant dans le magasin. Ainsi, l'influence habituelle du magasin permet de construire les planning d'ouverture de caisses.
+                </p>
+                <p>
+                    Nous allons réaliser des simulations aléatoires pour proposer une solution au directeur.
+                </p>
+                <p>
+                    On suppose qu'une étude préalable permet de modéliser le temps passé par les clients dans le magasin ainsi que les temps de passage en caisse (hors temps d'attente). Les fonctions suivantes à copier-coller représentent ces deux situations.
+                </p>
+                <div class="algo">
+                    <input type="button" class="copier" value="📑" title="copier">
+                    <p class="code">
+                        from random import gauss<br/>
+                        def temps_en_rayon() :<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;''' Simule le temps passé dans les rayons par un client à l'aide d'une loi normale :<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ de moyenne 48 minutes<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ d'écart-type 15 minutes<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arrondi à l'unité et tronqué pour que le résultat soit compris entre 1 et 120 minutes<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'''<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;temps = int(gauss(48, 18))<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;if temps &lt; 1 :<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; temps = 1<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;if temps &gt; 120 :<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; temps = 120<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;return temps<br/><br/>
+                        def temps_en_caisse() :<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;''' Simule le temps passé à la caisse, sans compter le temps d'attente à l'aide d'une loi normale :<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ de moyenne 8 minutes<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ d'écart-type 2 minutes<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arrondi à l'unité et tronqué pour que le résultat soit compris entre 1 et 20 minutes<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'''<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;temps = int(gauss(8, 2))<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;if temps &lt; 1 :<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; temps = 1<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;if temps &gt; 20 :<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; temps = 20<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;return temps<br/><br/>
+                    </p>
+                </div>
+                <p>
+                    Toutes les heures seront représentées par un nombre entier : le nombre de minutes depuis 0h00.
+                </p>
+                <ol>
+                    <li>
+                        Ecrire une classe <mark class="code">Client</mark> permettant de modéliser un des clients du magasin.
+                        Cette classe dispose des attributs et méthodes suivants :
+                        <ul>
+                            <li><mark class="code">heure_arrivee</mark> : l'heure d'arrivée</li>
+                            <li><mark class="code">temps_en_rayon</mark> : le temps que le client passera en rayon</li>
+                            <li><mark class="code">temps_restant_en_rayon</mark> : le temps qu'il reste au client en rayon</li>
+                            <li><mark class="code">temps_attente_en_caisse</mark> : le temps que le client a passé en caisse avant d'être encaissé, <mark class="code">0</mark> si le client est encore en rayon.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Ecrire une classe <mark class="code">Caisse</mark> permettant de modéliser une des caisses du magasin.
+                        Cette classe dispose des attributs et méthodes suivants :
+                        <ul>
+                            <li><mark class="code">heure_ouverture</mark> : heure d'ouverture de la caisse</li>
+                            <li><mark class="code">heure_fermeture</mark> : heure fermeture de la caisse</li>
+                            <li><mark class="code">est_ouverte(h)</mark> : retourne <mark class="code">True</mark> si la caisse est ouverte à l'heure <mark class="code">h</mark>, <mark class="code">False</mark> sinon.</li>
+                            <li><mark class="code">file_clients</mark> : une file contenant les clients qui attendent</li>
+                            <li><mark class="code">nb_file_clients</mark> : le nombre de clients qui attendent</li>
+                            <li><mark class="code">client_en_cours</mark> : le client qui se fait encaisser, <mark class="code">None</mark> s'il n'y a pas de clients</li>
+                            <li><mark class="code">duree_restante_encaissement</mark> : la durée restante pour finir d'encaisser le client</li>
+                            <li><mark class="code">est_libre()</mark> : retourne <mark class="code">True</mark> s'il n'y a pas de clients à encaisser, <mark class="code">False</mark> sinon.</li>
+                            <li><mark class="code">temps_sans_client</mark> : le nombre de minutes où la caisse est libre (c'est-à-dire sans client).</li>
+                            <li><mark class="code">temps_activite</mark> : le nombre de minutes où un client est en cours d'encaissement.</li>
+                        </ul>
+                        Le constructeur de cette classe doit permettre de choisir facilement l'heure d'ouverture et l'heure de fermeture de la caisse.
+                    </li>
+                    <li>
+                        Ecrire une classe <mark class="code">Magasin</mark> permettant de modéliser le magasin.
+                        Cette classe dispose des attributs et méthodes suivants :
+                        <ul>
+                            <li><mark class="code">clients_sortis</mark> : la liste de tous les clients qui ont été encaissés</li>
+                            <li><mark class="code">clients_en_magasin</mark> : la liste de tous les clients sont encore dans le magasin</li>
+                            <li><mark class="code">caisses</mark> : la liste de toutes les caisses du magasin</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Ajouter à la classe <mark class="code">Magasin</mark> la méthode suivante qui donne le nombre de clients qui entrent dans le magasin à un instant donné.
+                        <div class="algo">
+                            <input type="button" class="copier" value="📑" title="copier">
+                            <p class="code">
+                                def influence(self, h) :<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;if h < 8*60 :<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 0<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;if h > 20*60-20 :<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 0<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;I = [8, 15, 20, 22, 20, 14, 11, 13, 19, 22, 17, 8, 0]<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;i = (h - 8*60) // 60<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;m = (h - 8*60) % 60<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;return (I[i]*(60-m) + I[i+1]*m)//60
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        Créer une instance d'un magasin en choisissant vous même le nombre de caisses et leurs horaires d'ouverture et de fermeture.
+                    </li>
+                    <li>
+                        Ecrire une fonction <mark class="code">Simulation</mark> permettant de simuler une journée dans ce magasin.
+                        Cette fonction simule la journée minute par minute :
+                        <ul>
+                            <li>l'encaissement des clients progresse de 1 minute pour chaque caisse. Si l'encaissement est fini, le client sort du magasin et un nouveau encaissement se prépare</li>
+                            <li>les clients dans les files d'attente des caisses gagnent 1 minute sur leur temps d'attente en caisse</li>
+                            <li>les clients en rayon perdent 1 minute sur leur temps restant en rayon. Si ce temps passe à 0, le client se dirige vers une caisse ouverte et libre si possible, ou sinon vers la caisse ouverte avec le moins de client dans la file.</li>
+                            <li>de nouveaux client entre éventuellement dans le magasin.</li>
+                            <li>si une des caisses à plus de 3 personnes dans sa file d'attente, afficher l'heure qu'il est.</li>
+                        </ul>
+                        Une fois la journée terminée :
+                        <ul>
+                            <li>calculer et afficher le temps moyen d'attente en caisse.</li>
+                            <li>pour chaque caisse, afficher le temps passé sans client et son temps d'activité.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Changez le nombre de caisses et leur horaires pour proposer la solution qui vous parait optimale.
+                    </li>
+                </ol>
+            </div>
         </div>
         <script type="text/javascript" src="script.js"></script>
     </body>
