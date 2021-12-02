@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+    <body>
+        <div class="main">
+            <h1>Les listes</h1>
+            <p>
+                La liste est un nouveau type de variable qui permet de stocker plusieurs éléments.<br/>
+                En python, les élements d'une même liste ne sont pas necessairement du même type.
+            </p>
+            <h2>Déclarer une liste</h2>
+            <h3>Déclaration explicite</h3>
+            On peut déclarer une liste en indiquant toutes ses valeurs entre crochets.
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    L = ["lun", "mar", "mer", "jeu", "ven", "sam", "dim"]
+                </p>
+            </div>
+            Pour une liste vide, on n'écrit rien entre les crochets.
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    L = [ ]
+                </p>
+            </div>
+            <h3>Termes qui se répètent selon un cycle</h3>
+            La multiplication d'une liste avec un nombre entier grâce au symbole <mark class="code">*</mark> permet de répéter les valeurs plusieurs fois. Exemple :
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    L = ["jour", "nuit"] * 15
+                </p>
+            </div>
+            <h3>Grâce à une boucle</h3>
+            Pour utiliser une formule ou une condition pour construire une liste, on utilise une boucle <mark class='code'>for</mark> ou une
+boucle <mark class='code'>while</mark> et la méthode <mark class='code'>.append</mark>. Exemple :
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    <font class="commentaire"># liste des carrés parfaits plus petit que 3000</font><br/>
+                    L = [ ]<br/>
+                    i = 0<br/>
+                    while i**2 < 3000 :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;L.append(i**2)<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;i = i + 1
+                </p>
+            </div>
+            <h2>Acceder à un élément de la liste</h2>
+            On accède à un élément d’une liste grâce à sa position dans la liste. Les positions sont numérotés à partir
+de <mark class="code">0</mark>, on parle d’<mark>index</mark>. Exemples :
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    L = ["lun", "mar", "mer", "jeu", "ven"]<br/>
+                    print(L[0]) <font class="commentaire"># "lun"</font><br/>
+                    print(L[4]) <font class="commentaire"># "ven"</font><br/>
+                    print(L[5]) <font class="commentaire"># erreur : "IndexError: list index out of range"</font>
+                </p>
+            </div>
+            Les indices sont strictement inférieurs à la longueur de la liste.<br/>
+            On peut cependant utiliser des indices négatifs. Exemples :
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    L = ["lun", "mar", "mer", "jeu", "ven"]<br/>
+                    print(L[-1]) <font class="commentaire"># "ven"</font><br/>
+                    print(L[-5]) <font class="commentaire"># "lun"</font><br/>
+                    print(L[-6]) <font class="commentaire"># erreur : "IndexError: list index out of range"</font>
+                </p>
+            </div>
+            <div class="exercice">
+                <div class="algo">
+                    <input type="button" class="copier" value="📑" title="copier">
+                    <p class="code">
+                        L = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                    </p>
+                </div>
+                Compléter les phrases suivantes :
+                <ul>
+                    <li><mark class="code">L[5]</mark> donne le ... élément.</li>
+                    <li><mark class="code">L[...]</mark> donne le 3<sup>ème</sup> élément.</li>
+                    <li><mark class="code">L[...]</mark> donne le 1<sup>er</sup> élément.</li>
+                    <li><mark class="code">L[-1]</mark> donne le ... élément.</li>
+                </ul>
+            </div>
+            <h2>Quelques fonctions et méthodes sur les listes</h2>
+            Nous avons vu la méthode <mark class="code">.append</mark> qui permet d’ajouter un terme à la fin d’une liste.
+            Voici d’autres méthodes et fonctions utiles :
+            <h3>Nombre d'éléments dans une liste.</h3>
+            Pour connaître le nombre d’éléments d’une liste (sa longueur), on utilise la fonction <mark class="code">len</mark><br/>
+            Exemple :
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    L = ["lun", "mar", "mer", "jeu", "ven"]<br/>
+                    print(len(L)) <font class="commentaire"># affichage attendu : 5</font><br/>
+                </p>
+            </div>
+            <h3>Retirer le dernier élément</h3>
+            Pour retirer le dernier élément d’une liste, on utilise la méthode <mark class='code'>pop</mark><br/>
+            Remarque : cette méthode retourne la valeur ainsi supprimée. Exemple :
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    L = ["Anna", "Lee-Lou", "Emma"]<br/>
+                    p = L.pop()<br/>
+                    print("Bonjour", p) <font class="commentaire"># affichage attendu : Bonjour Emma</font><br/>
+                    print(L) <font class="commentaire"># affichage attendu : ["Anna", "Lee-Lou"]</font><br/>
+                </p>
+            </div>
+            <h3>Retirer un élément</h3>
+            Pour retirer un élément existant d’une liste, sans connaître son index, on utilise la méthode <mark class='code'>.remove</mark>. Exemple :
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    L = ["lun", "mar", "mer", "jeu", "ven"]<br/>
+                    p = L.remove("mer")<br/>
+                    print(L) <font class="commentaire"># affichage attendu : ["lun", "mar", "jeu", "ven"]</font><br/>
+                </p>
+            </div>
+            <h2>Parcourir toutes les valeurs d'une liste</h2>
+            Pour parcourir toutes les valeurs d'une liste, on utilise une boucle.
+            Python propose des versions simplifiées si l'on a pas besoin de connaître la position de la valeur parcourue dans la liste.
+            <h3>En utilisant les index</h3>
+            On utilise la boucle <mark class="code">for</mark> associée aux fonctions <mark class="code">range</mark> et <mark class="code">len</mark>. Exemple :
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    L = ["lun", "mar", "mer", "jeu", "ven"]<br/>
+                    for i in range(len(L)) :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;print(L[i])
+                </p>
+            </div>
+            <h3>Sans utiliser les index</h3>
+            On utilise la boucle <mark class="code">for</mark> associée directement au nom de la liste. Exemple :
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    L = ["lun", "mar", "mer", "jeu", "ven"]<br/>
+                    for element in L :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;print(element)
+                </p>
+            </div>
+            A la place du nom de variable <mark class="code">element</mark>, on utilise un nom en lien avec les données manipulées.
+            Ici <mark class="code">jour</mark> aurait été plus pertinent.
+            De préférence, on utilisera un nom au singulier puisqu’à chaque passage une seule valeur est sélectionnée.
+            <h2>Extraire une sous-liste</h2>
+            On peut extraire la sous-liste des éléments d’une liste <mark class="code">L</mark> d’index compris entre <mark class="code">a</mark> (inclus) et <mark class="code">b</mark> (exclus) grâce à l'instruction <mark class="code">L[a:b]</mark>.
+            Si l’on souhaite le début de la liste, on peut simplifier la syntaxe et écrire <mark class="code">L[:b]</mark>.
+            Si l’on souhaite la fin de la liste, on peut aussi simplifier la syntaxe et écrire <mark class="code">L[a:]</mark>.
+            Exemples :
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    L = ["lun", "mar", "mer", "jeu", "ven"]<br/>
+                    print(L[1:3]) <font class="commentaire"># affichage attendu : ["mar", "mer"]</font><br/>
+                    print(L[:3]) &nbsp;<font class="commentaire"># affichage attendu : ["lun", "mar", "mer"]</font><br/>
+                    print(L[2:]) &nbsp;<font class="commentaire"># affichage attendu : ["mer", "jeu", "ven"]</font><br/>
+                </p>
+            </div>
+            <h2>Copie d'une liste</h2>
+            <div class="danger">
+                Attention :<br/>
+                En python, <mark class='code'>M = L</mark> ne copie pas une liste mais créé un alias vers cette liste.</mark>
+            </div>
+            En modifiant les valeurs de l'alias, on modifie aussi les valeurs de la première liste. Illustration :
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    L = ["lun", "mar", "Mer", "jeu", "ven"]<br/>
+                    M = L<br/>
+                    M[2] = "mer"<br/>
+                    print(M) <font class="commentaire"># affiche : ["lun", "mar", "mer", "jeu", "ven"]</font><br/>
+                    print(L) <font class="commentaire"># affiche : ["lun", "mar", "mer", "jeu", "ven"]</font><br/>
+                </p>
+            </div>
+            Une méthode simple de créer une copie indépendante d’une liste est de créer une sous-liste de même
+longueur grâce à l'instruction <mark class="code">M = L[:]</mark>.
+            <h2>Liste de listes</h2>
+            On peut bien sûr stocker des listes dans des listes.
+            Cela permet de créer par exemple des tableaux à 2 dimensions que l’on appelle aussi matrice.
+            L’exemple suivant permet de créer une matrice de 4 lignes de 5 valeurs toutes égales à <mark class='code'>0</mark>.
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    M = [ ]<br/>
+                    for i in range(4) :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;M.append([0]*5)
+                </p>
+            </div>
+            <div class="danger">
+                Danger :<br/>
+                <mark class="code">M = [[0]*5]*4</mark> créé aussi une matrice de 4 lignes de 5 valeurs toutes égales à <mark class='code'>0</mark>.<br/>
+                Les ennuis commence lorsque l’on écrit <mark class="code">M[0][1] = 2</mark> , car <mark class="code">M</mark> devient :<br/>
+                <mark class='code'>[[0, 2, 0, 0, 0], [0, 2, 0, 0, 0], [0, 2, 0, 0, 0], [0, 2, 0, 0, 0]]</mark><br/>
+                La raison : <mark class='code'>[L]*4</mark> créé 4 alias vers la même liste.
+            </div>
+            <h2>Listes par compréhension</h2>
+            Par soucis de simplifier la construction de listes, Python propose une méthode pour générer une liste à l'aide d'une boucle en une seule ligne. On peut même ajouter une test <mark class="code">if</mark> ou bien appliquer une fonction <mark class="code">f</mark> à chaque élément de la liste. Exemples :
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    P = [p**2 for p in range(11)] <br/>
+                    L = [x for x in range(12) if 2*x-3>0] <br/>
+                    F = [f(x) for x in L]
+                </p>
+            </div>
+            <h2>Exercices classiques</h2>
+            <div class="exercice">
+                Ecrire une fonction réalisant la somme des valeurs d’une liste.
+            </div>
+            <div class="exercice">
+                Ecrire une fonction réalisant le produit des valeurs d’une liste.
+            </div>
+            <div class="exercice">
+                Ecrire une fonction réalisant la moyenne des valeurs d’une liste.
+            </div>
+            <div class="exercice">
+                Ecrire une fonction qui compte le nombre de fois que la valeur <mark class="code">a</mark> apparaît dans une liste.
+            </div>
+            <div class="exercice">
+                Ecrire une fonction qui déterminer si une valeur est dans une liste. Cette fonction retourne :
+                <ul>
+                    <li><mark class="code">-1</mark> si l’élément n’est pas dans la liste.</li>
+                    <li>le premier index de cet élément sinon.</li>
+                </ul>
+            </div>
+            <div class="exercice">
+                Ecrire une fonction qui déterminer si une valeur est dans une liste. Cette fonction retourne :
+                <ul>
+                    <li><mark class="code">-1</mark> si l’élément n’est pas dans la liste.</li>
+                    <li>le <mark>dernier</mark> index de cet élément sinon.</li>
+                </ul>
+            </div>
+            <div class="exercice">
+                Ecrire une fonction qui retourne la plus grande valeur d’un liste.
+            </div>
+            <div class="exercice">
+                Ecrire une fonction qui retourne l’index de la plus grande valeur d’un liste.
+            </div>
+            <div class="exercice">
+                Ecrire une fonction qui retourne la plus grande valeur d’un liste et son index.
+            </div>
+            <div class="exercice">
+                Ecrire une fonction qui retourne la liste des éléments positifs et la liste des éléments négatifs
+d’une liste de valeurs numériques.
+            </div>
+        </div>
+        <script type="text/javascript" src="script.js"></script>
+    </body>
+</html>

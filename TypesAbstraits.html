@@ -302,6 +302,90 @@
                     </li>
                 </ol>
             </div>
+            <h2>Les files</h2>
+            <p>
+                Lorsque l'on parle du type <mark class="code">list</mark> de python, on devrait parler de tableau et même plus précisément de tableau dynamique. En effet, l'implémentation de ce type permet d’accéder directement aux valeurs du tableau (complexité : <mark class='code'>O(1)</mark>) alors que l'insertion ou la suppression de valeurs dans cette liste se fait en complexité linéaire (<mark class='code'>O(n)</mark>).
+            </p>
+            <p>
+                La structure de liste proposée dès 1955 s'apparente plus à la structure d'une chaîne composé de maillons.
+            </p>
+            <h3>Listes simplement chaînées</h3>
+            Une liste est dite simplement chaînée si à partir d'un élément de la liste (que l'on appellera maillon), on ne peut accéder qu'à l'élément suivant.
+            <div class="exercice">
+                <ol>
+                    <li>
+                        Ecrire une classe <mark class="code">Maillon</mark> qui contient les attributs suivants :
+                        <ul>
+                            <li><mark class="code">valeur</mark> la valeur de cet élément</li>
+                            <li><mark class="code">suivant</mark> une référence vers la maillon suivant de la liste, ou <mark class="code">None</mark> s'il s'agît du dernier élément.</li>
+                        </ul>
+                        Le constructeur doit accepter un seul paramètre (<mark class="code">valeur</mark>) ou deux paramètres (<mark class="code">valeur</mark> et <mark class="code">maillon_suivant</mark>)
+                    </li>
+                    <li>
+                        Ecrire une classe <mark class="code">Liste</mark> qui permet de construire une liste simplement chaînée vide. Le constructeur n'accepte donc aucun paramètres. Les attributs de cette classe sont :
+                        <ul>
+                            <li><mark class="code">premier_maillon</mark> une référence vers le premier maillon de la liste, ou <mark class="code">None</mark> si la liste est vide.</li>
+                            <li><mark class="code">nb_elements</mark> le nombre d'éléments de cette liste.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Ajouter les méthodes suivantes à la classe <mark class="code">Liste</mark> :
+                        <ul>
+                            <li><mark class="code">est_vide()</mark> retourne <mark class="code">True</mark> si la liste est vide, <mark class="code">False</mark> sinon.</li>
+                            <li><mark class="code">longueur()</mark> retourne le nombre d'éléments de cette liste.</li>
+                            <li><mark class="code">inserer(index, valeur)</mark> insère la <mark class="code">valeur</mark> au bon endroit dans la liste.</li>
+                            <li><mark class="code">remplacer(index, valeur)</mark> remplace la <mark class="code">valeur</mark> de l'élément de la liste à la position <mark class="code">index</mark>.</li>
+                            <li><mark class="code">supprimer(index)</mark> supprime la <mark class="code">valeur</mark> de l'élément de la liste à la position <mark class="code">index</mark>.</li>
+                            <li><mark class="code">lire(index)</mark> retourne la <mark class="code">valeur</mark> de l'élément de la liste à la position <mark class="code">index</mark>.</li>
+                            <li><mark class="code">__str__()</mark> retourne une chaîne de caractères contenant tous les éléments de cette liste.</li>
+                            <li><mark class="code">sous_liste(debut, fin)</mark> retourne une liste contenant les valeurs de la position <mark class="code">debut</mark> inclus à la position <mark class="code">fin</mark> exclus.</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+            <h3>Listes doublement chaînées</h3>
+            Une liste est dite doublement chaînée si à partir d'un élément de la liste, on ne peut accéder à l'élément suivant et à l'élément précédent.
+            <div class="exercice">
+                <ol>
+                    <li>
+                        Ecrire une classe <mark class="code">Maillon</mark> qui contient les attributs suivants :
+                        <ul>
+                            <li><mark class="code">valeur</mark> la valeur de cet élément</li>
+                            <li><mark class="code">suivant</mark> une référence vers la maillon suivant de la liste, ou <mark class="code">None</mark> s'il s'agît du dernier élément.</li>
+                            <li><mark class="code">precedent</mark> une référence vers la maillon suivant de la liste, ou <mark class="code">None</mark> s'il s'agît du dernier élément.</li>
+                        </ul>
+                        Le constructeur doit accepter un seul paramètre (<mark class="code">valeur</mark>) ou trois paramètres (<mark class="code">valeur</mark>, <mark class="code">maillon_precedent</mark> et <mark class="code">maillon_suivant</mark>).<br/>
+                        Pensez aussi à mettre à jour les attributs des maillons attachés à ce maillon !
+                    </li>
+                    <li>
+                        Ecrire une classe <mark class="code">Liste</mark> qui permet de construire une liste doublement chaînée vide. Le constructeur n'accepte donc aucun paramètres. Les attributs de cette classe sont :
+                        <ul>
+                            <li><mark class="code">premier_maillon</mark> une référence vers le premier maillon de la liste, ou <mark class="code">None</mark> si la liste est vide.</li>
+                            <li><mark class="code">dernier_maillon</mark> une référence vers le dernier maillon de la liste, ou <mark class="code">None</mark> si la liste est vide.</li>
+                            <li><mark class="code">nb_elements</mark> le nombre d'éléments de cette liste.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Ajouter les méthodes suivantes à la classe <mark class="code">Liste</mark> :
+                        <ul>
+                            <li><mark class="code">est_vide()</mark> retourne <mark class="code">True</mark> si la liste est vide, <mark class="code">False</mark> sinon.</li>
+                            <li><mark class="code">longueur()</mark> retourne le nombre d'éléments de cette liste.</li>
+                            <li><mark class="code">inserer(index, valeur)</mark> insère la <mark class="code">valeur</mark> au bon endroit dans la liste.</li>
+                            <li><mark class="code">remplacer(index, valeur)</mark> remplace la <mark class="code">valeur</mark> de l'élément de la liste à la position <mark class="code">index</mark>.</li>
+                            <li><mark class="code">supprimer(index)</mark> supprime la <mark class="code">valeur</mark> de l'élément de la liste à la position <mark class="code">index</mark>.</li>
+                            <li><mark class="code">lire(index)</mark> retourne la <mark class="code">valeur</mark> de l'élément de la liste à la position <mark class="code">index</mark>.</li>
+                            <li><mark class="code">__str__()</mark> retourne une chaîne de caractères contenant tous les éléments de cette liste.</li>
+                            <li><mark class="code">sous_liste(debut, fin)</mark> retourne une liste contenant les valeurs de la position <mark class="code">debut</mark> inclus à la position <mark class="code">fin</mark> exclus.</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+            <h3>Application</h3>
+            <div class="exercice">
+                La méthode <mark class="code">defiler</mark> de nos deux implémentations de la classe <mark class="code">File</mark> ont une complexité en <mark class="code">O(n)</mark> car on est amené à supprimer le premier élément d'un tableau (type <mark class="code">list</mark> de python) ou bien de dépiler entièrement une pile.<br/>
+                Les listes doublement chaînées permettent de résoudre ce problème et de proposer une méthode <mark class="code">defiler</mark> de complexité <mark class="code">O(1)</mark>.<br/>
+                Ecrire l'implémentation d'une classe <mark class="code">File</mark> faisant appel à une liste doublement chaînée.
+            </div>
         </div>
         <script type="text/javascript" src="script.js"></script>
     </body>
