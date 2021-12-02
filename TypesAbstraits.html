@@ -326,6 +326,8 @@
                         <ul>
                             <li><mark class="code">premier_maillon</mark> une référence vers le premier maillon de la liste, ou <mark class="code">None</mark> si la liste est vide.</li>
                             <li><mark class="code">nb_elements</mark> le nombre d'éléments de cette liste.</li>
+                            <li><mark class="code">maillon_en_cours</mark> le maillon que l'on est en train de parcourir.</li>
+                            <li><mark class="code">indice_en_cours</mark> la position du mayon que l'on parcourt dans la liste.</li>
                         </ul>
                     </li>
                     <li>
@@ -333,10 +335,13 @@
                         <ul>
                             <li><mark class="code">est_vide()</mark> retourne <mark class="code">True</mark> si la liste est vide, <mark class="code">False</mark> sinon.</li>
                             <li><mark class="code">longueur()</mark> retourne le nombre d'éléments de cette liste.</li>
+                            <li><mark class="code">valeur_en_cours()</mark> retourne la valeur du maillon en cours</li>
+                            <li><mark class="code">valeur_suivante()</mark> se déplace au maillon suivant et retourne sa valeur</li>
+                            <li><mark class="code">aller_a(index)</mark> se place sur le maillon à la position index.</li>
+                            <li><mark class="code">lire(index)</mark> retourne la <mark class="code">valeur</mark> de l'élément de la liste à la position <mark class="code">index</mark>.</li>
                             <li><mark class="code">inserer(index, valeur)</mark> insère la <mark class="code">valeur</mark> au bon endroit dans la liste.</li>
                             <li><mark class="code">remplacer(index, valeur)</mark> remplace la <mark class="code">valeur</mark> de l'élément de la liste à la position <mark class="code">index</mark>.</li>
                             <li><mark class="code">supprimer(index)</mark> supprime la <mark class="code">valeur</mark> de l'élément de la liste à la position <mark class="code">index</mark>.</li>
-                            <li><mark class="code">lire(index)</mark> retourne la <mark class="code">valeur</mark> de l'élément de la liste à la position <mark class="code">index</mark>.</li>
                             <li><mark class="code">__str__()</mark> retourne une chaîne de caractères contenant tous les éléments de cette liste.</li>
                             <li><mark class="code">sous_liste(debut, fin)</mark> retourne une liste contenant les valeurs de la position <mark class="code">debut</mark> inclus à la position <mark class="code">fin</mark> exclus.</li>
                         </ul>
