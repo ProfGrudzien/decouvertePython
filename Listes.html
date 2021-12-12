@@ -223,14 +223,14 @@ longueur grâce à l'instruction <mark class="code">M = L[:]</mark>.
                 Ecrire une fonction qui compte le nombre de fois que la valeur <mark class="code">a</mark> apparaît dans une liste.
             </div>
             <div class="exercice">
-                Ecrire une fonction qui déterminer si une valeur est dans une liste. Cette fonction retourne :
+                Ecrire une fonction qui détermine si une valeur est dans une liste. Cette fonction retourne :
                 <ul>
                     <li><mark class="code">-1</mark> si l’élément n’est pas dans la liste.</li>
                     <li>le premier index de cet élément sinon.</li>
                 </ul>
             </div>
             <div class="exercice">
-                Ecrire une fonction qui déterminer si une valeur est dans une liste. Cette fonction retourne :
+                Ecrire une fonction qui détermine si une valeur est dans une liste. Cette fonction retourne :
                 <ul>
                     <li><mark class="code">-1</mark> si l’élément n’est pas dans la liste.</li>
                     <li>le <mark>dernier</mark> index de cet élément sinon.</li>
@@ -248,6 +248,54 @@ longueur grâce à l'instruction <mark class="code">M = L[:]</mark>.
             <div class="exercice">
                 Ecrire une fonction qui retourne la liste des éléments positifs et la liste des éléments négatifs
 d’une liste de valeurs numériques.
+            </div>
+            <h2>Application : tirage d'un LOTO</h2>
+            <div class="exercice">
+                L'objectif est d'écrire un ensemble de fonction permettant de réaliser le tirage de jeton dans un LOTO, de générer et d'afficher des grilles puis de simuler des joueurs.
+                <ol>
+                    <li>Ecrire une fonction <mark class="code">creer_urne()</mark> retournant la liste des nombres entiers compris entre <mark class="code">1</mark> et <mark class="code">90</mark> (inclus).</li>
+                    <li>
+                        Ecrire une fonction <mark class="code">tirage(U)</mark> simulant le tirage d'un jeton dans une urne <mark class="code">U</mark>. Cette fonction doit aussi retirer la valeur du jeton tiré à la liste <mark class="code">U</mark><br/>
+                        <b>Indication :</b> La fonction <mark class="code">choice(L)</mark> permet de tirer aléatoirement une valeur de la liste <mark class="code">L</mark>. Cette fonction est disponible grâce au module <mark class="code">random</mark> L'instruction permettant cet import est <mark class="code">from random import choice</mark>.
+                    </li>
+                    <li>
+                        Ecrire une fonction <mark class="code">creer_carton()</mark> qui simule la création d'un carton.
+                        Un carton est une grille de 3 lignes par 9 colonnes. En python, on représentera une grille par une liste contenant trois listes de 9 éléments.
+                        Sur ce carton, 15 valeurs sont présentes :
+                        <ul>
+                            <li>5 valeurs par lignes</li>
+                            <li>la première colonne ne peut contenir que des nombres entre 1 et 9</li>
+                            <li>la deuxième colonne ne peut contenir que des nombres entre 10 et 19, ...</li>
+                            <li>la dernière colonne ne peut contenir que des nombres entre 80 et 90</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Ecrire une fonction <mark class="code">verifier(C, a)</mark> qui vérifie si la valeur <mark class="code">a</mark> est présente sur le carton <mark class="code">C</mark>. Si c'est le cas, la fonction retourne l'indice de la ligne et l'indice de la colonne où se trouve cette valeur. Sinon, cette fonction retourne <mark class="code">None</mark>.
+                    </li>
+                    <li>
+                        Ecrire une fonction <mark class="code">marquer(i, j)</mark> qui remplace la valeur à la ligne d'indice <mark class="code">i</mark> et à la colonne d'indice <mark class="code">j</mark> par son opposé.
+                    </li>
+                    <li>
+                        Ecrire une fonction <mark class="code">verifier_quine(C)</mark> qui vérifie si le carton <mark class="code">C</mark> possède une ligne entièrement marquée. Cette fonction retourne <mark class="code">True</mark> ou <mark class="code">False</mark>.
+                    </li>
+                    <li>
+                        Ecrire une fonction <mark class="code">verifier_double_quine(C)</mark> qui vérifie si le carton <mark class="code">C</mark> possède 2 lignes entièrement marquées. Cette fonction retourne <mark class="code">True</mark> ou <mark class="code">False</mark>.
+                    </li>
+                    <li>
+                        Ecrire une fonction <mark class="code">verifier_carton_plein(C)</mark> qui vérifie si le carton <mark class="code">C</mark> est entièrement marqué. Cette fonction retourne <mark class="code">True</mark> ou <mark class="code">False</mark>.
+                    </li>
+                    <li>
+                        Ecrire une fonction <mark class="code">afficher_carton(C)</mark> qui permet d'afficher le carton. Vous utiliserez les caractères spéciaux pour afficher une grille : <a href="https://fr.wikipedia.org/wiki/Table_des_caract%C3%A8res_Unicode/U2500">filets</a>. <br/>
+                        Les cases marqués apparaîtrons sous la forme d'une rectangle noir. Les caractères utiles se trouvent à cette page : <a href="https://fr.wikipedia.org/wiki/Table_des_caract%C3%A8res_Unicode/U2580">pavés</a>.<br/>
+                        Les cases non marquées contiendront leurs valeurs si elles en ont une ou resteront vide sinon.
+                    </li>
+                    <li>
+                        Ecrire une fonction <mark class="code">simulation(n)</mark> qui crée <mark class="code">n</mark> cartons puis lance une partie de LOTO. Elle affichera l'indice de la première grille à faire "quine", la première grille à faire "double quine", la première grille à faire un carton plein et le nombres de jetons tirées pour parvenir à ce carton plein.
+                    </li>
+                    <li>
+                        Donner une estimation du nombre moyen de jetons tirés pour finir une partie de LOTO.
+                    </li>
+                </ol>
             </div>
         </div>
         <script type="text/javascript" src="script.js"></script>
