@@ -259,7 +259,6 @@ d’une liste de valeurs numériques.
                         <b>Indication :</b> La fonction <mark class="code">choice(L)</mark> permet de tirer aléatoirement une valeur de la liste <mark class="code">L</mark>. Cette fonction est disponible grâce au module <mark class="code">random</mark> L'instruction permettant cet import est <mark class="code">from random import choice</mark>.
                     </li>
                     <li>
-                        Ecrire une fonction <mark class="code">creer_carton()</mark> qui simule la création d'un carton.
                         Un carton est une grille de 3 lignes par 9 colonnes. En python, on représentera une grille par une liste contenant trois listes de 9 éléments.
                         Sur ce carton, 15 valeurs sont présentes :
                         <ul>
@@ -268,12 +267,16 @@ d’une liste de valeurs numériques.
                             <li>la deuxième colonne ne peut contenir que des nombres entre 10 et 19, ...</li>
                             <li>la dernière colonne ne peut contenir que des nombres entre 80 et 90</li>
                         </ul>
+                        Ecrire une fonction <mark class="code">indice_colonne(v)</mark> retournant l'indice de la colonne où doit être placé la valeur <mark class="code">v</mark>.
+                    </li>
+                    <li>
+                        Ecrire une fonction <mark class="code">creer_carton()</mark> qui simule la création d'un carton.
                     </li>
                     <li>
                         Ecrire une fonction <mark class="code">verifier(C, a)</mark> qui vérifie si la valeur <mark class="code">a</mark> est présente sur le carton <mark class="code">C</mark>. Si c'est le cas, la fonction retourne l'indice de la ligne et l'indice de la colonne où se trouve cette valeur. Sinon, cette fonction retourne <mark class="code">None</mark>.
                     </li>
                     <li>
-                        Ecrire une fonction <mark class="code">marquer(i, j)</mark> qui remplace la valeur à la ligne d'indice <mark class="code">i</mark> et à la colonne d'indice <mark class="code">j</mark> par son opposé.
+                        Ecrire une fonction <mark class="code">marquer(C, i, j)</mark> qui remplace la valeur à la ligne d'indice <mark class="code">i</mark> et à la colonne d'indice <mark class="code">j</mark> par son opposé.
                     </li>
                     <li>
                         Ecrire une fonction <mark class="code">verifier_quine(C)</mark> qui vérifie si le carton <mark class="code">C</mark> possède une ligne entièrement marquée. Cette fonction retourne <mark class="code">True</mark> ou <mark class="code">False</mark>.
