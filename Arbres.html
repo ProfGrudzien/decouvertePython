@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+    <body>
+        <div class="main">
+            <h1>Arbres binaires</h1>
+            <p>
+                Les piles, les files et les listes sont des structures linéaires.
+                Les données y sont rangés selon un ordre précis.
+                Il existe cependant d'autres structures qui ne sont pas linéaires.
+                C'est le cas des graphes qui seront étudiés plus tard et en particulier des structures arborescentes : les arbres.
+            </p>
+            <h2>Notion d'arbre</h2>
+            <p>
+                Un arbre est un <mark>nœud</mark> possédant éventuellement un ou plusieurs <mark>enfants</mark> qui sont eux même des nœud possédant éventuellement un ou plusieurs enfants. Chaque nœud (sauf celui de départ) ne possédant qu'un seul nœud parent.
+                <img src="images/tree.gif">
+            </p>
+            <p>
+                Exemples :
+                <ul>
+                    <li>Les listes simplement chaînées sont des exemples d'arbre très simple où les nœuds (sauf le dernier) ne possède qu'un seul enfant.</li>
+                    <li>Les dossiers et les fichiers sur un disque dur forment un arbre.</li>
+                    <img src="images/repertoires.jpg">
+                </ul>
+            </p>
+            <div class="exercice">
+                Les situations suivantes peuvent-elles être modélisées par un arbre ?
+                <img src="images/carte_mentale.png">
+                <img src="images/net.png">
+                <img src="images/genealogie.png">
+                <img src="images/phylogenetique.png">
+                <img src="images/phone.jpg">
+                <img src="images/algorigrammes.png">
+            </div>
+            <p>
+                Vocabulaire :
+                <ul>
+                    <li>Un arbre est hiérarchisé, à partir du seul nœud qui n'a pas de parent : sa <mark>racine</mark>.</li>
+                    <li>Les nœuds qui n'ont pas d'enfants sont des <mark>feuilles</mark>.</li>
+                    <li>Les chemins partant de la racine à l'une des feuilles est un <mark>branches</mark>.</li>
+                    <li>La <mark>taille</mark> d'un arbre est égal au nombre de nœuds (racine et feuilles comprises).</li>
+                    <li>La <mark>hauteur</mark> d'un arbre est égale à la longueur de la plus grande branche.</li>
+                </ul>
+            </p>
+            <div class="exercice">
+                On considère l'arbre suivant :
+                <img src="images/exo1.png">
+                <ol>
+                    <li>Quelle est la racine de cet arbre ?</li>
+                    <li>Quelles sont les feuilles de cet arbre ?</li>
+                    <li>Quelles est la hauteur de cet arbre ?</li>
+                    <li>Quelles est la taille de cet arbre ?</li>
+                </ol>
+            </div>
+            <h2>Arbres binaires</h2>
+            <p>
+                Nous allons maintenant nous concentrer sur les <mark>arbres binaires</mark> : un arbre dont les nœuds ont uniquement 0, 1 ou 2 enfants. On appelle alors ces enfants <mark>fils droit</mark> et <mark>fils gauche</mark> ou encore <mark>sous arbre droit</mark> et <mark>sous arbre gauche</mark>.
+                <img src="images/sousarbre.png">
+            </p>
+            <div class="exercice">
+                On considère l'arbre binaire suivant :
+                <img src="images/exo2.png">
+                <ol>
+                    <li>Quelle est la racine de cet arbre ?</li>
+                    <li>Quelles sont les feuilles de cet arbre ?</li>
+                    <li>Quelles est la hauteur de cet arbre ?</li>
+                    <li>Quelles est la taille de cet arbre ?</li>
+                    <li>Quel est le sous arbre droit du nœud B ?</li>
+                    <li>Quel est le sous arbre gauche du nœud I ?</li>
+                    <li>Quel est le sous arbre gauche du nœud G ?</li>
+                </ol>
+            </div>
+            <h2>Parcours d'un arbre binaire</h2>
+            <h2>Implémentation</h2>
+            <h2>Arbre binaire de recherche</h2>
+        </div>
+        <script type="text/javascript" src="script.js"></script>
+    </body>
+</html>
