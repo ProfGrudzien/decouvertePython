@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+    <body>
+        <div class="main">
+            <h1>Tuples et chaînes de caractères</h1>
+            <p>
+                Les tuples (appelés aussi n-uplets) sont très semblables aux listes.
+                La principale différence est que les tuples ne sont pas modifiables, ils sont <mark>immuables</mark>.
+                Il en est de même pour les chaînes de caractères.
+                La plupart des fonctions s'appliquant aux listes s'appliquent aussi aux tuples et aux chaînes de caractères.
+            </p>
+            <h2>Les chaînes de caractères</h2>
+            <h3>Lecture des caractères</h3>
+            On peut accéder aux caractères en utilisant leur position comme on le fait pour les éléments d'une liste. Comme pour les listes, les position (index) commencent à <mark class="code">0</mark>. Exemple :
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    texte = "Hello new world!"<br/>
+                    print(texte[0])<br/>
+                    print(texte[1])<br/>
+                    print(texte[3])<br/>
+                    print(texte[-1])
+                </p>
+            </div>
+            <div class="exercice">
+                Ecrire une fonction <mark class="code">commence(texte, lettre)</mark> qui vérifie si le <mark class="code">texte</mark> commence par la <mark class="code">lettre</mark>. Cette fonction retourne <mark class='code'>True</mark> si c'est le cas, <mark class='code'>False</mark> sinon. Exemple :
+                <div class="algo">
+                    <input type="button" class="copier" value="📑" title="copier">
+                    <p class="code">
+                        >>> commence("Banane", "B")<br/>
+                        True<br/>
+                        >>> commence("Banane", "N")<br/>
+                        False<br/>
+                        >>> commence("Normalement", "N")<br/>
+                        True<br/>
+                        >>> commence("", "N")<br/>
+                        False
+                    </p>
+                </div>
+            </div>
+            On peut aussi utiliser une boucle pour parcourir tous les caractères d'une chaîne de caractères. Exemple :
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    mot = 'bonjour'<br/>
+                    for lettre in mot :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;print(mot)
+                </p>
+            </div>
+            <div class='exercice'>
+                Ecrire une fonction <mark class="code">contient(texte, lettre)</mark> qui vérifie si la <mark class="code">lettre</mark> est présente dans le <mark class="code">texte</mark>. Cette fonction retourne <mark class='code'>True</mark> si c'est le cas, <mark class='code'>False</mark> sinon. Exemple :
+                <div class="algo">
+                    <input type="button" class="copier" value="📑" title="copier">
+                    <p class="code">
+                        >>> contient("Banane", "B")<br/>
+                        True<br/>
+                        >>> contient("Banane", "N")<br/>
+                        False<br/>
+                        >>> contient("Banane", "n")<br/>
+                        True<br/>
+                        >>> contient("", "N")<br/>
+                        False
+                    </p>
+                </div>
+            </div>
+            <div class='exercice'>
+                Ecrire une fonction <mark class="code">compte_lettre(texte, lettre)</mark> qui compte combien de fois la <mark class="code">lettre</mark> est présente dans le <mark class="code">texte</mark>. Exemple :
+                <div class="algo">
+                    <input type="button" class="copier" value="📑" title="copier">
+                    <p class="code">
+                        >>> compte_lettre("Banane", "B")<br/>
+                        1<br/>
+                        >>> compte_lettre("Banane", "N")<br/>
+                        0<br/>
+                        >>> compte_lettre("Banane", "n")<br/>
+                        2<br/>
+                        >>> contient("", "N")<br/>
+                        0
+                    </p>
+                </div>
+            </div>
+            <div class='exercice'>
+                Un palindrome est un mot qui peut se lire dans les deux sens.
+                Ecrire une fonction <mark class="code">est_palindrome(mot)</mark> qui vérifie si le <mark class="code">mot</mark> est un palindrome.
+                <div class="algo">
+                    <input type="button" class="copier" value="📑" title="copier">
+                    <p class="code">
+                        >>> est_palindrome("canoe")<br/>
+                        False<br/>
+                        >>> est_palindrome("kayak")<br/>
+                        True
+                    </p>
+                </div>
+            </div>
+            <h3>Modification d'une chaîne de caractères</h3>
+            Comme les chaînes de caractères sont immuables, on ne peut pas les modifier. Vérifions le sur un exemple :
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    texte = "hello new world!"<br/>
+                    texte[0] = "H"<br/>
+                    print(texte)
+                </p>
+            </div>
+            Pour modifier une chaîne de caractères, il faut donc créer une nouvelle chaîne de caractères quite à la stocker dans la même variable. Exemples :
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    texte = "bon"<br/>
+                    texte = texte + "jour"<br/>
+                    print(texte)<br/>
+                    &nbsp;<br/>
+                    texte = "hello new world!"<br/>
+                    texte = "H" + texte[1:]<br/>
+                    print(texte)
+                </p>
+            </div>
+            <div class='exercice'>
+                Dans les anciennes publications, la mise en page des acronymes était différente. On devait en effet ajouter un point après chaque lettre composant l'acronyme. Ainsi, on ne devait pas écrire SNCF comme on le fait aujourd'hui, mais S.N.C.F.<br/>
+                Ecrire une fonction <mark class='code'>formater_acronyme(acronyme)</mark> retournant la version ancienne d'un <mark class='code'>acronyme</mark> écrit sans point. Exemple :
+                <div class="algo">
+                    <input type="button" class="copier" value="📑" title="copier">
+                    <p class="code">
+                        >>> formater_acronyme("SNCF")<br/>
+                        S.N.C.F.
+                    </p>
+                </div>
+            </div>
+            <h2>Les tuples</h2>
+            <h3>Déclaration explicite</h3>
+            On peut déclarer un tuple en indiquant toutes ses valeurs entre parenthèses.
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    semaine = ("lun", "mar", "mer", "jeu", "ven", "sam", "dim")
+                </p>
+            </div>
+            Exception : les parenthèses servent déjà à indiquer les priorités dans un calcul. Il faut donc différencier le tuple à 1 élément (un singleton) avec des parenthèses servant aux calculs. Pour cela, on ajoute une virgule après l'élément du singleton. Exemples :
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    ego = ("moi,")
+                    r = (12,)
+                </p>
+            </div>
+            <div class='exercice'>
+                On souhaite modéliser des parties de bataille avec un paquet de 32 cartes.
+                Pour chaque carte, on stocke son nom (chaîne de caractères), sa couleur (chaîne de caractères) et un nombre de points (entier).
+                Toutes ces cartes seront réuni dans une même variable <mark>paquet</mark>.
+                <ol>
+                    <li>Pour chaque carte, peut on utiliser un tuple de 3 éléments ou doit-on utiliser une liste de 3 éléments ?</li>
+                    <li>Pour le paquet, peut on utiliser un tuple ou doit-on utiliser une liste ?</li>
+                    <li>Ecrire une fonction <mark class="code">comparer(carte_a, carte_b)</mark> qui retourne <mark class="code">1</mark> si la <mark class="code">carte_a</mark> l'emporte sur la <mark class="code">carte_b</mark>, <mark class="code">0</mark> si les deux cartes ont la même valeur, <mark class="code">-1</mark> sinon.</li>
+                    <li>Ecrire une fonction <mark class="code">afficher(carte)</mark> qui affiche le texte représentant une <mark class="code">carte</mark>. Par exemple <mark class="code">roi de pique</mark></li>
+                    <li>Ecrire une fonction qui retourne un jeu de 32 cartes déjà mélangé. On pourra utiliser la fonction <mark class='code'>shuffle</mark> du module <mark class='code'>random</mark></li>
+                    <li>Ecrire une fonction <mark class='code'>distribuer(paquet)</mark> qui retourne 2 listes de cartes : 1 par joueur.</li>
+                    <li>Ecrire une fonction <mark class='code'>jouer_tour(joueur_a, joueur_b)</mark> qui simule 1 tour du jeu de bataille. On pourra utiliser <mark class="code">L.pop(0)</mark> qui retire la première carte de la liste <mark class="code">L</mark></li>
+                    <li>Ecrire une fonction <mark class='code'>jouer_partie(prenom_a, prenom_b)</mark> qui simule une partie entière puis affiche : le prénom du vainqueur et le nombre de tours joués.</li>
+                </ol>
+            </div>
+        </div>
+        <script type="text/javascript" src="script.js"></script>
+    </body>
+</html>
