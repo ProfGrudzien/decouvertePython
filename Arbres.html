@@ -74,7 +74,243 @@
                 </ol>
             </div>
             <h2>Parcours d'un arbre binaire</h2>
-            <h2>Implémentation</h2>
+            <h3>Parcours en largeur</h3>
+            Il y a plusieurs façons de parcourir un arbre. Le premier présenté ici est le parcours en largeur qui passe par chaque nœud niveau après niveau.
+            <img src='images/p_largeur.png'>
+            Il est très facile de parcourir un arbre en largeur grâce à une file :
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    créer une file vide<br/>
+                    y enfiler la racine<br/>
+                    tant que la file n'est pas vide :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;défiler un nœud<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;réaliser le traitement voulu sur ce nœud<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;enfiler le fils gauche et le fils droit de ce nœud à la file<br/>
+                </p>
+            </div>
+            <h3>Parcours en profondeur</h3>
+            En remplaçant la file par une pile, on explore l'arbre branche par branche.
+            On parle alors de parcours en profondeur.
+            <img src='images/p_profondeur.png'>
+            Il est très facile de parcourir un arbre en largeur grâce à une file :
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    créer une pile vide<br/>
+                    y empiler la racine<br/>
+                    tant que la pile n'est pas vide :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;dépiler un nœud<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;réaliser le traitement voulu sur ce nœud<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;empiler le fils gauche et le fils droit de ce nœud à la pile<br/>
+                </p>
+            </div>
+            Cependant, lors du parcours en profondeur, on peut choisir de traiter un nœud :
+            <ul>
+                <li>avant ces enfants, on parle de parcours <mark>préfixe</mark> ;</li>
+                <li>après le fils gauche mais avant le fils droit, on parle de parcours <mark>infixe</mark> ;</li>
+                <li>après ces enfants, on parle de parcours <mark>postfixe</mark>.</li>
+            </ul>
+            <div class='exercice'>
+                <ol>
+                    <li>En réalisant un parcours en profondeur grâce à une pile comme vue ci-dessus, quel type de parcours réalise-t-on ?</li>
+                    <li>En réalisant un parcours en profondeur préfixe du graphe suivant, quel est l'ordre de traitement des sommets ?</li>
+                    <li>En réalisant un parcours en profondeur postfixe du graphe suivant, quel est l'ordre de traitement des sommets ?</li>
+                    <li>En réalisant un parcours en profondeur infixe du graphe suivant, quel est l'ordre de traitement des sommets ?</li>
+                </ol>
+                <img src='images/exo2.png'>
+            </div>
+            On peut parcourir en profondeur un arbre grâce à une récursivité.
+            <div class='exercice'>
+                Associer à chaque algorithme précédent les adjectifs <mark class='code'>infixe</mark>, <mark class='code'>préfixe</mark> et <mark class='code'>postfixe</mark>.
+                <div class="algo">
+                    <input type="button" class="copier" value="📑" title="copier">
+                    <p class="code">
+                        fonction parcours(nœud)<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;réaliser le traitement désiré sur le nœud<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;appeler la fonction parcours sur le fils gauche<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;appeler la fonction parcours sur le fils droit<br/>
+                    </p>
+                </div>
+                <div class="algo">
+                    <input type="button" class="copier" value="📑" title="copier">
+                    <p class="code">
+                        fonction parcours(nœud)<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;appeler la fonction parcours sur le fils gauche<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;appeler la fonction parcours sur le fils droit<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;réaliser le traitement désiré sur le nœud<br/>
+                    </p>
+                </div>
+                <div class="algo">
+                    <input type="button" class="copier" value="📑" title="copier">
+                    <p class="code">
+                        fonction parcours(nœud)<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;appeler la fonction parcours sur le fils gauche<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;réaliser le traitement désiré sur le nœud<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;appeler la fonction parcours sur le fils droit<br/>
+                    </p>
+                </div>
+            </div>
+            <h2>Implémentations</h2>
+            <h3>Grâce à un tableau ou à un dictionnaire</h3>
+            On peut représenter les informations de chaque nœud dans un tableau.<br/>
+            Exemple :
+            <img src='images/exo3.png'>
+            <table class='etroite'>
+                <tr><th>id_nœud</th><th>valeur</th><th>fils_gauche</th><th>fils_droit</th></tr>
+                <tr><td>0</td><td>"r"</td><td>1</td><td>2</td></tr>
+                <tr><td>1</td><td>"a"</td><td>None</td><td>None</td></tr>
+                <tr><td>2</td><td>"b"</td><td>None</td><td>3</td></tr>
+                <tr><td>3</td><td>"d"</td><td>None</td><td>None</td></tr>
+            </table>
+            <div class='exercice'>
+                Donner un tableau représentant l'arbre suivant :
+                <img src='images/exo5.jpg'>
+            </div>
+            Ce tableau peut alors être implémenté par un dictionnaire ayant pour clés les identifiants des nœuds (qui peuvent alors être de n'importe quel type). Pour notre exemple :
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    arbre = {}<br/>
+                    arbre[0] = ["r", 1, 2]<br/>
+                    arbre[1] = ["a", None, None]<br/>
+                    arbre[2] = ["b", None, 3]<br/>
+                    arbre[3] = ["d", None, None]
+                </p>
+            </div>
+            <div class='exercice'>
+                Dessiner l'arbre défini par :
+                <div class="algo">
+                    <input type="button" class="copier" value="📑" title="copier">
+                    <p class="code">
+                        arbre = {}<br/>
+                        arbre["o"] = ["o", None, "m1"]<br/>
+                        arbre["m1"] = ["m", None, None]<br/>
+                        arbre["p"] = ["p", "o", "m2"]<br/>
+                        arbre["e"] = ["e", None, None]<br/>
+                        arbre["m2"] = ["m", "e", "s"]<br/>
+                        arbre["s"] = ["s", None, None]
+                    </p>
+                </div>
+            </div>
+            Ou bien, lorsque les identifiants sont des entiers consécutifs comme c'est le cas pour notre exemple, on peut utiliser une liste ou l'index de chaque élément sert d'identifiant :
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    arbre = [["r", 1, 2],<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;["a", None, None],<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;["b", None, 3],<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;["d", None, None]]
+                </p>
+            </div>
+            <div class='exercice'>
+                Dessiner l'arbre défini par :
+                <div class="algo">
+                    <input type="button" class="copier" value="📑" title="copier">
+                    <p class="code">
+                        arbre = [["e", None, None],<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;["i", None, None],<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;["o", 1, None],<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;["p", 2, 4],<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;["r", 0, 5],<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;["s", None, None]]
+                    </p>
+                </div>
+            </div>
+            <h3>Grâce à des listes imbriquées</h3>
+            On peut pousser la structure précédente un peu plus loin.
+            Comme les identifiants sont utilisés qu'une seule fois pour identifier un fils, on peut remplacer cet identifiant par la liste représentant l'arbre directement. Toujours pour l'arbre précédent, cela donnerai les listes imbriquées :
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    arbre = ["r", ["a", None, None], ["b", None, ["d", None, None]]
+                </p>
+            </div>
+            <div class='exercice'>
+                Dessiner l'arbre défini par :
+                <div class="algo">
+                    <input type="button" class="copier" value="📑" title="copier">
+                    <p class="code">
+                        arbre = ["c", ["e", ["i", None, None], ["s", None, None]], ["r", None, ["e", ["s", None, None], None]]]
+                    </p>
+                </div>
+            </div>
+            <div class='exercice'>
+                Donner la liste imbriquée représentant l'arbre suivant :
+                <img src='images/exo6.png'>
+            </div>
+            <h3>Grâce à la programmation orienté objet</h3>
+            Un arbre est simplement définit par 3 éléments : sa valeur, son fils gauche et son fils droit.
+            On peut donc utiliser un objet <mark class="code">Arbre</mark> définit par 3 attributs : la valeur (le type dépend des informations à stocker dans l'arbre) et les deux fils (droit et gauche) eux mêmes de type <mark class="code">Arbre</mark>.
+            Pour enregistrer un arbre en mémoire, on peut alors :
+            <ul>
+                <li>
+                    Ecrire une longue instruction détaillant les fils de chaque nœud. Exemple :
+                    <div class="algo">
+                        <input type="button" class="copier" value="📑" title="copier">
+                        <p class="code">
+                            arbre = Arbre(1, Arbre(2, None, None), Arbre(3, Arbre(4, None, None), Arbre(5, None, None)))
+                        </p>
+                    </div>
+                </li>
+                <li>
+                    Commencer par définir la racine puis ajouter les fils par une suite d'instruction. Exemple :
+                    <div class="algo">
+                        <input type="button" class="copier" value="📑" title="copier">
+                        <p class="code">
+                            arbre = Arbre(6, None, None)<br/>
+                            arbre.fils_gauche = Arbre(10, None, None)<br/>
+                            arbre.fils_droit&nbsp; = Arbre(7, None, None)<br/>
+                            arbre.fils_droit.fils_gauche = Arbre(9, None, None)<br/>
+                            arbre.fils_droit.fils_droit&nbsp; = Arbre(8, None, None)
+                        </p>
+                    </div>
+                </li>
+                <li>
+                    Commencer par le niveau le plus bas puis remonter jusqu'à la racine. Exemple :
+                    <div class="algo">
+                        <input type="button" class="copier" value="📑" title="copier">
+                        <p class="code">
+                            A = Arbre(15, None, None)<br/>
+                            B = Arbre(14, None, None)<br/>
+                            C = Arbre(13, None, None)<br/>
+                            D = Arbre(12, A, B)<br/>
+                            arbre = Arbre(11, C, D)
+                        </p>
+                    </div>
+                </li>
+            </ul>
+            <div class='exercice'>
+                Dessiner les arbres définis dans les trois exemples précédents.
+            </div>
+            <div class='exercice'>
+                <ol>
+                    <li>Créer une classe <mark class="code">Arbre</mark> possédant les trois attributs :
+                        <ul>
+                            <li><mark class="code">valeur</mark></li>
+                            <li><mark class="code">fils_gauche</mark></li>
+                            <li><mark class="code">fils_droit</mark></li>
+                        </ul>
+                    </li>
+                    <li>
+                        Utiliser cette classe pour enregistrer l'arbre suivant dans une variable <mark class='code'>A</mark>
+                        <img src='images/exo4.png'>
+                    </li>
+                    <li>
+                        Ecrire une fonction <mark class='code'>parcours_largeur(arbre, f)</mark> appliquant la fonction <mark class='code'>f</mark> à l'ensemble des nœuds de l'arbre selon un parcours en largeur.
+                        On pourra tester cette fonction en appliquant la fonction <mark class="code">print</mark> à l'arbre <mark class='code'>A</mark>.
+                    </li>
+                    <li>
+                        Ecrire une fonction <mark class='code'>parcours_prefixe(arbre, f)</mark> appliquant la fonction <mark class='code'>f</mark> à l'ensemble des nœuds de l'arbre selon un parcours en profondeur prefixe.
+                    </li>
+                    <li>
+                        Ecrire une fonction <mark class='code'>parcours_infixe(arbre, f)</mark> appliquant la fonction <mark class='code'>f</mark> à l'ensemble des nœuds de l'arbre selon un parcours en profondeur infixe.
+                    </li>
+                    <li>
+                        Ecrire une fonction <mark class='code'>parcours_postfixe(arbre, f)</mark> appliquant la fonction <mark class='code'>f</mark> à l'ensemble des nœuds de l'arbre selon un parcours en profondeur postfixe.
+                    </li>
+                </ol>
+            </div>
             <h2>Arbre binaire de recherche</h2>
         </div>
         <script type="text/javascript" src="script.js"></script>
