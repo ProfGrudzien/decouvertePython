@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8"/>
         <link rel="stylesheet" href="style.css"/>
+        <link rel="stylesheet" href="tuples.css"/>
     </head>
     <body>
         <div class="main">
@@ -156,10 +157,82 @@
                     r = (12,)
                 </p>
             </div>
+            <div class="exercice">
+                Décrire chaque carte par un tuple décrivant les fruits du haut vers le bas :
+                <img src="images/carteC.png" class="carte">
+                <img src="images/carteD.png" class="carte">
+                <img src="images/carteB.png" class="carte">
+                <img src="images/carteA.png" class="carte">
+            </div>
+            <h3>Tuples et fonctions</h3>
+            Les fonctions qui retourne plusieurs valeurs le font dans un tuple.
+            On peut récupérer les résultats de deux façons :
+            <ul>
+                <li>
+                    une seule variable de type tuple. Exemple :
+                    <div class="algo">
+                        <input type="button" class="copier" value="📑" title="copier">
+                        <p class="code">
+                            def bon_ordre(a, b) :<br/>
+                            &nbsp;&nbsp;&nbsp;&nbsp;if a > b :<br/>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return b, a<br/>
+                            &nbsp;&nbsp;&nbsp;&nbsp;return a, b<br/>
+                            &nbsp;<br/>
+                            R = bon_ordre(12, 7)<br/>
+                            print(R[0], "<", R[1])
+                        </p>
+                    </div>
+                </li>
+                <li>
+                    autant de variables que de résultats. Exemple :
+                    <div class="algo">
+                        <input type="button" class="copier" value="📑" title="copier">
+                        <p class="code">
+                            def bon_ordre(a, b) :<br/>
+                            &nbsp;&nbsp;&nbsp;&nbsp;if a > b :<br/>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return b, a<br/>
+                            &nbsp;&nbsp;&nbsp;&nbsp;return a, b<br/>
+                            &nbsp;<br/>
+                            a, b = bon_ordre(12, 7)<br/>
+                            print(a, "<", b)
+                        </p>
+                    </div>
+                </li>
+            </ul>
+            <h2>Applications</h2>
+            <h3>Répertoire téléphonique</h3>
+            <div class="exercice">
+                On modélise un répertoire téléphonique simplifié qui permet de stocker des associations nom/numéro.
+                Le répertoire sera de type liste, mais nous écrirons toutes les fonctions qui permettrons à l'utilisateur d'ignorer le fonctionnement interne du répertoire.
+                <ol>
+                    <li>Ecrire une fonction <mark class='code'>creer_repertoire()</mark> qui retourne un répertoire vide, c'est-à-dire une liste vide.</li>
+                    <li>Ecrire une fonction <mark class='code'>ajouter_numero(repertoire, nom, numero)</mark> qui ajoute l'association nom/numéro au <mark class='code'>repertoire</mark>.</li>
+                    <li>Ecrire une fonction <mark class='code'>chercher_numero(repertoire, nom)</mark> qui retourne le numéro associé au <mark class='code'>nom</mark> dans le <mark class='code'>repertoire</mark>.</li>
+                    <li>Ecrire une fonction <mark class='code'>chercher_nom(repertoire, numero)</mark> qui retourne le nom associé au <mark class='code'>numero</mark> dans le <mark class='code'>repertoire</mark>.</li>
+                    <li>Modifier la fonction <mark class='code'>ajouter_numero</mark> pour qu'elle refuse d'ajouter une association si le <mark class='code'>numero</mark> ou le <mark class='code'>nom</mark> est déjà présent dans le <mark class='code'>repertoire</mark>.</li>
+                    <li>Ecrire une fonction <mark class='code'>supprimer_numero(repertoire, nom)</mark> qui supprime le contact associé au <mark class='code'>nom</mark> dans le <mark class='code'>repertoire</mark>.</li>
+                    <li>Ecrire une fonction <mark class='code'>modifier_numero(repertoire, nom, numero)</mark> qui modifie le <mark class="code">numero</mark> associé au <mark class='code'>nom</mark> dans le <mark class='code'>repertoire</mark>.</li>
+                </ol>
+                Ces fonctions peuvent s'utiliser facilement. Exemple :
+                <div class="algo">
+                    <input type="button" class="copier" value="📑" title="copier">
+                    <p class="code">
+                        contacts_pro = creer_repertoire()<br/>
+                        contacts_perso = creer_repertoire()<br/>
+                        ajouter_numero(contacts_perso, "Anna", "0610461265")<br/>
+                        ajouter_numero(contacts_perso, "Emma", "0656156756")<br/>
+                        ajouter_numero(contacts_pro, "Lycée", "0490710981")<br/>
+                        ajouter_numero(contacts_pro, "Lee-Lou", "0715156655")<br/>
+                        ajouter_numero(contacts_perso, "Lee-Lou", "0715156655")<br/>
+                        supprimer_numero(contacts_pro, "Lee-Lou")
+                    </p>
+                </div>
+            </div>
+            <h3>Bataille</h3>
             <div class='exercice'>
                 On souhaite modéliser des parties de bataille avec un paquet de 32 cartes.
                 Pour chaque carte, on stocke son nom (chaîne de caractères), sa couleur (chaîne de caractères) et un nombre de points (entier).
-                Toutes ces cartes seront réuni dans une même variable <mark>paquet</mark>.
+                Toutes ces cartes seront réunies dans une même variable <mark class='code'>paquet</mark>.
                 <ol>
                     <li>Pour chaque carte, peut on utiliser un tuple de 3 éléments ou doit-on utiliser une liste de 3 éléments ?</li>
                     <li>Pour le paquet, peut on utiliser un tuple ou doit-on utiliser une liste ?</li>
