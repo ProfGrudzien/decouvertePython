@@ -311,6 +311,55 @@
             </div>
             <h2>Premières applications</h2>
             <h3>Code Morse</h3>
+            <div class="exercice">
+                Le code Morse traduit l'alphabet en points et en ligne facilement communicable grâce à divers moyens de transmission (lumière, son, impulsion éléctrique, ...).
+                Les lettres sont séparées par une pause, les mots par une longue pause.<br/>
+                Voilà le dictionnaire donnant les symboles pour toutes les lettres de l'alphabet.
+                <div class="algo">
+                    <input type="button" class="copier" value="📑" title="copier">
+                    <p class="code">
+                        dict_morse={<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'A':'·−',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'B':'−···',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'C':'−·−·',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'D':'−··',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'E':'·',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'F':'··−·',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'G':'−−·',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'H':'····',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'I':'··',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'J':'·−−−',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'K':'−·−',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'L':'·−··',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'M':'−−',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'N':'−·',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'O':'−−−',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'P':'·−−·',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'Q':'−−·−',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'R':'·−·',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'S':'···',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'T':'−',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'U':'··−',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'V':'···−',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'W':'·−−',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'X':'−··−',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'Y':'−·−−',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'Z':'−−··',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;' ':' '<br/>
+                        }
+                    </p>
+                </div>
+                <ol>
+                    <li>Ecrire une fonction <mark class="code">encoder_morse</mark> traduisant un texte en morse.<br/>Il n'y a pas besoin d'arbre pour cette question.</li>
+                    <li>
+                        Pour décoder facilement un message en morse, on utilise un arbre où les fils gauches correspondent à l'ajout d'un point, et les fils droits à l'ajout d'un tiret. Les nœuds ont pour valeur la lettre à utiliser lorsque l'on a finit de parcourir la lettre en morse.<br/> Comme les lettres sont codés par au maximum 4 symboles, la hauteur de l'arbre est égale à 4
+                        <ol>
+                            <li>Ecrire une fonction qui construit cet arbre à partir du dictionnaire précéndent.</li>
+                            <li>Ecrire une fonction qui décode un texte donné en morse.</li>
+                        </ol>
+                    </li>
+                </ol>
+            </div>
             <h2>Arbre binaire de recherche</h2>
         </div>
         <script type="text/javascript" src="script.js"></script>
