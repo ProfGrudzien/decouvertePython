@@ -318,7 +318,7 @@
                 <div class="algo">
                     <input type="button" class="copier" value="📑" title="copier">
                     <p class="code">
-                        dict_morse={<br/>
+                        dict_morse = {<br/>
                         &nbsp;&nbsp;&nbsp;&nbsp;'A':'·−',<br/>
                         &nbsp;&nbsp;&nbsp;&nbsp;'B':'−···',<br/>
                         &nbsp;&nbsp;&nbsp;&nbsp;'C':'−·−·',<br/>
@@ -350,15 +350,91 @@
                     </p>
                 </div>
                 <ol>
-                    <li>Ecrire une fonction <mark class="code">encoder_morse</mark> traduisant un texte en morse.<br/>Il n'y a pas besoin d'arbre pour cette question.</li>
+                    <li>Ecrire une fonction <mark class="code">encoder_morse(texte)</mark> traduisant un <mark class='code'>texte</mark> en lettres vers un texte en morse.<br/>Il n'y a pas besoin d'arbre pour cette question.</li>
                     <li>
                         Pour décoder facilement un message en morse, on utilise un arbre où les fils gauches correspondent à l'ajout d'un point, et les fils droits à l'ajout d'un tiret. Les nœuds ont pour valeur la lettre à utiliser lorsque l'on a finit de parcourir la lettre en morse.<br/> Comme les lettres sont codés par au maximum 4 symboles, la hauteur de l'arbre est égale à 4
                         <ol>
-                            <li>Ecrire une fonction qui construit cet arbre à partir du dictionnaire précéndent.</li>
-                            <li>Ecrire une fonction qui décode un texte donné en morse.</li>
+                            <li>Ecrire une fonction <mark class="code">arbre_morse(dict_morse)</mark> qui construit cet arbre à partir du dictionnaire précédent.</li>
+                            <li>Ecrire une fonction <mark class='code'>decoder_morse(morse)</mark> qui décode en lettres le texte <mark class='code'>morse</mark> donné en morse.</li>
                         </ol>
                     </li>
                 </ol>
+            </div>
+            <h3>Arbre de jeu</h3>
+            <p>
+                Les arbres permettent de représenter toutes les positions possibles au cours d'un jeu.
+                Cet arbre n'est en général pas binaire car un nœud a autant de fils qu'il y a de coups possibles.
+            </p>
+            <p>
+                Au jeu du morpion par exemple, la racine a 9 fils car le premier joueur peut placer son symbole dans l'une des 9 cases disponibles.
+                Ces 9 nœuds ont eu même 8 fils car le joueur suivant peut placer son symbole sur une des 8 cases encore libre.
+            </p>
+            <div class="exercice">
+                <img src="images/puissance4.png">
+                <ol>
+                    <li>Au jeu de puissance 4, combien de fils ont la plupart des nœuds de l'arbre représentant toutes les positions ?</li>
+                    <li>Dans quelle situation ce n'est pas le cas ?</li>
+                    <li>Quelles positions traduisent les feuilles de cet arbre ?</li>
+                    <li>Quel est la hauteur de cet arbre de jeu ?</li>
+                </ol>
+            </div>
+            <div class="exercice">
+                <p>
+                    On propose ici d'étudier un arbre de jeu dans une situation où les joueurs n'ont qu'au maximum 2 choix.
+                    Il s'agît d'une variante du jeu de Nim.
+                </p>
+                <p>
+                    Voici les règles du jeu :<br/>
+                    On place sur une table 5 allumettes. A tour de rôle, les joueurs ont le choix de retirer soit 1 seule, soit 2 allumettes.
+                    Le joueur qui retire la dernière allumette a gagné.
+                </p>
+                <p>
+                    Dans ce jeu, une position est défini par 2 choses : le nombre d'allumettes restantes et le nom du prochain joueur.<br/>
+                    Comme le nom du joueur peut se déterminer aussi en regardant à quel niveau se situe le nœud correspondant à cette situation, il faut uniquement stocker le nombre d'allumettes restantes.
+                </p>
+                <p>
+                    L'arbre de jeu est binaire. On choisit que le fils gauche représente la situation où le joueur retire une seule allumette et que le fils droit représente la situation où le joueur retire deux allumettes. Les feuilles correspondent au cas où il n'y a plus aucune allumettes restantes.
+                </p>
+                <ol>
+                    <li>Quelle est la hauteur de cet arbre de jeu ?</li>
+                    <li>Dessiner l'arbre de ce jeu.</li>
+                    <li>On donne la couleur rouge au joueur qui commence, la couleur bleu à l'autre joueur.
+                        Montrer que le joueur rouge peut toujours gagner, quelque-soit les coups du joueur bleu.
+                    </li>
+                    <li>Ecrire une fonction <mark class='code'>arbre_jeu_variante_nim()</mark> qui construit cet arbre.</li>
+                </ol>
+            </div>
+            <h3>Arbre et expression mathématiques</h3>
+            Les opérations +, &minus;, &times; et &div; sont des opérations binaires : elle s'effectuent sur deux nombres (ou expression).<br/>
+            On peut donc facilement représenter les expressions mathématiques construites sur ces 4 opérations à l'aide d'un arbre où les nœuds sont des opérateurs sauf les feuilles qui sont des nombres. Exemple :
+            <img src='images/arbre_maths.png'>
+            <div class="exercice">
+                <ol>
+                    <li>Représenter par un arbre l'expression (4 + 2) &times; (9 &minus; (1 + 3))</li>
+                    <li>
+                        Quelle expression mathématique représente l'arbre suivant ?
+                        <img src="images/arbre_maths.gif">
+                    </li>
+                    <li>Stocker dans une variable l'arbre de la question précédente.</li>
+                    <li>
+                        Afficher les nœuds selon un parcours en profondeur préfixe.<br/>
+                        On parle de notation polonaise (proposée en 1924 par le mathématicien polonais Jan Łukasiewicz).<br/>
+                        Les opérations sont vues comme des fonctions à deux variables.
+                    </li>
+                    <li>
+                        Afficher les nœuds selon un parcours en profondeur postfixe.<br/>
+                        On parle de notation polonaise inverse.<br/>
+                        En plaçant ces nœuds dans une pile, il est très facile d'écrire un programme calculant les expressions mathématiques.
+                    </li>
+                    <li>
+                        Afficher les nœuds selon un parcours en profondeur infixe en ajoutant en plus :
+                        <ul>
+                            <li>une parenthèse ouvrante avant d'afficher le fils gauche</li>
+                            <li>une parenthèse fermante après avoir affiché le fils droit</li>
+                        </ul>
+                    </li>
+                </ol>
+                Remarque : on peut aussi ajouter plus d'opérations comme la puissance (binaire) ou comme sin et cos (unaire : les nœuds n'auront qu'un seul fils).
             </div>
             <h2>Arbre binaire de recherche</h2>
         </div>
