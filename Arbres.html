@@ -310,56 +310,6 @@
                 </ol>
             </div>
             <h2>Premières applications</h2>
-            <h3>Code Morse</h3>
-            <div class="exercice">
-                Le code Morse traduit l'alphabet en points et en ligne facilement communicable grâce à divers moyens de transmission (lumière, son, impulsion éléctrique, ...).
-                Les lettres sont séparées par une pause, les mots par une longue pause.<br/>
-                Voilà le dictionnaire donnant les symboles pour toutes les lettres de l'alphabet.
-                <div class="algo">
-                    <input type="button" class="copier" value="📑" title="copier">
-                    <p class="code">
-                        dict_morse = {<br/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;'A':'·−',<br/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;'B':'−···',<br/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;'C':'−·−·',<br/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;'D':'−··',<br/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;'E':'·',<br/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;'F':'··−·',<br/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;'G':'−−·',<br/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;'H':'····',<br/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;'I':'··',<br/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;'J':'·−−−',<br/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;'K':'−·−',<br/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;'L':'·−··',<br/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;'M':'−−',<br/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;'N':'−·',<br/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;'O':'−−−',<br/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;'P':'·−−·',<br/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;'Q':'−−·−',<br/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;'R':'·−·',<br/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;'S':'···',<br/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;'T':'−',<br/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;'U':'··−',<br/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;'V':'···−',<br/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;'W':'·−−',<br/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;'X':'−··−',<br/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;'Y':'−·−−',<br/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;'Z':'−−··',<br/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;' ':' '<br/>
-                        }
-                    </p>
-                </div>
-                <ol>
-                    <li>Ecrire une fonction <mark class="code">encoder_morse(texte)</mark> traduisant un <mark class='code'>texte</mark> en lettres vers un texte en morse.<br/>Il n'y a pas besoin d'arbre pour cette question.</li>
-                    <li>
-                        Pour décoder facilement un message en morse, on utilise un arbre où les fils gauches correspondent à l'ajout d'un point, et les fils droits à l'ajout d'un tiret. Les nœuds ont pour valeur la lettre à utiliser lorsque l'on a finit de parcourir la lettre en morse.<br/> Comme les lettres sont codés par au maximum 4 symboles, la hauteur de l'arbre est égale à 4
-                        <ol>
-                            <li>Ecrire une fonction <mark class="code">arbre_morse(dict_morse)</mark> qui construit cet arbre à partir du dictionnaire précédent.</li>
-                            <li>Ecrire une fonction <mark class='code'>decoder_morse(morse)</mark> qui décode en lettres le texte <mark class='code'>morse</mark> donné en morse.</li>
-                        </ol>
-                    </li>
-                </ol>
-            </div>
             <h3>Arbre de jeu</h3>
             <p>
                 Les arbres permettent de représenter toutes les positions possibles au cours d'un jeu.
@@ -401,7 +351,58 @@
                     <li>On donne la couleur rouge au joueur qui commence, la couleur bleu à l'autre joueur.
                         Montrer que le joueur rouge peut toujours gagner, quelque-soit les coups du joueur bleu.
                     </li>
-                    <li>Ecrire une fonction <mark class='code'>arbre_jeu_variante_nim()</mark> qui construit cet arbre.</li>
+                    <li>Ecrire une fonction <mark class='code'>arbre_jeu_variante_nim(n)</mark> qui construit l'arbre pour une partie commençant avec <mark class="code">n</mark> allumettes.</li>
+                </ol>
+            </div>
+            <h3>Code Morse</h3>
+            <div class="exercice">
+                Le code Morse traduit l'alphabet en points et en ligne facilement communicable grâce à divers moyens de transmission (lumière, son, impulsion électrique, ...).
+                Les lettres sont séparées par une pause, les mots par une longue pause.<br/>
+                Voilà le dictionnaire donnant les symboles pour toutes les lettres de l'alphabet.
+                <div class="algo">
+                    <input type="button" class="copier" value="📑" title="copier">
+                    <p class="code">
+                        dict_morse = {<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'A':'·−',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'B':'−···',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'C':'−·−·',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'D':'−··',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'E':'·',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'F':'··−·',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'G':'−−·',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'H':'····',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'I':'··',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'J':'·−−−',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'K':'−·−',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'L':'·−··',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'M':'−−',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'N':'−·',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'O':'−−−',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'P':'·−−·',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'Q':'−−·−',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'R':'·−·',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'S':'···',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'T':'−',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'U':'··−',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'V':'···−',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'W':'·−−',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'X':'−··−',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'Y':'−·−−',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'Z':'−−··',<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;' ':''<br/>
+                        }
+                    </p>
+                </div>
+                <ol>
+                    <li>Ecrire une fonction <mark class="code">encoder_morse(texte)</mark> traduisant un <mark class='code'>texte</mark> en lettres vers un texte en morse.<br/>Il n'y a pas besoin d'arbre pour cette question.</li>
+                    <li>
+                        Pour décoder facilement un message en morse, on utilise un arbre où les fils gauches correspondent à l'ajout d'un point, et les fils droits à l'ajout d'un tiret. Les nœuds ont pour valeur la lettre à utiliser lorsque l'on a finit de parcourir la lettre en morse.<br/> Comme les lettres sont codés par au maximum 4 symboles, la hauteur de l'arbre est égale à 4
+                        <ol>
+                            <li>Ecrire une fonction <mark class="code">arbre_morse(dict_morse)</mark> qui construit cet arbre à partir du dictionnaire précédent.</li>
+                            <li>Ecrire une fonction <mark class='code'>decoder_lettre_morse(morse)</mark> qui décode la lettre <mark class='code'>morse</mark> donnée en morse.</li>
+                            <li>Ecrire une fonction <mark class='code'>decoder_morse(morse)</mark> qui décode en lettres le texte <mark class='code'>morse</mark> donné en morse.</li>
+                        </ol>
+                    </li>
                 </ol>
             </div>
             <h3>Arbre et expression mathématiques</h3>
@@ -437,6 +438,64 @@
                 Remarque : on peut aussi ajouter plus d'opérations comme la puissance (binaire) ou comme sin et cos (unaire : les nœuds n'auront qu'un seul fils).
             </div>
             <h2>Arbre binaire de recherche</h2>
+            <h3>Définition</h3>
+            <p>
+                Un arbre binaire de recherche (BST pour Binary Search Tree) est un arbre binaire possédant les propriétés suivantes :
+                <ul>
+                    <li>pour chaque nœud, tous les nœuds du sous-arbre gauche (s'il existe) ont une valeur plus petite ou égale à la valeur de ce nœud.</li>
+                    <li>pour chaque nœud, tous les nœuds du sous-arbre droit (s'il existe) ont une valeur strictement supérieure à la valeur de ce nœud.</li>
+                </ul>
+            </p>
+            <div class="exercice">
+                Les arbres suivants sont-ils des arbres binaires de recherche ?
+                <img src="images/bst1.png">
+                <img src="images/bst3.png">
+                <img src="images/bst2.png">
+                <img src="images/bst4.png">
+            </div>
+            <p>
+                L'insertion d'un nouveau nœud et la recherche d'une valeur dans cet arbre sont en complexité <mark class="code">O(h)</mark> où <mark class="code">h</mark> est la hauteur de l'arbre de recherche. Cela signifie que dans le cas idéal, cette complexité est <mark class="code">O(log(n))</mark> où <mark class="code">n</mark> est égal au nombre de nœuds. En revanche, dans le pire des cas, lorsque l'arbre est dégénéré, cette complexité est de <mark class="code">O(n)</mark>.
+            </p>
+            <div class="exercice">
+                Dans chaque cas, construire arbre à partir d'une liste de valeurs (en respectant l'ordre) puis déterminer le nombre maximal de comparaisons nécessaires pour constater qu'une valeur n'est pas présente dans l'arbre.
+                <ol>
+                    <li><mark class="code">[29, 31, 5, 17, 19, 7, 2, 13, 3, 37, 23, 11]</mark></li>
+                    <li><mark class="code">[31, 37, 23, 17, 29, 19, 11, 5, 13, 3, 7, 2]</mark></li>
+                    <li><mark class="code">[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37]</mark></li>
+                </ol>
+            </div>
+            <h3>Implémentation</h3>
+            <p>
+                Nous allons partir de l'implémentation d'un arbre binaire et nous la compléter en une implémentation d'un arbre binaire de recherche.
+            </p>
+            <div class="exercice">
+                <ol>
+                    <li>Copier la classe arbre déjà écrite en une classe <mark class="code">Arbre_recherche</mark></li>
+                    <li>Ajouter à cette classe la méthode <mark class="code">hauteur()</mark> qui retourne la hauteur de l'arbre.
+                        Par convention, la hauteur d'un arbre réduit à sa racine sera égale à <mark class="code">1</mark> et la hauteur d'un arbre vide sera égale à <mark class="code">0</mark>.</li>
+                    <li>Ajouter une méthode <mark class="code">inserer(valeur)</mark> qui insère une nouvelle valeur dans l'arbre binaire de recherche.</li>
+                    <li>Ajouter une méthode <mark class="code">rechercher(valeur)</mark> qui recherche si la valeur est présente dans l'arbre. Cette méthode retourne <mark class="code">True</mark> si c'est le cas, <mark class="code">False</mark> sinon.</li>
+                    <li>Reprendre les données de l'exercice précédent pour construire les trois arbres binaires de recherche puis afficher leurs hauteurs.</li>
+                </ol>
+            </div>
+            <h3>Application : tri par arbre</h3>
+            <div class="exercice">
+                <ol>
+                    <li>L'un des 4 parcours possibles d'un arbre binaire de recherche retourne les valeurs rangées dans l'ordre croissant. Lequel ?</li>
+                    <li>Ecrire une fonction <mark class="code">tri_par_arbre(liste)</mark> qui trie la <mark class="code">liste</mark> à l'aide d'un arbre binaire de recherche.</li>
+                </ol>
+            </div>
+            <h3>Application : GPS</h3>
+            Le but de cette activité est de rechercher le nom d'une commune et les données associées à l'aide d'un arbre binaire de recherche. La recherche se fait lettre après lettre. Si les communes commençant par les lettres données sont peu nombreuses (moins de 10), les données s'affichent à l'écran, terminant ainsi la recherche.
+            <div class="exercice">
+                <ol>
+                    <li>Copier la classe <mark class="code">Arbre_recherche</mark> déjà écrite en une classe <mark class="code">Arbre_GPS</mark></li>
+                    <li>Modifier cette nouvelle classe pour que les nœuds stockent deux informations en plus des fils droit et gauche : la clé de recherche (chaîne de caractère) et les données de la commune (au choix : tuple, liste, dictionnaire ou objet). La clé utilisé ici sera le nom de la commune.</li>
+                    <li>Modifier la méthode <mark class="code">inserer(valeur)</mark> en une méthode <mark class="code">inserer(commune)</mark> qui insére les informations de la commune dans cet arbre.</li>
+                    <li>Modifier la méthode <mark class="code">recherche(valeur)</mark> en une méthode <mark class="code">rechercher(commune)</mark> pour que la recherche se fasse à l'aide de la clé.</li>
+                    <li>A l'aide du fichier <mark class="code">communes.csv</mark>, créer l'arbre qui servira pour les recherches.</li>
+                </ol>
+            </div>
         </div>
         <script type="text/javascript" src="script.js"></script>
     </body>
