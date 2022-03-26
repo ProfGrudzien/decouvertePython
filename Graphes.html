@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+    <body>
+        <div class="main">
+            <h1>Graphes</h1>
+            <p>
+                Des listes chaînées aux piles, files puis arbres, les structures de données sont de plus en plus complexes.
+                Ce cheminement nous mène maintenant aux graphes, une structure de données dite relationnelle car elle permet de modéliser des liens entre des entités.
+            </p>
+            <h2>Notion de graphe</h2>
+            <p>
+                Un graphe est un ensemble de sommets combiné à un ensemble d’arêtes liant ces sommets.
+                Il existe beaucoup de variantes, par exemple les graphes orientés où les arêtes ont un sens unique de parcours ou bien les graphes pondérés où les arêtes sont dotées d'un poids.
+            </p>
+            <p>
+                Exemples :
+                <ul>
+                    <li>
+                        <p>Graphe simple non orienté et non pondéré où les sommets sont nommés par des nombres entiers :</p>
+                        <img src="images/graphe00.png">
+                    </li>
+                    <li>
+                        <p>Graphe simple non orienté et non pondéré où les sommets sont nommés par des lettres :</p>
+                        <img src="images/graphe01.png">
+                    </li>
+                    <li>
+                        <p>Graphe orienté et non pondéré :</p>
+                        <img src="images/graphe02.png">
+                    </li>
+                    <li>
+                        <p>Graphe simple non orienté pondéré :</p>
+                        <img src="images/graphe03.png">
+                    </li>
+                    <li>
+                        <p>Graphe simple orienté et pondéré :</p>
+                        <img src="images/graphe04.png">
+                    </li>
+                </ul>
+            </p>
+            <h2>Problèmes faisant intervenir des graphes.</h2>
+            <h3>Les sept ponts de Königsberg</h3>
+            <p>
+                L'origine des graphes viendrait du mathématicien suisse Leonhard Euler, lors de la résolution du problème des sept ponts de Königsberg. Le problème s’énonce ainsi :<br/>
+                « Existe-t-il un itinéraire permettant de traverser une et une seule fois les 7 ponts de la ville de Königsberg dont voici une représentation.»
+                <img src="images/Konigsberg.png">
+                La résolution de ce problème est facilité par l'utilisation du graphe suivant :
+                <img src="images/Konigsberg_graphe.png">
+                Et la démonstration est la suivante :<br/>
+                Imaginons qu'il existe un tel parcours.
+                Pour chaque sommet autre que le premier et le dernier de parcours, il faut que l'on puisse en partir autant de fois qu'on est arrivé à ce sommet.
+                Donc le nombre de sommets ayant un nombre impair d’arêtes ne peux pas dépasser 2.
+                Sur ce graphe, tous les sommets ont un nombre impair d'arêtes.
+                Il n'existe donc pas de promenade parcourant ces ponts une et une seule fois.
+            </p>
+            <div class="exercice">
+                Est-il possible de dessiner ce dessin sans lever le crayon et sans repasser par un segment déjà tracé ?
+                <img src="images/graphe05.png">
+            </div>
+            <h3>Coloration des sommets d'un graphe</h3>
+            <p>
+                Le théorème des 4 couleurs affirme que pour n'importe quelle carte, il existe une façon de colorier chaque région avec 4 couleurs sans qu'aucunes régions adjacentes ne soit de la même couleur. Voilà une solution pour la carte présentant les états des USA :
+                <img src="images/USA.png">
+                La démonstration de ce théorème est très compliquée et fait intervenir plusieurs centaines de situations possibles.
+                Il s'agît de la première preuve réalisée par un ordinateur (en 1976 après 1200 heures de calcul).<br/>
+                Elle s'appuie sur un graphe ou les sommets sont les régions de la carte et où les arêtes relient les régions adjacentes.
+            </p>
+            <p>
+                Le problème de coloration consiste à déterminer le nombre de couleurs nécessaire (au minimum) pour colorier les sommets d'un graphe sans que deux sommets reliés par une arrête ne soient de la même couleur.
+            </p>
+            <div class="exercice">
+                Combien de couleur (au minimum) faut-il pour colorier le graphe suivant ?
+                <img src="images/graphe00.png"/>
+            </div>
+            <p>
+                Le problème de coloration permet de résoudre de nombreux problèmes comme par exemple des problèmes d'optimisation.
+            </p>
+            <div class="exercice">
+                Une société doit transporter par camions six produits chimiques, notés P1,&nbsp;...,&nbsp;P6, depuis l'usine de production jusqu'à l'entreprise utilisatrice. Pour des raisons de sécurité, certains produits ne peuvent pas être transportés ensemble&nbsp;: P1 et P2, P1 et P4, P2 et P3, P2 et P5, P3 et P4, P5 et P6.<br/> Déterminer le nombre minimum de camions nécessaires.
+            </div>
+            <div class="exercice">
+                A un examen, les candidats peuvent choisir 2 ou 3 options parmi les 6 options proposées : graphes, vélo, langue régionale, guitare, latin et natation. Certains élèves ont choisi les options graphes, langue régionale, guitare. D'autres vélo et latin; D'autres enfin langue régionale et natation. Les élèves passent au plus une épreuve chaque jour.
+                <ol>
+                    <li>Combien peut-on programmer d'épreuves d'option au maximum dans une journée ?</li>
+                    <li>Quelle est la durée minimum de l'ensemble des épreuves optionnelles ?</li>
+                </ol>
+            </div>
+            <h3>Un problème bidon</h3>
+            <p>
+                Dans le film Une journée en enfer, Les deux héros doivent résoudre un problème de logique afin de désamorcer une bombe.
+                Ils disposent d'une fontaine d'eau et de 2 bidons, l'un d'une capacité de 5 gallons et l'autre d'une capacité de 3 gallons.
+                Ils doivent remplir l'un des bidons d'eau par exactement 4 gallons d'eau.
+            </p>
+            <p>
+                Ce problème peut facilement être résolu à l'aide d'un graphe orienté :
+                Les sommets seront étiquetés de la forme (a, b) où a est le volume d'eau (en gallons) dans le gros bidon et b le volume d'eau dans le petit gallon. La situation initiale est (0, 0) et on souhaite obtenir une situation de la forme (4, x).
+                Les arrêtes signifient qu'il est possible de passer d'une situation à l'autre en réalisant une des actions suivantes :
+                <ul>
+                    <li>vider au sol le contenu du gros bidon</li>
+                    <li>vider au sol le contenu du petit bidon</li>
+                    <li>remplir au maximum le gros bidon à l'aide de la fontaine</li>
+                    <li>remplir au maximum le petit bidon à l'aide de la fontaine</li>
+                    <li>transvaser l'eau du petit bidon vers le gros bidon jusqu'à vider le petit bidon ou remplir le gros</li>
+                    <li>transvaser l'eau du gros bidon vers le petit bidon jusqu'à vider le gros bidon ou remplir le petit</li>
+                </ul>
+                <ol>
+                    <li>Construire le graphe permettant de résoudre ce problème</li>
+                    <li>En déduire les actions à mener pour résoudre ce problème</li>
+                </ol>
+            </p>
+            <h2>Distances dans un graphe</h2>
+            <h3>Dans un graphe non pondéré</h3>
+            <p>
+                La longueur d'un chemin dans un graphe non pondéré est égal au nombre d’arêtes traversées en parcourant ce chemin.<br/>
+                La distance entre deux sommets et égal à la plus petite longueur parmi tous les chemins reliant ces deux sommets.<br/>
+                Si deux sommets ne sont pas reliables, alors leur distance est égale à +&infin;.
+            </p>
+            <div class="exercice">
+                On considère le graphe suivant.
+                <img src="images/graphe01.png">
+                <ol>
+                   <li>Quelle est la distance séparant les sommets A et G ?</li> 
+                   <li>Quelle est la distance séparant les sommets A et H ?</li>
+                   <li>Quelle est la distance séparant les sommets E et D ?</li> 
+                </ol>
+            </div>
+            <p>
+                Attention, dans un graphe orienté, il n'est possible de parcourir les arêtes que dans un seul sens.
+                La distance d'un sommet A vers un sommet B peut alors être différente de la distance du sommet B vers le sommet A !
+            </p>
+            <div class="exercice">
+                On considère le graphe suivant.
+                <img src="images/graphe02.png">
+                <ol>
+                   <li>Quelle est la distance du sommet F vers le sommet D ?</li> 
+                   <li>Quelle est la distance du sommet D vers le sommet F ?</li> 
+                   <li>Quelle est la distance du sommet A vers le sommet E ?</li>
+                </ol>
+            </div>
+            <h3>Dans un graphe pondéré</h3>
+            <p>
+                La longueur d'un chemin dans un graphe pondéré est égal à la somme des poids de toutes les d’arêtes traversées en parcourant ce chemin.<br/>
+                La distance entre deux sommets et égal à la plus petite longueur parmi tous les chemins reliant ces deux sommets.<br/>
+                Si deux sommets ne sont pas reliables, alors leur distance est égale à +&infin;.
+            </p>
+            <div class="exercice">
+                On considère le graphe suivant.
+                <img src="images/graphe03.png">
+                <ol>
+                   <li>Quelle est la distance séparant les sommets A et E ?</li> 
+                   <li>Quelle est la distance séparant les sommets A et F ?</li>
+                   <li>Quelle est la distance séparant les sommets C et F ?</li> 
+                </ol>
+            </div>
+            <p>
+                Attention, dans un graphe orienté, il n'est possible de parcourir les arêtes que dans un seul sens.
+                La distance d'un sommet A vers un sommet B peut alors être différente de la distance du sommet B vers le sommet A !
+            </p>
+            <div class="exercice">
+                On considère le graphe suivant.
+                <img src="images/graphe04.png">
+                <ol>
+                   <li>Quelle est la distance du sommet 1 vers le sommet 4 ?</li> 
+                   <li>Quelle est la distance du sommet 1 vers le sommet 8 ?</li> 
+                   <li>Quelle est la distance du sommet 2 vers le sommet 5 ?</li>
+                   <li>Quelle est la distance du sommet 5 vers le sommet 2 ?</li>
+                </ol>
+            </div>
+            <h2>Parcours d'un graphe</h2>
+            <h3>Parcours en largeur</h3>
+            <h3>Parcours en profondeur</h3>
+            <h2>Implémentations</h2>
+            <p>
+                Ce que l'on veut implémenter :
+                <ul>
+                    <li>une classe sommet</li>
+                    <li>graphe non-orienté (étiqueté ou non)</li>
+                    <li>graphe orienté (étiqueté ou non)</li>
+                </ul>
+                Et à chaque fois :
+                <ul>
+                    <li>créer un graphe vide</li>
+                    <li>ajouter un sommet</li>
+                    <li>ajouter une arrête</li>
+                    <li>retirer une arrête</li>
+                    <li>retirer un sommet</li>
+                    <li>retourner la liste des sommets</li>
+                    <li>retourner la liste des successeurs</li>
+                    <li>retourner la liste des prédécesseurs</li>
+                    <li>retourner l’existence/le poids pour rejoindre un successeur</li>
+                </ul>
+            </p>
+            <h3>Grâce à une liste de sommets et une liste d’arêtes</h3>
+            <h3>Grâce à la matrice d'adjacence</h3>
+            <h3>Grâce au dictionnaire des successeurs</h3>
+            <h3>Parcours d'un graphe en largeur</h3>
+            <h3>Parcours d'un graphe en profondeur</h3>
+        </div>
+        <script type="text/javascript" src="script.js"></script>
+    </body>
+</html>
