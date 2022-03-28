@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+    <body>
+        <div class="main">
+            <h1>Programmation dynamique</h1>
+            <h2>Retour sur le suite de Fibonacci</h2>
+            <p>
+                La suite de Fibonacci est définie par :
+                <ul>
+                    <li>u<sub>0</sub> = 1</li>
+                    <li>u<sub>1</sub> = 1</li>
+                    <li>u<sub>n+2</sub> = u<sub>n+1</sub> + u<sub>n</sub>, pour tout entier naturel n</li>
+                </ul>
+            </p>
+            Nous avons déjà écrit une fonction récursive permettant de calculer u<sub>n</sub> :
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    def fibo(n) : <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;if n == 0 :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 1<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;if n == 1 :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 1<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;valeur = fibo(n-1) + fibo(n-2)<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;return valeur
+                </p>
+            </div>
+            <p>
+                Cette version récursive de Fibonacci présente un gros inconvénient : des termes sont calculés plusieurs fois, et le nombre d'appels récursif et gigantesque. En stockant les résultats déjà calculés, le nombre d'appels récursifs chute drastiquement et la version récursif est pertinente. Le stockage de ces appels récursifs s'appelle la <mark>mémoïsation</mark> et cette façon de programmer s'appelle <mark>programmation dynamique</mark>. Voilà une fonction récursive doté de mémoïsation :
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    def fibo(n, M={}) : <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"""M est un dictionnaire servant à la mémoïsation"""<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;if n in M :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return M[n]<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;if n == 0 :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 1<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;if n == 1 :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 1<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;valeur = fibo(n-1, M) + fibo(n-2, M)<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;M[n] = valeur<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;return valeur
+                </p>
+            </div>
+            <p>Voici une version où le code est raccourci, le dictionnaire gère les conditions d’arrêts :</p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    def fibo(n, M={0:1, 1:1}) : <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"""M est un dictionnaire servant à la mémoïsation"""<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;if n not in M :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;M[n] = fibo(n-1, M) + fibo(n-2, M)<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;return M[n]
+                </p>
+            </div>
+            <p>
+                La mémoïsation étant facilement généralisable, des outils ont été développées en Python pour simplifier son utilisation.
+                Le module <mark class="code">functools</mark> propose d'ajouter le décorateur <mark class="code">lru_cache</mark> la ligne au dessus de la déclaration de la fonction récursive.
+                Exemple :
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    from functools import lru_cache<br/>&nbsp;<br/>
+                    @lru_cache()<br/>
+                    def fibo(n) : <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;if n == 0 :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 1<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;if n == 1 :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 1<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;valeur = fibo(n-1) + fibo(n-2)<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;return valeur
+                </p>
+            </div>
+            <h2>Nombre premier</h2>
+            <p>
+                La programmation dynamique n'est pas réservée aux fonctions récursives.
+                Par exemple, un algorithme efficace pour déterminer si un nombre est premier ou non est basée sur le crible d’Ératosthène.
+                Le crible est mis à jour si besoin lors de la recherche de nombre premier plus grand que la longueur du crible.
+                Voilà un exemple d'implémentation :
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    class Crible() :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;def __init__(self) :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.dictionnaire = {1:False}<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.longueur = 1<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;def remplir(self, n) :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for i in range(self.longueur+1, n+1) :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.dictionnaire[i] = True<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for i in range(2, n) :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if self.dictionnaire[i] :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for j in range((i)*(1+self.longueur//i), n+1, i) :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.dictionnaire[j] = False<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.longueur = n<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;def est_premier(self, n) :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if n > self.longueur :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.remplir(n)<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return self.dictionnaire[n]<br/>&nbsp;<br/>
+                    C = Crible()<br/>
+                    print(C.est_premier(2))<br/>
+                    print(C.est_premier(3))<br/>
+                    print(C.est_premier(4))<br/>
+                    print(C.est_premier(999983))<br/>
+                    print(C.est_premier(999983))<br/>
+                </p>
+            </div>
+            <div class="exercice">
+                <ol>
+                    <li>Dans l'implémentation proposée ci-dessus, que ce qui permet la mémoïsation ?</li>
+                    <li>Comment cela est-il visible lors des appels à la méthode <mark class="code">C.est_premier</mark> ?</li>
+                </ol>
+            </div>
+            </p>
+            <h2>Alignement de séquence</h2>
+            <p>
+                Une séquence est une suite finie de symboles choisis dans un alphabet déterminé.
+                Cet alphabet peut par exemple être :
+                <ul>
+                    <li>de a à z pour du texte</li>
+                    <li>0 ou 1 pour des séquences en binaire</li>
+                    <li>de 0 à 9 pour des séquences numériques</li>
+                    <li>A, T, C, G pour des séquences ADN</li>
+                </ul>
+                Pour la suite de ce cours, nous nous placerons dans l'alphabet A, T, C, G.
+            </p>
+            <p>
+                L'objectif de l'alignement de séquence est de comparer deux séquences données pour déterminer leur ressemblance.<br/>
+                Dans la pratique, les séquences ADN sont extraite de l'ADN complet et ne commencent pas au même endroit.
+                De plus, suite à des erreurs d'écriture ou à des mutations diverses, les séquences ne sont pas identiques.
+            </p>
+            <p>
+                Nous allons ajouter à l'alphabet le nouveau caractère <mark class="code">-</mark> (trou). Il permettra d'étudier le décalage d'une séquence par rapport à l'autre.
+            </p>
+            <div class="exercice">
+                <ol>
+                    <li>Ecrire une fonction <mark class="code">comparer_lettres(a, b)</mark> retournant :
+                        <ul>
+                            <li>6 si les deux lettres sont identiques (et ne sont pas des trous)</li>
+                            <li>-3 si une des lettres est un trou</li>
+                            <li>-1 si les deux lettres sont différentes (et ne sont pas des trous)</li>
+                        </ul>
+                        Cette fonction nous permettra d'établir un score permettant de comparer les alignements.
+                    </li>
+                    <li>
+                        On note <mark class="code">a</mark> la première lettre de la séquence A et <mark class="code">b</mark> la première lettre de la séquence B. Alors le meilleur alignement possible vérifier l'une des observations suivantes :
+                        <ul>
+                            <li>les lettres <mark class="code">a</mark> et <mark class="code">b</mark> sont alignées</li>
+                            <li>la lettre <mark class="code">a</mark> est alignée avec un trou</li>
+                            <li>la lettre <mark class="code">b</mark> est alignée avec un trou</li>
+                        </ul>
+                        Ecrire une fonction récursive <mark class="code">meilleur_alignement(A, B)</mark> retournant une liste contenant les 3 informations :
+                        <ul>
+                            <li>le score du meilleur alignement calculé grâce à comparer_lettres(a, b)</li>
+                            <li>la séquence A à laquelle sont ajoutés les trous pour obtenir ce meilleur alignement</li>
+                            <li>la séquence B à laquelle sont ajoutés les trous pour obtenir ce meilleur alignement</li>
+                        </ul>
+                    </li>
+                    <li>Tester cette fonction avec les séquences <mark class="code">ATATCCGGA</mark> et <mark class="code">ATCCGGAAT</mark>.</li>
+                    <li>Modifier le programme pour ajouter de la mémoïsation.</li>
+                    <li>Tester de nouveau la fonction avec les séquences <mark class="code">ATATCCGGA</mark> et <mark class="code">ATCCGGAAT</mark>.</li>
+                </ol>
+            </div>
+        </div>
+        <script type="text/javascript" src="script.js"></script>
+    </body>
+</html>

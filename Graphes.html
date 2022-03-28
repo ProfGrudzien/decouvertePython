@@ -170,31 +170,176 @@
                 </ol>
             </div>
             <h2>Parcours d'un graphe</h2>
-            <h3>Parcours en largeur</h3>
-            <h3>Parcours en profondeur</h3>
-            <h2>Implémentations</h2>
             <p>
-                Ce que l'on veut implémenter :
+                Tout comme les arbres, les graphes peuvent être parcouru en utilisant les sommets voisins d'un sommets de départ.
+                Il y a 3 parcours possibles :
                 <ul>
-                    <li>une classe sommet</li>
-                    <li>graphe non-orienté (étiqueté ou non)</li>
-                    <li>graphe orienté (étiqueté ou non)</li>
-                </ul>
-                Et à chaque fois :
-                <ul>
-                    <li>créer un graphe vide</li>
-                    <li>ajouter un sommet</li>
-                    <li>ajouter une arrête</li>
-                    <li>retirer une arrête</li>
-                    <li>retirer un sommet</li>
-                    <li>retourner la liste des sommets</li>
-                    <li>retourner la liste des successeurs</li>
-                    <li>retourner la liste des prédécesseurs</li>
-                    <li>retourner l’existence/le poids pour rejoindre un successeur</li>
+                    <li>en largeur</li>
+                    <li>en profondeur préfixe</li>
+                    <li>en profondeur postfixe</li>
                 </ul>
             </p>
+            <h3>Parcours en largeur</h3>
+                <p>
+                    Il s'agît de parcourir en premier tous les voisins puis ensuite les voisins des voisins qui n'ont pas été traités en s'éloignant ainsi progressivement du sommet initial. Une file permet de réaliser facilement ce parcours. Exemple :<br/>
+                    On considère le graphe :
+                    <img src="images/graphe00.png">
+                    <ul>
+                        <li>Le parcours en largeur au départ du sommet 1 donne : 1 - 2 - 5 - 3 - 4 - 6</li>
+                        <li>Le parcours en largeur au départ du sommet 3 donne : 3 - 2 - 4 - 1 - 5 - 6</li>
+                    </ul>
+                </p>
+                <div class="exercice">
+                    On considère le graphe non orienté suivant :
+                    <img src="images/graphe01.png">
+                    <ol>
+                        <li>Donner l'ordre des sommets obtenu par un parcours en largeur au départ de A.</li>
+                        <li>Donner l'ordre des sommets obtenu par un parcours en largeur au départ de E.</li>
+                    </ol>
+                </div>
+                <div class="exercice">
+                    On considère le graphe orienté suivant :
+                    <img src="images/graphe02.png">
+                    <ol>
+                        <li>Donner l'ordre des sommets obtenu par un parcours en largeur au départ de A.</li>
+                        <li>Donner l'ordre des sommets obtenu par un parcours en largeur au départ de E.</li>
+                    </ol>
+                </div>
+                <p>
+                    Remarque : il arrive que tous les sommets d'un graphe ne soit pas atteignable lorsque l'on effectue un parcours de ce graphe en largeur (ou en profondeur).
+                </p>
+                <div class="exercice">
+                    On considère le graphe orienté suivant :
+                    <img src="images/graphe04.png">
+                    <ol>
+                        <li>Donner l'ordre des sommets obtenu par un parcours en largeur au départ de 1.</li>
+                        <li>Donner l'ordre des sommets obtenu par un parcours en largeur au départ de 4.</li>
+                    </ol>
+                </div>
+            <h3>Parcours en profondeur préfixe</h3>
+                <p>
+                    Il s'agît de parcourir un sommet avant de parcourir tous ses voisins qui n'ont pas été traités.
+                    Une pile ou une récurrence permet de réaliser facilement ce parcours. Exemple :<br/>
+                    On considère le graphe :
+                    <img src="images/graphe00.png">
+                    <ul>
+                        <li>Le parcours en profondeur préfixe au départ du sommet 1 donne : 1 - 2 - 3 - 4 - 5 - 6</li>
+                        <li>Le parcours en profondeur préfixe au départ du sommet 3 donne : 3 - 2 - 1 - 5 - 4 - 6</li>
+                    </ul>
+                </p>
+                <div class="exercice">
+                    On considère le graphe non orienté suivant :
+                    <img src="images/graphe01.png">
+                    <ol>
+                        <li>Donner l'ordre des sommets obtenu par un parcours en largeur au départ de A.</li>
+                        <li>Donner l'ordre des sommets obtenu par un parcours en largeur au départ de E.</li>
+                    </ol>
+                </div>
+                <div class="exercice">
+                    On considère le graphe orienté suivant :
+                    <img src="images/graphe02.png">
+                    <ol>
+                        <li>Donner l'ordre des sommets obtenu par un parcours en largeur au départ de A.</li>
+                        <li>Donner l'ordre des sommets obtenu par un parcours en largeur au départ de E.</li>
+                    </ol>
+                </div>
+            <h3>Parcours en profondeur postfixe</h3>
+                <p>
+                    Il s'agît de parcourir un sommet <mark>après</mark> avoir parcouru tous ses voisins qui n'ont pas été traités.
+                    Une pile ou une récurrence permet de réaliser facilement ce parcours. Exemple :<br/>
+                    On considère le graphe :
+                    <img src="images/graphe00.png">
+                    <ul>
+                        <li>Le parcours en profondeur postfixe au départ du sommet 1 donne : 5 - 6 - 4 - 3 - 2 - 1</li>
+                        <li>Le parcours en profondeur postfixe au départ du sommet 3 donne : 6 - 4 - 5 - 1 - 2 - 3</li>
+                    </ul>
+                </p>
+                <div class="exercice">
+                    On considère le graphe non orienté suivant :
+                    <img src="images/graphe01.png">
+                    <ol>
+                        <li>Donner l'ordre des sommets postfixe par un parcours en largeur au départ de A.</li>
+                        <li>Donner l'ordre des sommets postfixe par un parcours en largeur au départ de E.</li>
+                    </ol>
+                </div>
+                <div class="exercice">
+                    On considère le graphe orienté suivant :
+                    <img src="images/graphe02.png">
+                    <ol>
+                        <li>Donner l'ordre des sommets postfixe par un parcours en largeur au départ de A.</li>
+                        <li>Donner l'ordre des sommets postfixe par un parcours en largeur au départ de E.</li>
+                    </ol>
+                </div>
+            <h2>Implémentations</h2>
+            <p>
+                Il y a plusieurs façons d'enregistrer les données qui représente le graphe.
+                Le choix de l'implémentation aura un impact direct sur la complexité en mémoire (volume des données stockées) ou en complexité temporel (nombre d'instruction nécessaire pour les parcours par exemple).
+                Dans tous les cas, nous partirons d'une classe <mark class="code">Sommet</mark> qui permet éventuellement d'ajouter deux sommets ayant le même nom au graphe.
+                Voilà le code de cette classe :
+                <div class="algo">
+                    <input type="button" class="copier" value="📑" title="copier">
+                    <p class="code">
+                        class Sommet :<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;def __init__(self, nom) :<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.nom = nom<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;def __str__(self) :<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return str(self.nom)<br/>
+                    </p>
+                </div>
+            </p>
             <h3>Grâce à une liste de sommets et une liste d’arêtes</h3>
+            <p>
+                La méthode la plus proche de la définition d'un graphe : on utilise la liste des sommets et la liste des arêtes.
+            </p>
+            <div class="exercice">
+                <ol>
+                    <li>
+                        Créer une classe graphe possédant deux attributs :
+                        <ul>
+                            <li><mark class="code">sommets</mark> : une liste qui contiendra les sommets (objets de classe <mark class="code">Sommet</mark>) de ce graphe</li>
+                            <li><mark class="code">aretes</mark> : une liste qui contiendra les arêtes de ce graphe (tuples de 2 éléments : le départ de l’arête et l'arrivée.)</li>
+                        </ul>
+                        Au moment de créé le graphe, celui-ci sera vide.
+                    </li>
+                    <li>Ajouter une méthode <mark class="code">ajouter_sommet</mark> qui permet d'ajouter un sommet au graphe.</li>
+                    <li>Ajouter une méthode <mark class="code">ajouter_arete</mark> qui permet d'ajouter une arête au graphe en donnant les deux sommets concernés.</li>
+                    <li>Ajouter une méthode <mark class="code">afficher</mark> qui affiche le noms de chaque sommet et toutes les arêtes. </li>
+                    <li>Ajouter une méthode <mark class="code">retirer_arete</mark> qui permet de retirer une des arêtes du graphe.</li>
+                    <li>Ajouter une méthode <mark class="code">retirer_sommet</mark> qui permet de retirer un sommet du graphe ainsi que toutes les arêtes concernées.</li>
+                    <li>Ajouter une méthode <mark class="code">liste_sommets</mark> qui retourne la liste des sommets du graphe.</li>
+                    <li>Ajouter une méthode <mark class="code">liste_successeurs</mark> qui retourne la liste des sommets du graphe directement atteignable d'un sommet initial donné en paramètre.</li>
+                    <li>Ajouter une méthode <mark class="code">liste_predecesseurs</mark> qui retourne la liste des sommets du graphe à partir duquel un sommet initial donné en paramètre est directement atteignable.</li>
+                    <li>Ajouter une méthode <mark class="code">existe_arete</mark> qui retourne un booleen indiquant s'il est directement possible d'aller d'un sommet de départ à un autre. Ces deux sommets étant donnés en paramètre.</li>
+                </ol>
+            </div>
             <h3>Grâce à la matrice d'adjacence</h3>
+            <p>
+                Les présence ou l'absence d'une arête est stockée dans un tableau à double entrée aussi appelé matrice.
+                Ce tableau a autant de ligne et de colonne que de sommets dans le graphe.
+                <mark>matrice</mark>
+                Nous utiliserons un <mark class="code">0</mark> pour l'absence d'arête et un <mark class="code">1</mark> pour la présence d'une arête reliant le sommet associé à la ligne au sommet associé à la colonne.
+            </p>
+            <div class="exercice">
+                <ol>
+                    <li>
+                        Créer une classe graphe possédant deux attributs :
+                        <ul>
+                            <li><mark class="code">sommets</mark> : une liste qui contiendra les sommets (objets de classe <mark class="code">Sommet</mark>) de ce graphe</li>
+                            <li><mark class="code">matrice</mark> : une liste de liste contenant des 0 et des 1.</li>
+                        </ul>
+                        Au moment de créé le graphe, celui-ci sera vide.
+                    </li>
+                    <li>Ajouter une méthode <mark class="code">ajouter_sommet</mark> qui permet d'ajouter un sommet au graphe.</li>
+                    <li>Ajouter une méthode <mark class="code">ajouter_arete</mark> qui permet d'ajouter une arête au graphe en donnant les deux sommets concernés.</li>
+                    <li>Ajouter une méthode <mark class="code">afficher</mark> qui affiche le noms de chaque sommet et la matrice d'adjacence. </li>
+                    <li>Ajouter une méthode <mark class="code">retirer_arete</mark> qui permet de retirer une des arêtes du graphe.</li>
+                    <li>Ajouter une méthode <mark class="code">retirer_sommet</mark> qui permet de retirer un sommet du graphe ainsi que toutes les arêtes concernées.</li>
+                    <li>Ajouter une méthode <mark class="code">liste_sommets</mark> qui retourne la liste des sommets du graphe.</li>
+                    <li>Ajouter une méthode <mark class="code">liste_successeurs</mark> qui retourne la liste des sommets du graphe directement atteignable d'un sommet initial donné en paramètre.</li>
+                    <li>Ajouter une méthode <mark class="code">liste_predecesseurs</mark> qui retourne la liste des sommets du graphe à partir duquel un sommet initial donné en paramètre est directement atteignable.</li>
+                    <li>Ajouter une méthode <mark class="code">existe_arete</mark> qui retourne un booleen indiquant s'il est directement possible d'aller d'un sommet de départ à un autre. Ces deux sommets étant donnés en paramètre.</li>
+                </ol>
+            </div>
             <h3>Grâce au dictionnaire des successeurs</h3>
             <h3>Parcours d'un graphe en largeur</h3>
             <h3>Parcours d'un graphe en profondeur</h3>
