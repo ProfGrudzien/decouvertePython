@@ -289,17 +289,21 @@
             </p>
             <h3>Grâce à une liste de sommets et une liste d’arêtes</h3>
             <p>
-                La méthode la plus proche de la définition d'un graphe : on utilise la liste des sommets et la liste des arêtes.
+                La méthode la plus proche de la définition d'un graphe : on utilise la liste des sommets et la liste des arêtes. Un sommet est un objet de classe <mark class="code">Sommet</mark>, une arrête est un tuple de deux éléments : le départ et l'arrivé (objets de classe <mark class="code">Sommet</mark>). Pour un graphe non orienté, nous stockerons une arrête par deux tuples, une dans chaque sens, ce qui augmentera le volume de données stockées mais simplifiera l'écriture de certains méthodes et le passage à une implémentation du graphe orienté.
             </p>
+            <div class="exercice">
+                Donner la liste des sommets et des arrêtes pour la graphe suivant :
+                <img src="images/graphe00.png">
+            </div>
             <div class="exercice">
                 <ol>
                     <li>
                         Créer une classe graphe possédant deux attributs :
                         <ul>
                             <li><mark class="code">sommets</mark> : une liste qui contiendra les sommets (objets de classe <mark class="code">Sommet</mark>) de ce graphe</li>
-                            <li><mark class="code">aretes</mark> : une liste qui contiendra les arêtes de ce graphe (tuples de 2 éléments : le départ de l’arête et l'arrivée.)</li>
+                            <li><mark class="code">aretes</mark> : une liste qui contiendra les arêtes de ce graphe (tuples de 2 éléments)</li>
                         </ul>
-                        Au moment de créé le graphe, celui-ci sera vide.
+                        Au moment de créer le graphe, celui-ci sera vide.
                     </li>
                     <li>Ajouter une méthode <mark class="code">ajouter_sommet</mark> qui permet d'ajouter un sommet au graphe.</li>
                     <li>Ajouter une méthode <mark class="code">ajouter_arete</mark> qui permet d'ajouter une arête au graphe en donnant les deux sommets concernés.</li>
@@ -312,20 +316,26 @@
                     <li>Ajouter une méthode <mark class="code">existe_arete</mark> qui retourne un booleen indiquant s'il est directement possible d'aller d'un sommet de départ à un autre. Ces deux sommets étant donnés en paramètre.</li>
                 </ol>
             </div>
+            <div class="exercice">
+                Modifier la classe précédente en une classe <mark class="code">GrapheOriente</mark>.
+            </div>
             <h3>Grâce à la matrice d'adjacence</h3>
             <p>
                 Les présence ou l'absence d'une arête est stockée dans un tableau à double entrée aussi appelé matrice.
                 Ce tableau a autant de ligne et de colonne que de sommets dans le graphe.
-                <mark>matrice</mark>
                 Nous utiliserons un <mark class="code">0</mark> pour l'absence d'arête et un <mark class="code">1</mark> pour la présence d'une arête reliant le sommet associé à la ligne au sommet associé à la colonne.
             </p>
+            <div class="exercice">
+                Donner la matrice d'adjacence de ce graphe :
+                <img src="images/graphe00.png">
+            </div>
             <div class="exercice">
                 <ol>
                     <li>
                         Créer une classe graphe possédant deux attributs :
                         <ul>
                             <li><mark class="code">sommets</mark> : une liste qui contiendra les sommets (objets de classe <mark class="code">Sommet</mark>) de ce graphe</li>
-                            <li><mark class="code">matrice</mark> : une liste de liste contenant des 0 et des 1.</li>
+                            <li><mark class="code">matrice</mark> : une liste de listes contenant des 0 et des 1.</li>
                         </ul>
                         Au moment de créé le graphe, celui-ci sera vide.
                     </li>
@@ -340,10 +350,78 @@
                     <li>Ajouter une méthode <mark class="code">existe_arete</mark> qui retourne un booleen indiquant s'il est directement possible d'aller d'un sommet de départ à un autre. Ces deux sommets étant donnés en paramètre.</li>
                 </ol>
             </div>
+            <div class="exercice">
+                Modifier la classe précédente en une classe <mark class="code">GrapheOriente</mark>.
+            </div>
             <h3>Grâce au dictionnaire des successeurs</h3>
+            <p>
+                Sont stockées dans un dictionnaire les listes des sommets directement atteignables en partant d'un sommet utilisé comme clé.
+            </p>
+            <div class="exercice">
+                Donner le dictionnaire des listes des successeurs pour le graphe suivant :
+                <img src="images/graphe00.png">
+            </div>
+            <div class="exercice">
+                <ol>
+                    <li>
+                        Créer une classe graphe possédant un seul attribut :
+                        le dictionnaire stockant les listes des successeurs.
+                        Au moment de créé le graphe, celui-ci sera vide.
+                    </li>
+                    <li>Ajouter une méthode <mark class="code">ajouter_sommet</mark> qui permet d'ajouter un sommet au graphe.</li>
+                    <li>Ajouter une méthode <mark class="code">ajouter_arete</mark> qui permet d'ajouter une arête au graphe en donnant les deux sommets concernés.</li>
+                    <li>Ajouter une méthode <mark class="code">afficher</mark> qui affiche le noms de chaque sommet et la matrice d'adjacence. </li>
+                    <li>Ajouter une méthode <mark class="code">retirer_arete</mark> qui permet de retirer une des arêtes du graphe.</li>
+                    <li>Ajouter une méthode <mark class="code">retirer_sommet</mark> qui permet de retirer un sommet du graphe ainsi que toutes les arêtes concernées.</li>
+                    <li>Ajouter une méthode <mark class="code">liste_sommets</mark> qui retourne la liste des sommets du graphe.</li>
+                    <li>Ajouter une méthode <mark class="code">liste_successeurs</mark> qui retourne la liste des sommets du graphe directement atteignable d'un sommet initial donné en paramètre.</li>
+                    <li>Ajouter une méthode <mark class="code">liste_predecesseurs</mark> qui retourne la liste des sommets du graphe à partir duquel un sommet initial donné en paramètre est directement atteignable.</li>
+                    <li>Ajouter une méthode <mark class="code">existe_arete</mark> qui retourne un booleen indiquant s'il est directement possible d'aller d'un sommet de départ à un autre. Ces deux sommets étant donnés en paramètre.</li>
+                </ol>
+            </div>
+            <div class="exercice">
+                Modifier la classe précédente en une classe <mark class="code">GrapheOriente</mark>.
+            </div>
             <h3>Parcours d'un graphe en largeur</h3>
+            <div class="exercice">
+                Ecrire une fonction <mark class="code">parcours_largeur</mark> qui retourne la liste des sommets obtenue grâce à un parcours en largeur. Cette fonction prend en paramètre un objet de classe <mark class="code">Graphe</mark> ou <mark class="code">GrapheOriente</mark> et utilise uniquement les méthodes communes à toutes les implémentations précédemment écrites.
+            </div>
             <h3>Parcours d'un graphe en profondeur</h3>
+            <div class="exercice">
+                Ecrire une fonction <mark class="code">parcours_profondeur_prefixe</mark> qui retourne la liste des sommets obtenue grâce à un parcours en profondeur prefixe. Cette fonction prend en paramètre un objet de classe <mark class="code">Graphe</mark> ou <mark class="code">GrapheOriente</mark> et utilise uniquement les méthodes communes à toutes les implémentations précédemment écrites.
+            </div>
+            <div class="exercice">
+                Ecrire une fonction <mark class="code">parcours_profondeur_postfixe</mark> qui retourne la liste des sommets obtenue grâce à un parcours en profondeur postfixe. Cette fonction prend en paramètre un objet de classe <mark class="code">Graphe</mark> ou <mark class="code">GrapheOriente</mark> et utilise uniquement les méthodes communes à toutes les implémentations précédemment écrites.
+            </div>
+            <h2>Algorithmes de plus cours chemins</h2>
+            Dans cette algorithmes nous allons déterminer un des chemins les plus cours entre un sommet de départ et chaque sommet du graphe. Ces algorithmes sont basés sur des algorithmes de parcours de graphe.
+            <h3>Dans un graphe non pondéré</h3>
+            <p>
+                Le parcours en largeur est tout indiqué car il permet de ranger les sommets dans l'ordre croissante de leur distance avec le sommet choisi comme départ. L'algorithme est le suivant :
+                <div class="algo mono">
+                    Créer un dictionnaire vide et une file vide ;<br/>
+                    Dans le dictionnaire, associer au sommet initial la liste contenant uniquement ce sommet ;<br/>
+                    Enfiler le sommet initial ;<br/>
+                    Tant que la file n'est pas vide :<br/>
+                    &nbsp;&nbsp;Défiler un sommet ;<br/>
+                    &nbsp;&nbsp;Pour chaque successeurs de ce sommet :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;Si ce sommet n'a pas encore été découvert :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dans le dictionnaire, associer au sommet initial la liste obtenu en ajoutant ce successeurs à la liste associée au sommet dépilé ;<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enfiler ce successeur ;
+                </div>
+                Pour déterminer efficacement si un sommet a déjà été découvert, on peut utiliser une coloration des sommets. Avant de se lancer dans le parcours, tous les sommets sont coloriés en rouge. Au moment où l'on atteint ce sommet, sa couleur passe au vert. Exemple :
+            </p>
+            <div class="cadre centrer">
+                <canvas id="PCC"></canvas>
+                <input type="button" id="btnPCC" value="suivant">
+                <input type="button" id="resetPCC" value="reinitialiser">
+                <p class="mono">File : <span id="filePCC"></span></p>
+                <p class="mono">Sommet : <span id="sommetPCC"></span></p>
+                <div id="divPCC" class="mono"><p>Dictionnaire :</p></div>
+            </div>
+            <h3>Dans un graphe pondéré</h3>
         </div>
         <script type="text/javascript" src="script.js"></script>
+        <script type="text/javascript" src="Graphes.js"></script>
     </body>
 </html>

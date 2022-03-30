@@ -55,6 +55,11 @@ div.danger {
     padding: 5px;
 }
 
+div.cadre {
+    border: 1px solid black;
+    padding: 5px;
+}
+
 table {
     border-collapse: collapse;
     table-layout: fixed;
@@ -83,6 +88,13 @@ ol.sous-num {
 }
 
 img {
+    display: block;
+    width: 650px;
+    max-width: 95%;
+    margin: 5px auto;
+}
+
+canvas {
     display: block;
     width: 650px;
     max-width: 95%;
