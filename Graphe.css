@@ -1,0 +1,36 @@
+svg {
+    display: inline;
+    width: 400px;
+    height: 220px;
+}
+
+line {
+    stroke: black;
+}
+
+circle {
+     stroke: black;
+     fill: white;
+}
+
+text {
+    text-anchor: middle;
+    dominant-baseline: central;
+}
+
+input[type="button"] {
+    display: block;
+    width: 200px;
+    margin: 2px auto;
+}
+
+#divPCC p {
+    padding-left: 20px;
+    margin: 0px;
+}
+
+th, td {
+    font-family : monospace;
+    font-size : 12pt;
+    height: 1.5em;
+}

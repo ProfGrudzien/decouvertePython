@@ -94,13 +94,6 @@ img {
     margin: 5px auto;
 }
 
-canvas {
-    display: block;
-    width: 650px;
-    max-width: 95%;
-    margin: 5px auto;
-}
-
 div.main {
     margin: auto;
     width: 60%;

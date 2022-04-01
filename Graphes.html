@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8"/>
         <link rel="stylesheet" href="style.css"/>
+        <link rel="stylesheet" href="Graphe.css"/>
     </head>
     <body>
         <div class="main">
@@ -412,14 +413,111 @@
                 Pour déterminer efficacement si un sommet a déjà été découvert, on peut utiliser une coloration des sommets. Avant de se lancer dans le parcours, tous les sommets sont coloriés en rouge. Au moment où l'on atteint ce sommet, sa couleur passe au vert. Exemple :
             </p>
             <div class="cadre centrer">
-                <canvas id="PCC"></canvas>
-                <input type="button" id="btnPCC" value="suivant">
-                <input type="button" id="resetPCC" value="reinitialiser">
+                <svg xml:lang="fr" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 50 370 200">
+                    <line x1="20" y1="100" x2="20" y2="180" />
+                    <line x1="20" y1="100" x2="100" y2="100" />
+                    <line x1="20" y1="100" x2="100" y2="200" />
+                    <line x1="20" y1="180" x2="100" y2="200" />
+                    <line x1="100" y1="200" x2="100" y2="100" />
+                    <line x1="100" y1="200" x2="220" y2="200" />
+                    <line x1="100" y1="100" x2="220" y2="200" />
+                    <line x1="100" y1="100" x2="200" y2="100" />
+                    <line x1="220" y1="200" x2="200" y2="100" />
+                    <line x1="220" y1="200" x2="350" y2="150" />
+                    <line x1="200" y1="100" x2="350" y2="150" />
+                    <circle cx="20" cy="100" r="16" id="APCC"/>
+                    <text x="20" y="100">A</text>
+                    <circle cx="20" cy="180" r="16" id="BPCC"/>
+                    <text x="20" y="180">B</text>
+                    <circle cx="100" cy="100" r="16" id="CPCC"/>
+                    <text x="100" y="100">C</text>
+                    <circle cx="100" cy="200" r="16" id="DPCC"/>
+                    <text x="100" y="200">D</text>
+                    <circle cx="200" cy="100" r="16" id="EPCC"/>
+                    <text x="200" y="100">E</text>
+                    <circle cx="220" cy="200" r="16" id="FPCC"/>
+                    <text x="220" y="200">F</text>
+                    <circle cx="350" cy="150" r="16" id="GPCC"/>
+                    <text x="350" y="150">G</text>
+                </svg>
+                <input type="button" id="precedentPCC" value="précédent">
+                <input type="button" id="suivantPCC" value="suivant">
+                <input type="button" id="resetPCC" value="réinitialiser">
+                <p id="pPCC"></p>
                 <p class="mono">File : <span id="filePCC"></span></p>
-                <p class="mono">Sommet : <span id="sommetPCC"></span></p>
-                <div id="divPCC" class="mono"><p>Dictionnaire :</p></div>
+                <p class="mono">Sommet défilé : <span id="sommetPCC"></span></p>
+                <p class="mono">Dictionnaire :</p>
+                <div id="divPCC" class="mono"></div>
             </div>
             <h3>Dans un graphe pondéré</h3>
+            <p>
+                L'algorithme de Dijkstra permet de déterminer le chemin le plus cours dans un graphe pondéré par des poids positifs.
+                Il porte le nom de son inventeur, l'informaticien néerlandais Edsger Dijkstra, et a été publié en 1959.
+            </p>
+            <p>
+                Il est basé sur un parcours du graphe qui n'est ni un parcours en largeur, ni un parcours en profondeur.
+                A chaque étape, il faut sélectionner le sommet le plus proche du sommet initial parmi tous les successeurs des sommets déjà explorés.
+            </p>
+            <p>
+                Encore une fois, la coloration des sommets permet de savoir si un sommet a déjà été exploré.
+                Cet algorithme est souvent utilisé à l'aide d'un tableau, comme le présente l'exemple suivant :
+            </p>
+            <div class="cadre centrer">
+                <svg xml:lang="fr" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 50 370 200">
+                    <line x1="20" y1="100" x2="20" y2="180" />
+                    <text x="20" y="140" dx="-10">4</text>
+                    <line x1="20" y1="100" x2="100" y2="100" />
+                    <text x="60" y="100" dy="-10">3</text>
+                    <line x1="20" y1="100" x2="100" y2="200" />
+                    <text x="60" y="150" dx="7" dy="-7">2</text>
+                    <line x1="20" y1="180" x2="100" y2="200" />
+                    <text x="60" y="190" dy="10">5</text>
+                    <line x1="100" y1="200" x2="100" y2="100" />
+                    <text x="100" y="150" dx="10">3</text>
+                    <line x1="100" y1="200" x2="220" y2="200" />
+                    <text x="160" y="200" dy="10">4</text>
+                    <line x1="100" y1="100" x2="220" y2="200" />
+                    <text x="160" y="150" dx="10" dy="-7">2</text>
+                    <line x1="100" y1="100" x2="200" y2="100" />
+                    <text x="150" y="100" dy="-10">4</text>
+                    <line x1="220" y1="200" x2="200" y2="100" />
+                    <text x="210" y="150" dx="10">5</text>
+                    <line x1="220" y1="200" x2="350" y2="150" />
+                    <text x="285" y="175" dy="10">4</text>
+                    <line x1="200" y1="100" x2="350" y2="150" />
+                    <text x="275" y="125" dy="-10">1</text>
+                    <circle cx="20" cy="100" r="16" id="ADijkstra"/>
+                    <text x="20" y="100">A</text>
+                    <circle cx="20" cy="180" r="16" id="BDijkstra"/>
+                    <text x="20" y="180">B</text>
+                    <circle cx="100" cy="100" r="16" id="CDijkstra"/>
+                    <text x="100" y="100">C</text>
+                    <circle cx="100" cy="200" r="16" id="DDijkstra"/>
+                    <text x="100" y="200" >D</text>
+                    <circle cx="200" cy="100" r="16" id="EDijkstra"/>
+                    <text x="200" y="100">E</text>
+                    <circle cx="220" cy="200" r="16" id="FDijkstra"/>
+                    <text x="220" y="200">F</text>
+                    <circle cx="350" cy="150" r="16" id="GDijkstra"/>
+                    <text x="350" y="150">G</text>
+                </svg>
+                <input type="button" id="precedentDijkstra" value="précédent">
+                <input type="button" id="suivantDijkstra" value="suivant">
+                <input type="button" id="resetDijkstra" value="réinitialiser">
+                <p id="pDijkstra"></p>
+                <div id="divDijkstra">
+                    <table>
+                        <tr><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th></tr>
+                        <tr><td id="AA"></td><td id="AB"></td><td id="AC"></td><td id="AD"></td><td id="AE"></td><td id="AF"></td><td id="AG"></td></tr>
+                        <tr><td id="BA"></td><td id="BB"></td><td id="BC"></td><td id="BD"></td><td id="BE"></td><td id="BF"></td><td id="BG"></td></tr>
+                        <tr><td id="CA"></td><td id="CB"></td><td id="CC"></td><td id="CD"></td><td id="CE"></td><td id="CF"></td><td id="CG"></td></tr>
+                        <tr><td id="DA"></td><td id="DB"></td><td id="DC"></td><td id="DD"></td><td id="DE"></td><td id="DF"></td><td id="DG"></td></tr>
+                        <tr><td id="EA"></td><td id="EB"></td><td id="EC"></td><td id="ED"></td><td id="EE"></td><td id="EF"></td><td id="EG"></td></tr>
+                        <tr><td id="FA"></td><td id="FB"></td><td id="FC"></td><td id="FD"></td><td id="FE"></td><td id="FF"></td><td id="FG"></td></tr>
+                        <tr><td id="GA"></td><td id="GB"></td><td id="GC"></td><td id="GD"></td><td id="GE"></td><td id="GF"></td><td id="GG"></td></tr>
+                    </table>
+                </div>
+            </div>
         </div>
         <script type="text/javascript" src="script.js"></script>
         <script type="text/javascript" src="Graphes.js"></script>
