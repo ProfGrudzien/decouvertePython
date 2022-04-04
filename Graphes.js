@@ -74,57 +74,67 @@ function animPCC(event) {
             pPCC.textContent = "On traite un des successeurs de A non colorié en vert : le sommet D."
         },
         () => {
+            pPCC.textContent = "A n'a plus de successeur encore rouge, on défile un sommet."
+        },
+        () => {
             filePCC.textContent = "C, D"
             sommetPCC.textContent = "B"
-            pPCC.textContent = "A n'a plus de successeur encore rouge, on défile un sommet."
+        },
+        () => {
+            pPCC.textContent = "B n'a aucun successeur encore rouge, on défile un sommet."
         },
         () => {
             filePCC.textContent = "D"
             sommetPCC.textContent = "C"
-            pPCC.textContent = "B n'a aucun successeur encore rouge, on défile un sommet."
+        },
+        () => {
+            document.getElementById("EPCC").style.fill = vert
+            filePCC.textContent = "D, E"
+            ajouterDictionnairePCC("E : [A, C, E]")
+            pPCC.textContent = "On traite un des successeurs de C non colorié en vert : le sommet E."
         },
         () => {
             document.getElementById("FPCC").style.fill = vert
-            filePCC.textContent = "D, F"
+            filePCC.textContent = "D, E, F"
             ajouterDictionnairePCC("F : [A, C, F]")
             pPCC.textContent = "On traite un des successeurs de C non colorié en vert : le sommet F."
         },
         () => {
-            filePCC.textContent = "F"
-            sommetPCC.textContent = "D"
             pPCC.textContent = "C n'a plus de successeur encore rouge, on défile un sommet."
         },
         () => {
-            document.getElementById("EPCC").style.fill = vert
-            filePCC.textContent = "F, E"
-            ajouterDictionnairePCC("E : [A, D, E]")
-            pPCC.textContent = "On traite un des successeurs de D non colorié en vert : le sommet E."
+            filePCC.textContent = "E, F"
+            sommetPCC.textContent = "D"
         },
         () => {
-            filePCC.textContent = "E"
-            sommetPCC.textContent = "F"
             pPCC.textContent = "D n'a plus de successeur encore rouge, on défile un sommet."
         },
         () => {
+            filePCC.textContent = "F"
+            sommetPCC.textContent = "E"
+        },
+        () => {
             document.getElementById("GPCC").style.fill = vert
-            filePCC.textContent = "E, G"
-            ajouterDictionnairePCC("G : [A, C, F, G]")
-            pPCC.textContent = "On traite un des successeurs de F non colorié en vert : le sommet G."
+            filePCC.textContent = "F, G"
+            ajouterDictionnairePCC("G : [A, C, E, G]")
+            pPCC.textContent = "On traite un des successeurs de E non colorié en vert : le sommet G."
+        },
+        () => {
+            pPCC.textContent = "E n'a plus de successeur encore rouge, on défile un sommet."
         },
         () => {
             filePCC.textContent = "G"
-            sommetPCC.textContent = "E"
-            pPCC.textContent = "F n'a plus de successeur encore rouge, on défile un sommet."
+            sommetPCC.textContent = "F"
+        },
+        () => {
+            pPCC.textContent = "F n'a aucun successeur encore rouge, on défile un sommet."
         },
         () => {
             filePCC.textContent = ""
             sommetPCC.textContent = "G"
-            pPCC.textContent = "E n'a aucun successeur encore rouge, on défile un sommet."
         },
         () => {
-            filePCC.textContent = ""
-            sommetPCC.textContent = ""
-            pPCC.textContent = "Il n'y a plus de sommets à défiler, le parcours est terminé"
+            pPCC.textContent = "G n'a aucun successeur encore rouge, il n'y a plus de sommets à défiler, le parcours est terminé"
         },
     ]
     if (noPCC < modifs.length) {
