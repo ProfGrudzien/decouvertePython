@@ -169,6 +169,56 @@
                     <li>Ecrire une fonction <mark class="code">calculer_moyenne(releve)</mark> qui calcule la moyenne des notes du relevé de note <mark class="code">releve</mark>.</li>
                 </ol>
             </div>
+            <h3>Scrabble</h3>
+            <p>
+                Le jeu du Scrabble consiste à construire des mots à l'aide d'un nombre limité de lettres.
+                Chaque lettre est associée à un nombre de points. Le score d'un mot est alors égal à la somme des points des lettres qui le compose.
+                Voici les points associées à chaque lettre :
+            </p>
+            <table>
+                <tr><th>points</th><th>lettres</th></tr>
+                <tr><td>10</td><td>K W X Y Z</td></tr>
+                <tr><td>8</td><td>J Q</td></tr>
+                <tr><td>4</td><td>F H V</td></tr>
+                <tr><td>3</td><td>B C P</td></tr>
+                <tr><td>2</td><td>D M G</td></tr>
+                <tr><td>1</td><td>A E I L N O R S T U</td></tr>
+            </table>
+            <div class="exercice">
+                <ol>
+                    <li>Ecrire une fonction <mark class="code">creer_dict_points_lettres()</mark> qui retourne le dictionnaire associant à chaque lettre son nombre de points.</li>
+                    <li>Ecrire une fonction <mark class="code">calculer_points(mot)</mark> qui retourne le nombre de points associé au mot donné en paramètre.</li>
+                    <li>Combien de points rapportent les mots <mark class="code">CLEMENTINE</mark>, <mark class="code">PIZZA</mark> et <mark class="code">KIWI</mark> ?</li>
+                </ol>
+            </div>
+            <h3>TODO liste</h3>
+            <p>
+                Une TODO liste est une liste de choses à faire d'urgence.
+                Nous allons créer un moyen de gérer une TODO liste permettant de gérer :
+                <ul>
+                    <li>le nom de la tâche à faire</li>
+                    <li>la priorité de cette tâche :</li>
+                    <ol>
+                        <li>facultative</li>
+                        <li>secondaire</li>
+                        <li>normale</li>
+                        <li>urgente</li>
+                        <li>très urgente</li>
+                    </ol>
+                    <li>l'échéance</li>
+                    <li>le statut : réalisé ou non</li>
+                </ul>
+            </p>
+            <div class="exercice">
+                <ol>
+                    <li>Proposer une structure permettant de gérer une tâche de cette TODO liste en précisant les types de toutes les variables utilisées.</li>
+                    <li>Dans quelle type de structure peut-on stocker toutes ces tâches afin de les retrouver très rapidement grâce à leur nom ? Quel est l'inconvénient de cette méthode ?</li>
+                    <li>Ecrire une fonction <mark class="code">creer_TODO_liste()</mark> retournant une TODO liste vide.</li>
+                    <li>Ecrire une fonction <mark class="code">ajouter_tache(TDL, nom, priorite, echeance)</mark> ajoutant une tâche à la TODO liste <mark class="code">TDL</mark>.</li>
+                    <li>Ecrire une fonction <mark class="code">marque_comme_realisee(TDL, nom)</mark> marquant la bonne tâche comme réalisée.</li>
+                    <li>Ecrire une fonction <mark class="code">afficher_prochaine_tache(TDL, aujourdhui)</mark> choisissant la prochaine tâche non réalisée dont l'échéance n'est pas passée et tenant compte des priorités.</li>
+                </ol>
+            </div>
         </div>
         <script type="text/javascript" src="script.js"></script>
     </body>
