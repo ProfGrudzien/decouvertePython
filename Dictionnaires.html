@@ -80,9 +80,7 @@
                 </p>
             </div>
             <h2>Parcourir un dictionnaire</h2>
-            <h3>Parcourir les clés</h3>
-            On peut parcourir facilement les données d'un dictionnaire à l'aide d'une boucle.
-            La plus simple à utiliser est celle qui fait appel au clés du dictionnaire.
+            On peut parcourir facilement les données d'un dictionnaire à l'aide d'une boucle <mark class="code">for</mark> en faisant appel au clés du dictionnaire.
             Exemple :
             <div class="algo">
                 <input type="button" class="copier" value="📑" title="copier">
@@ -92,36 +90,19 @@
                     &nbsp;&nbsp;&nbsp;&nbsp; print("J'ai", panier[fruit], fruit+"s", "dans mon panier.")
                 </p>
             </div>
-            Cette syntaxe est la forme simplifier de la boucle suivante :
+            Dans cet exemple, à chaque passage, le nom du fruit est <mark class='code'>fruit</mark> et le nombre de ce fruit dans le panier est <mark class="code">panier[fruit]</mark>. 
+            <h2>Vérifier si une clé est dans le dictionnaire</h2>
+            On peut vérifier facilement si une clé est présente dans le dictionnaire, de la même façon que pour une liste.
+            Exemple :
             <div class="algo">
                 <input type="button" class="copier" value="📑" title="copier">
                 <p class="code">
                     panier = {"poire":3, "pomme":4, "orange":2} <br/>
-                    for fruit in panier<mark>.keys()</mark> :<br/>
-                    &nbsp;&nbsp;&nbsp;&nbsp; print("J'ai", panier[fruit], fruit+"s", "dans mon panier.")
-                </p>
-            </div>
-            <h3>Parcourir les valeurs</h3>
-            Si l'on souhaite accéder aux valeurs contenues dans le dictionnaire sans se soucier des clés, on adapte la boucle précédente en utilisant la méthode <mark class="code">values</mark>. Exemple :
-            <div class="algo">
-                <input type="button" class="copier" value="📑" title="copier">
-                <p class="code">
-                    panier = {"poire":3, "pomme":4, "orange":2} <br/>
-                    nombre_fruits = 0 <br/>
-                    for nombre in panier<mark>.values()</mark> :<br/>
-                    &nbsp;&nbsp;&nbsp;&nbsp; nombre_fruits = nombre_fruits + nombre <br/>
-                    print("J'ai", nombre_fruits, "fruits dans mon panier.")
-                </p>
-            </div>
-            <h3>Parcourir les tuples (clé, valeur)</h3>
-            Si l'on souhaite parcourir toutes les associations clé/valeur, on peut utiliser la méthode <mark class="code">.items</mark>.
-            Celle ci transforme toutes les données du dictionnaires en tuples <mark class="code">(cle, valeur)</mark>. Exemple :
-            <div class="algo">
-                <input type="button" class="copier" value="📑" title="copier">
-                <p class="code">
-                    panier = {"poire":3, "pomme":4, "orange":2} <br/>
-                    for association in panier<mark>.items()</mark> :<br/>
-                    &nbsp;&nbsp;&nbsp;&nbsp; print(association) <br/>
+                    fruit = input{"Quel fruit veux-tu manger ?"} <br/>
+                    if fruit in panier : <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp; print("J'en ai", panier[fruit]) <br/>
+                    else : <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp; print("Je n'ai pas ce fruit.")
                 </p>
             </div>
             <h2>Exercices</h2>
