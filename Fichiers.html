@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+    <body>
+        <div class="main">
+            <h1>Manipuler des fichiers</h1>
+            <h2>Ouverture d'un fichier en lecture</h2>
+            <p>Un fichier peut permettre de stocker des informations. Il est alors nécessaire de pouvoir l'ouvrir dans un programme python pour accéder aux données. En informatique, plusieurs programmes peuvent avoir à accéder à un même fichier. Il est donc très important de veiller à ce que chaque programme referme un fichier dès qu'il n'en a plus besoin. La gestion de fichier peut se faire à l'aide d'instruction <mark class='code'>open</mark> et <mark class='code'>close</mark>. Cependant, si le programme s'arrête sur une erreur entre ces deux instructions, le fichier n'est pas proprement refermé. C'est pourquoi Python intègre des outils plus perfectionnés pour ouvrir un fichier et pour le refermer automatiquement même en cas d'erreurs lors de l'exécution. Voici un exemple d'un programme ouvrant le fichier <mark class="code">data.txt</mark> et affichant son contenu.</p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    with open("data.txt", "r") as fichier : <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;lignes = fichier.readlines() <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;for ligne in lignes :<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(ligne, end='')<br/>
+                </p>
+            </div>
+            <p>Remarques : la lettre <mark class='code'>r</mark> signifie ouverture en lecture (read en anglais). Les lignes lues dans le fichiers se terminent par le caractère "retour à la ligne". Au moment de l'affichage, il ne faut pas en ajouter un deuxième, il faut donc ajouter <mark class='code'>end=''</mark> dans l'instruction <mark class='code'>print</mark>.</p>
+            <div class="exercice">
+                <ol>
+                    <li>A l'aide d'un éditeur de texte, créer un fichier <mark class='code'>fruits.txt</mark> en y écrivant 3 noms de fruits, un par ligne.</li>
+                    <li>Ecrire un programme affichant une phrase du type : « Dans mon panier, il y a des pommes, des cerises et des fraises » où les noms des fruits sont lus à partir de votre fichier.</li>
+                    <li>Modifier les noms des fruits du fichier <mark class='code'>fruits.txt</mark> à l'aide de l'éditeur de texte.</li>
+                    <li>Exécuter de nouveau le programme et vérifiez que la phrase a bien changé.</li>
+                </ol>
+            </div>
+            <h2>Ouverture d'un fichier en écriture</h2>
+            <p>Un programme peut aussi avoir besoin de stocker des valeurs dans un fichier. C'est par exemple un moyen de sauvegarder les valeurs des variables pour les récupérer plus tard, dans une autre exécution du programme. La syntaxe est similaire à celle de l'ouverture d'un fichier.</p>
+            <h3>Remplacer le contenu d'un fichier.</h3>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    with open("data.txt", "w") as fichier : <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;fichier.write("coucou\n") <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;fichier.write("hibou\n") <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;fichier.write("coucou\n")
+                </p>
+            </div>
+            <p>Remarques : la lettre <mark class='code'>w</mark> signifie ouverture en écriture (write en anglais). On doit ajouter manuellement les retours à la ligne en utilisant <mark class='code'>\n</mark>.</p>
+            <h3>Compléter le contenu d'un fichier.</h3>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    with open("data.txt", "a") as fichier : <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;fichier.write("coucou\n") <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;fichier.write("hibou\n") <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;fichier.write("coucou\n")
+                </p>
+            </div>
+            <p>Remarque : la lettre <mark class='code'>a</mark> signifie ouverture en écriture à la fin du fichier s'il n'est pas vide (add en anglais).</p>
+            <div class="exercice">
+                On souhaite manipuler le contenu d'un panier de fruits à l'aide d'un fichier. Ajouter ou retirer un fruit au panier aura un effet direct sur le contenu du fichier.
+                <ol>
+                    <li>Ecrire une fonction <mark class="code">charger_panier()</mark> qui stocke dans une liste <mark class='code'>liste_fruits</mark> les fruits enregistrés dans un fichier <mark class='code'>panier.txt</mark></li>
+                    <li>Ecrire une fonction <mark class="code">afficher_panier(liste_fruits)</mark> qui affiche les fruits contenus dans la liste <mark class='code'>liste_fruits</mark>.</li>
+                    <li>Ecrire une fonction <mark class="code">ajouter_fruit(liste_fruits, fruit)</mark> qui ajoute le nom <mark class='code'>fruit</mark> à la liste <mark class='code'>liste_fruits</mark>.</li>
+                    <li>Ecrire une fonction <mark class="code">sauvegarder_panier(liste_fruits)</mark> qui écrit dans le fichier <mark class='code'>panier.txt</mark> le noms des fruits de la liste <mark class='code'>liste_fruits</mark>.</li>
+                </ol>
+            </div>
+            <h2>Quelques méthodes utiles sur les chaînes de caractères</h2>
+            <h3>Couper une liste à un caractère donné</h3>
+            <p>
+                La méthode <mark class='code'>split(caractere)</mark> permet de couper une chaîne de caractères selon le caractère donné. Exemple :
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    texte = "a-b-c-d-e-f" <br/>
+                    liste = texte.split("-") <br/>
+                    print(liste)
+                </p>
+            </div>
+            <div class="exercice">
+                Ecrire une fonction <mark class="code">couper_IP(IP)</mark> qui retourne la liste des 4 nombres apparaissant dans une adresse IP données sous la forme « décimale pointée ». Par exemple, <mark class="code">couper_IP("192.168.0.1")</mark> retourne la liste <mark class="code">[192, 168, 0, 1]</mark>.
+            </div>
+            <h3>Transformer une liste en un chaîne de caractère</h3>
+            <p>
+                On peut obtenir l'effet inverse à <mark class='code'>split</mark> en utilisant <mark class='code'>join</mark>. Cette méthode rassemble les éléments d'une liste dans une chaîne de caractères en les séparant par un caractère choisi. Exemple :
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    liste = ["a", "b", "c", "d"] <br/>
+                    texte = "-".join(liste) <br/>
+                    print(texte)
+                </p>
+            </div>
+            <p>
+                Attention, cette méthode prend en paramètre une liste de <mark>chaînes de caractères</mark>.
+                Si besoin, il faut faire appel à la fonction <mark class='code'>str</mark> et aux listes par compréhension.
+                Exemple :
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    liste = [1, 2, 3, 4] <br/>
+                    texte = "-".join(<mark>[str(n) for n in liste]</mark>) <br/>
+                    print(texte)
+                </p>
+            </div>
+            <div class="exercice">
+                Ecrire une fonction <mark class="code">regrouper_IP(IP)</mark> qui retourne la notation décimale pointée d'une adresse IP à partir de la liste des 4 nombres apparaissant dans cette adresse IP. Par exemple, <mark class="code">regrouper_IP([192, 168, 0, 1])</mark> retourne la chaîne de caractères <mark class="code">"192.168.0.1"</mark>.
+            </div>
+            <div class="exercice">
+                Ecrire une fonction <mark class="code">en_binaire_IP(IP)</mark> qui retourne la notation binaire pointée d'une adresse IP à partir de la notation décimale pointée. Par exemple, <mark class="code">en_binaire_IP("192.168.0.1")</mark> retourne la chaîne de caractères <mark class="code">"11000000.10101000.00000000.00000001"</mark>.<br/>
+                On peut utiliser la fonction <mark class="code">bin(n)</mark> qui retourne la représentation binaire du nombre entier <mark class="code">n</mark>
+            </div>
+            <h3>Retirer des caractères au début ou à la fin d'une chaîne de caractère.</h3>
+            <p>
+                Il est parfois utile de retirer les retours à la ligne présents à la fin d'une chaîne de caractère.
+                La méthode <mark class="code">strip()</mark> répond à ce problème.
+            </p>
+            <p>
+                Sans paramètre, cette méthode retourne la chaîne de caractères à laquelle on a retiré tous les espaces et retours à la ligne en début ou en fin de chaîne. Par exemple <mark class="code">"   a ".strip()</mark> retourne <mark class="code">"a"</mark>.
+            </p>
+            <p>
+                Avec un texte comme paramètre, cette méthode retourne la chaîne de caractères à laquelle on a retiré tous les caractères apparaissant dans le texte en début ou en fin de chaîne. Par exemple <mark class="code">"acaabbabbaca".strip("ac")</mark> retourne <mark class="code">"bbabb"</mark>.
+            </p>
+            <div class="exercice">
+                Que faut-il donner en paramètre à la méthode <mark class="code">strip</mark> pour qu'elle retire l'éventuel retour à la ligne à la fin de la chaîne de caractères, mais pas les espaces ?
+            </div>
+            <h2>Le format CSV</h2>
+            <p>
+                Le format CSV (Coma Separated Value) est un fichier texte contenant des valeurs séparées par des virgules (ou un autre caractère). Il permet de stocker des données structurées sous forme de tableaux. Exemple :
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    nom;prénom;poste <br/>
+                    Lloris;Hugo;gardien <br/>
+                    Hernandez;Lucas;défenseur <br/>
+                    Kimpembe;Presnel;défenseur
+                </p>
+            </div>
+            <div class="exercice">
+                Le fichier <a href="ligue1.csv"><mark class="code">ligue1.csv</mark></a> contient des informations sur les clubs engagés en ligue 1 de football pour la saison 2021-2022. Ecrire un programme Python triant les stades de ces clubs selon leurs capacités décroissantes.
+            </div>
+        <script type="text/javascript" src="script.js"></script>
+    </body>
+</html>
