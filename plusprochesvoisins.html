@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+    <body>
+        <div class="main">
+            <h1>Algorithme des k plus proches voisins</h1>
+            <h2>Introduction</h2>
+            <p>
+                L'algorithme des k plus proches voisins (k-NN pour k-nearest neighbors en anglais) est un algorithme d'apprentissage automatique. Il permet de résoudre des problèmes de <mark>classification</mark> (c'est-à-dire déterminer à quelle groupe appartient un élément grâce à ses caractéristiques) ou des problèmes de <mark>régression</mark> (c'est-à-dire de prédire une valeur). Comme son nom l'indique, il consiste à rechercher les k éléments d'une liste les plus proches d'un élément donné. Très souvent, la distance utilisée est la <mark>distance euclidienne</mark>.
+            </p>
+            <h2>Etude de l'algorithme</h2>
+            <h3>L'algorithme</h3>
+            <p>
+                Une méthode simple d'écrire l'algorithme des k plus proches voisins et de réutiliser l'algorithme de tri par sélection mais d'arrêter le tri dès que la partie triée contient k valeurs.
+            </p>
+            <div class="exercice">
+                Ecrire l'adaptation du tri par sélection pour en faire un algorithme de recherche des k plus proches voisins.<br/>
+                La fonction <mark class="code">plus_proches_voisins(k, liste, element, distance)</mark> dépend de 4 paramètres :
+                <ul>
+                    <li><mark class="code">k</mark> : le nombre de voisins recherchés</li>
+                    <li><mark class="code">liste</mark> : la liste où rechercher les voisins</li>
+                    <li><mark class="code">element</mark> : l'élément dont on souhaite trouver les plus proches voisins</li>
+                    <li><mark class="code">distance</mark> : une fonction qui calcule la distance entre deux éléments</li>
+                </ul>
+            </div>
+            <h3>Exemple d'application</h3>
+            <p>
+                La couleur des hortensias dépend de l'acidité du sol.
+                Ils peuvent être blancs, roses ou bleus.
+                On souhaite prédire la couleur d'une jeune pousse d'hortensia.
+                Pour cela, on recherche les 7 hortensias les plus proches de la jeune pousse étudiée.
+                On peut estimer que la jeune pousse aura pour couleur la couleur dominante chez ces 7 hortensias.
+            </p>
+            <div class="algo">
+                <input type="button" class="copier" value="📑" title="copier">
+                <p class="code">
+                    hortensias = [ <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[8.37, 8.24, 'bleu'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[7.0, 8.78, 'blanc'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[8.04, 4.41, 'bleu'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[8.13, 2.27, 'bleu'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[10.74, 2.72, 'bleu'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[5.65, -0.18, 'rose'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[9.95, 8.19, 'bleu'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[6.38, 12.76, 'bleu'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[0.93, -2.19, 'rose'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[8.32, 8.09, 'blanc'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[8.37, 7.41, 'blanc'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[0.98, 9.96, 'blanc'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[4.07, 6.9, 'rose'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[3.09, 0.74, 'rose'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[7.84, 0.07, 'bleu'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[6.24, 0.78, 'bleu'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[8.46, 3.48, 'blanc'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[2.06, 7.95, 'rose'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[-0.66, -0.2, 'rose'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[-0.53, 3.27, 'rose'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[6.44, 5.31, 'blanc'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[10.7, 8.32, 'bleu'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[8.25, 7.11, 'blanc'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[8.93, 6.6, 'blanc'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[8.04, 5.16, 'bleu'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[2.99, 1.96, 'blanc'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[5.44, 5.46, 'rose'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[3.01, -1.67, 'rose'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[7.05, 5.16, 'blanc'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[2.45, 2.63, 'rose'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[4.7, -3.49, 'rose'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[5.43, 1.65, 'blanc'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[7.81, 8.09, 'blanc'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[4.19, 2.27, 'rose'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[6.17, 9.46, 'blanc'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[6.16, -0.07, 'rose'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[9.87, -0.9, 'bleu'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[6.48, 2.83, 'blanc'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[6.71, 3.4, 'blanc'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[0.2, 6.81, 'blanc'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[-2.51, 6.99, 'rose'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[10.31, 10.23, 'bleu'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[4.02, 1.37, 'rose'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[12.19, 13.78, 'bleu'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[6.12, 1.75, 'bleu'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[10.38, -4.37, 'bleu'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[4.17, -2.29, 'bleu'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[2.6, 2.0, 'rose'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[13.3, 5.26, 'bleu'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[1.44, 4.65, 'blanc'], <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[6.82, 0.93, 'rose'] <br/>
+                    ] <br/>
+                    coordonnees_jeune_pousse = (7, 5) <br/> <br/>
+                    def distance(fleurA, fleurB) : <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;return (fleurA[0]-fleurB[0])**2 + (fleurA[1]-fleurB[1])**2 <br/> <br/>
+                    voisins = plus_proches_voisins(7, hortensias, coordonnees_jeune_pousse, distance) <br/>
+                    print(voisins) <br/> <br/>
+                    compteurs = [[0, "blanc"], [0, "rose"], [0, "bleu"]] <br/>
+                    for fleur in voisins : <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;for compteur in compteurs : <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if compteur[1] == fleur[2] : <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;compteur[0] = compteur[0] + 1 <br/>
+                    compteurs.sort(reverse=True) <br/> <br/>
+                    print("La jeune pousse devrait être de couleur " + compteurs[0][1] + ".") <br/>
+                </p>
+            </div>
+<!--Ajouter ici une image représentant la situation-->
+            <h3>Terminaison</h3>
+            <p>
+                Cet algorithme étant construit qu'avec des boucles pour, la terminaison ne pose aucun problèmes. Le nombre de tour de boucle sera inférieur à k &times; n si la liste contient n valeurs.
+            </p>
+            <h3>Correction</h3>
+            <p>
+                On peut utiliser le même <mark>invariant</mark> que pour l'algorithme de tri par sélection : «&nbsp;Après <mark class="code">i</mark> passages dans la boucle principale, les <mark class="code">i</mark> premières valeurs de la liste sont triées.&nbsp;»
+            </p>
+            <h3>Complexité</h3>
+            <p>
+                La boucle principale sera effectuée <mark class="code">k</mark> fois.
+                A l'intérieur, une boucle recherche la plus petite valeur parmi <mark class="code">n-k</mark> valeurs.
+                Au total, on compte <mark class="code">n + (n-1) + (n-2) + ... + (n-k)</mark> passages dans la boucle intérieure.
+                D'après la formule de la somme de termes d'une suite arithmétique, on compte <span class="frac"><span class="haut">k &times; (n + n - k)</span><span class="bas">2</span></span> = <span class="frac"><span class="haut">k &times; (2n - k)</span><span class="bas">2</span></span> passages dans la boucle intérieure. Pour une valeur de k fixée, cet algorithme est linéaire, sa complexité étant O(n).
+            </p>
+            <h2>Applications : Le choixpeau magique</h2>
+            <div class="exercice">
+                <p>
+                    À l’entrée à l’école de Poudlard, le Choixpeau magique répartit les élèves dans
+    les différentes maisons (Gryffondor, Serpentar, Serdaigle et Poufsouffle) en
+    fonction de leur courage, leur loyauté, leur sagesse et leur malice.
+                </p>
+                <p>
+                    Vous allez écrire un programme qui simule le choixpeau magique à partir des données de 50 élèves déjà assignés à une maison. On utilisera alors le choixpeau pour assigner les 4 élèves suivants à une maison :
+                </p>
+                <table>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Courage</th>
+                        <th>Loyauté</th>
+                        <th>Sagesse</th>
+                        <th>Malice</th>
+                    </tr>
+                    <tr>
+                        <th>Hermione</th>
+                        <td>8</td>
+                        <td>6</td>
+                        <td>6</td>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <th>Drago</th>
+                        <td>6</td>
+                        <td>6</td>
+                        <td>5</td>
+                        <td>8</td>
+                    </tr>
+                    <tr>
+                        <th>Cho</th>
+                        <td>7</td>
+                        <td>6</td>
+                        <td>9</td>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <th>Cédric</th>
+                        <td>7</td>
+                        <td>10</td>
+                        <td>5</td>
+                        <td>6</td>
+                    </tr>
+                </table>
+                <ol>
+                    <li>Extraire les données des 50 élèves à partir du fichier <a href="ChoixpeauMagique.csv">ChoixpeauMagique.csv</a> dans une liste nommée <mark class="code">Poudlard</mark>.</li>
+                    <li>Écrire une fonction <mark class="code">distance(eleve1, eleve2)</mark> retournant la somme des carrés des écarts entre les caractéristiques des deux élèves.</li>
+                    <li>Écrire la fonction <mark class="code">choixpeau_magique(eleve, liste)</mark> qui retourne la maison assigné à l'élève. Il s'agît de la maison la plus répandu parmi les maisons des 7 élèves de la liste les plus proches.</li>
+                    <li>Tester cette fonction sur Hermione, Drago, Cho et Cédric.</li>
+                </ol>
+            </div>
+        </div>
+        <script type="text/javascript" src="script.js"></script>
+    </body>
+</html>
